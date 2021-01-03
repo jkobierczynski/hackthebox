@@ -1,0 +1,24 @@
+********************************************************
+ Testing DAV connection
+OPEN		SUCCEED:		http://10.10.10.14
+********************************************************
+NOTE	Random string for this session: jk7C_GHKV97Qt
+********************************************************
+ Creating directory
+********************************************************
+ Sending test files
+PUT	txt	FAIL
+PUT	asp	FAIL
+PUT	jsp	FAIL
+PUT	php	FAIL
+PUT	cfm	FAIL
+PUT	pl	FAIL
+PUT	jhtml	FAIL
+PUT	html	FAIL
+PUT	shtml	FAIL
+PUT	aspx	FAIL
+PUT	cgi	FAIL
+
+********************************************************
+/usr/bin/davtest Summary:
+

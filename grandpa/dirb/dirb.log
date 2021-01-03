@@ -1,0 +1,41 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: dirb/dirb.log
+START_TIME: Mon Aug  3 01:05:18 2020
+URL_BASE: http://10.10.10.14/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://10.10.10.14/ ----
++ http://10.10.10.14/_private (CODE:403|SIZE:1529)
+==> DIRECTORY: http://10.10.10.14/_vti_bin/
++ http://10.10.10.14/_vti_bin/_vti_adm/admin.dll (CODE:200|SIZE:195)
++ http://10.10.10.14/_vti_bin/_vti_aut/author.dll (CODE:200|SIZE:195)
++ http://10.10.10.14/_vti_bin/shtml.dll (CODE:200|SIZE:96)
++ http://10.10.10.14/_vti_cnf (CODE:403|SIZE:1529)
++ http://10.10.10.14/_vti_log (CODE:403|SIZE:1529)
++ http://10.10.10.14/_vti_pvt (CODE:403|SIZE:1529)
++ http://10.10.10.14/_vti_txt (CODE:403|SIZE:1529)
++ http://10.10.10.14/aspnet_client (CODE:403|SIZE:218)
+==> DIRECTORY: http://10.10.10.14/images/
+==> DIRECTORY: http://10.10.10.14/Images/
+
+---- Entering directory: http://10.10.10.14/_vti_bin/ ----
+==> DIRECTORY: http://10.10.10.14/_vti_bin/_vti_aut/
+
+---- Entering directory: http://10.10.10.14/images/ ----
+
+---- Entering directory: http://10.10.10.14/Images/ ----
+
+---- Entering directory: http://10.10.10.14/_vti_bin/_vti_aut/ ----
+
+-----------------
+END_TIME: Mon Aug  3 01:15:37 2020
+DOWNLOADED: 23060 - FOUND: 9

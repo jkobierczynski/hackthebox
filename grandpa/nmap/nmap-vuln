@@ -1,0 +1,35 @@
+# Nmap 7.80 scan initiated Mon Aug  3 01:08:56 2020 as: nmap -sC -sV -p 80 --script vuln -oN nmap/nmap-vuln 10.10.10.14
+Nmap scan report for 10.10.10.14
+Host is up (0.023s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Microsoft IIS httpd 6.0
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-enum: 
+|   /postinfo.html: Frontpage file or folder
+|   /_vti_bin/_vti_aut/author.dll: Frontpage file or folder
+|   /_vti_bin/_vti_aut/author.exe: Frontpage file or folder
+|   /_vti_bin/_vti_adm/admin.dll: Frontpage file or folder
+|   /_vti_bin/_vti_adm/admin.exe: Frontpage file or folder
+|   /_vti_bin/fpcount.exe?Page=default.asp|Image=3: Frontpage file or folder
+|   /_vti_bin/shtml.dll: Frontpage file or folder
+|_  /_vti_bin/shtml.exe: Frontpage file or folder
+| http-frontpage-login: 
+|   VULNERABLE:
+|   Frontpage extension anonymous login
+|     State: VULNERABLE
+|       Default installations of older versions of frontpage extensions allow anonymous logins which can lead to server compromise.
+|       
+|     References:
+|_      http://insecure.org/sploits/Microsoft.frontpage.insecurities.html
+|_http-server-header: Microsoft-IIS/6.0
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| vulners: 
+|   cpe:/a:microsoft:iis:6.0: 
+|_    	IIS_PHP_AUTH_BYPASS.NASL	7.5	https://vulners.com/nessus/IIS_PHP_AUTH_BYPASS.NASL
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Aug  3 01:11:46 2020 -- 1 IP address (1 host up) scanned in 170.12 seconds

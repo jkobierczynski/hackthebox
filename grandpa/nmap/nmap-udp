@@ -1,0 +1,6 @@
+# Nmap 7.80 scan initiated Mon Aug  3 00:55:01 2020 as: nmap -T4 -sU -oN nmap/nmap-udp 10.10.10.14
+Nmap scan report for 10.10.10.14
+Host is up (0.025s latency).
+All 1000 scanned ports on 10.10.10.14 are open|filtered
+
+# Nmap done at Mon Aug  3 00:55:27 2020 -- 1 IP address (1 host up) scanned in 26.21 seconds
