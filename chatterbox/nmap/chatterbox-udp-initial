@@ -1,0 +1,6 @@
+# Nmap 7.80 scan initiated Tue Sep 29 22:58:45 2020 as: nmap -sW -oN nmap/chatterbox-udp-initial 10.10.10.74
+Nmap scan report for 10.10.10.74
+Host is up (0.029s latency).
+All 1000 scanned ports on 10.10.10.74 are filtered
+
+# Nmap done at Tue Sep 29 22:59:15 2020 -- 1 IP address (1 host up) scanned in 30.42 seconds
