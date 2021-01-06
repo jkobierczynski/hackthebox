@@ -584,11 +584,11 @@ msf6 exploit(windows/local/ms10_015_kitrap0d) > run
 meterpreter > 
 ```
 
+The priv escalation on screen (restarted the session due to disconnection of session):
+
 ![ImgPlaceholder](screenshots/escalate.png)
 
 We find the flags in the Desktop directories of the babis, Administrator accounts:
-
-The priv escalation on screen (restarted the session due to disconnection of session):
 
 ![ImgPlaceholder](screenshots/flags.png)
 
