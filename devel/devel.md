@@ -488,7 +488,7 @@ report continues, see winPEAS.out file.
 We execute the exploit suggester in metasploit:
 ```
 meterpreter > background 
-[*] Backgrounding session 3...
+[*] Backgrounding session 1...
 msf6 exploit(multi/handler) > search suggester
 
 Matching Modules
@@ -508,7 +508,7 @@ Module options (post/multi/recon/local_exploit_suggester):
 
    Name             Current Setting  Required  Description
    ----             ---------------  --------  -----------
-   SESSION          2                yes       The session to run this module on
+   SESSION          1                yes       The session to run this module on
    SHOWDESCRIPTION  false            yes       Displays a detailed description for the available exploits
 
 msf6 post(multi/recon/local_exploit_suggester) > set session 1
@@ -588,7 +588,9 @@ meterpreter >
 
 We find the flags in the Desktop directories of the babis, Administrator accounts:
 
-![ImgPlaceholder](screenshots/escalate.png)
+The priv escalation on screen (restarted the session due to disconnection of session):
+
+![ImgPlaceholder](screenshots/flags.png)
 
 **Vulnerability Fix:**
 
