@@ -401,8 +401,6 @@ Not only it gives access to the Elastix site, it gives also access to the Webmin
 
 ![ImgPlaceholder](screenshots/webmin-logged-in.png)
 
-```
-
 We see the webmin server is running as root in the included commandline:
 
 ![ImgPlaceholder](screenshots/webmin-whoami.png)
@@ -413,6 +411,7 @@ Using the same commandline we can easily create and add a public ssh key to /roo
 
 The only other problem was overiding the diffie-hellman key exchange restriction not allowing sha1 to be used.
 
+```
 user@kali:~/hackthebox/hackthebox/beep/exploit$ ssh -i ~/.ssh/id_rsa root@10.10.10.7
 Unable to negotiate with 10.10.10.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 user@kali:~/hackthebox/hackthebox/beep/exploit$ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -i ~/.ssh/id_rsa root@10.10.10.7
