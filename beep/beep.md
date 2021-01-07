@@ -15,7 +15,7 @@ book: true
 classoption: oneside
 code-block-font-size: \scriptsize
 ---
-# Pentesting Report - Bashed
+# Pentesting Report - Beep
 
 ## Introduction
 
@@ -209,6 +209,7 @@ The var directory is an open dir including an empty backups directory:
 The date on the files are an indication we have an old Elastix installation.
 Searchsploit show us the vulnerable releases of Elastix:
 
+```
 user@kali:~$ searchsploit elastix 
 ------------------------------------------------------------------- ---------------------------------
  Exploit Title                                                     |  Path
@@ -223,6 +224,7 @@ FreePBX 2.10.0 / Elastix 2.2.0 - Remote Code Execution             | php/webapps
 ------------------------------------------------------------------- ---------------------------------
 Shellcodes: No Results
 Papers: No Results
+```
 
 The graph.php Local File Inclusion exploit is here below:
 
