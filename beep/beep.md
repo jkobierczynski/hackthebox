@@ -153,6 +153,10 @@ On browsing to the http/https website we find a Elastix login website:
 
 ![ImgPlaceholder](screenshots/elastix-443.png)
 
+There is also a Webmin server on port 10000:
+
+![ImgPlaceholder](screenshots/webmin.png)
+
 With Gobuster we find the following directories on the webserver:
 
 ```
@@ -388,6 +392,48 @@ password: jEhdIekWmdjE
 
 login: admin
 password: jEhdIekWmdjE
+
+Using the retriever admin account we can login to the Elastix administration site:
+
+![ImgPlaceholder](screenshots/elastix-logged-in.png)
+
+Not only it gives access to the Elastix site, it gives also access to the Webmin webserver on the same host! 
+
+![ImgPlaceholder](screenshots/webmin-logged-in.png)
+
+```
+
+We see the webmin server is running as root in the included commandline:
+
+![ImgPlaceholder](screenshots/webmin-whoami.png)
+
+Using the same commandline we can easily create and add a public ssh key to /root/.ssh/authorized_keys.
+
+![ImgPlaceholder](screenshots/webmin-ssh-authkeys.png)
+
+The only other problem was overiding the diffie-hellman key exchange restriction not allowing sha1 to be used.
+
+user@kali:~/hackthebox/hackthebox/beep/exploit$ ssh -i ~/.ssh/id_rsa root@10.10.10.7
+Unable to negotiate with 10.10.10.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+user@kali:~/hackthebox/hackthebox/beep/exploit$ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -i ~/.ssh/id_rsa root@10.10.10.7
+The authenticity of host '10.10.10.7 (10.10.10.7)' can't be established.
+RSA key fingerprint is SHA256:Ip2MswIVDX1AIEPoLiHsMFfdg1pEJ0XXD5nFEjki/hI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.10.7' (RSA) to the list of known hosts.
+Enter passphrase for key '/home/user/.ssh/id_rsa': 
+Last login: Tue Jul 16 11:45:47 2019
+
+Welcome to Elastix 
+----------------------------------------------------
+
+To access your Elastix System, using a separate workstation (PC/MAC/Linux)
+Open the Internet Browser using the following URL:
+http://10.10.10.7
+```
+
+And now we are in with full root access, and retrieve the flags:
+
+![ImgPlaceholder](screenshots/flags.png)
 
 **Vulnerability Fix:**
 
