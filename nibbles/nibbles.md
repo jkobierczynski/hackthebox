@@ -110,11 +110,11 @@ Nmap done: 1 IP address (1 host up) scanned in 25.63 seconds
 
 We see the main website is very basic ahd has in its source a reference to nibbleblog:
 
-![ImgPlaceholder](web-80-source.png)
+![ImgPlaceholder](screenshots/web-80-source.png)
 
 This is the Nibbleblog webpage:
 
-![ImgPlaceholder](nibbleblog.png)
+![ImgPlaceholder](screenshots/nibbleblog.png)
 
 Searchsploit shows us there are a few exploits for Nibbleblog:
 
@@ -217,11 +217,11 @@ msf6 exploit(multi/http/nibbleblog_file_upload) >
 
 There is a login page for Nibbleblog on http://10.10.10.75/nibbleblog/admin.php:
 
-![ImgPlaceholder](nibbleblogadmin.png)
+![ImgPlaceholder](screenshots/nibbleblogadmin.png)
 
 We can, however, easily guess the password 'nibbles':
 
-![ImgPlaceholder](nibbleblog-loggedin.png)
+![ImgPlaceholder](screenshots/nibbleblog-loggedin.png)
 
 With this info we can set the correct parameters in Metasploit and launch the attack:
 
@@ -343,7 +343,7 @@ User nibbler may run the following commands on Nibbles:
 
 We find the user flag:
 
-![ImgPlaceholder](user-flag.png)
+![ImgPlaceholder](screenshots/user-flag.png)
 
 The file /home/nibbler/personal/stuff/monitor.sh is not at the location, however we find a personal.zip file we unzip:
 
@@ -383,7 +383,7 @@ sudo -u root /home/nibbler/personal/stuff/monitor.sh
 
 We find the root flag under /root:
 
-![ImgPlaceholder](root-flag.png)
+![ImgPlaceholder](screenshots/root-flag.png)
 
 ## Sample Report - Penetration
 
