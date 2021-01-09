@@ -1,0 +1,1066 @@
+
+     [48;5;108m     [48;5;59m [48;5;71m [48;5;77m       [48;5;22m [48;5;108m   [48;5;114m [48;5;59m [49m
+     [48;5;108m  [48;5;71m [48;5;22m [48;5;113m [48;5;71m [48;5;94m [48;5;214m  [48;5;58m [48;5;214m    [48;5;100m [48;5;71m  [48;5;16m [48;5;108m  [49m
+     [48;5;65m [48;5;16m [48;5;22m [48;5;214m      [48;5;16m [48;5;214m        [48;5;65m  [49m
+     [48;5;65m [48;5;214m       [48;5;16m [48;5;214m [48;5;16m [48;5;214m       [48;5;136m [48;5;65m [49m
+     [48;5;23m [48;5;214m          [48;5;178m [48;5;214m       [48;5;65m [49m
+     [48;5;16m [48;5;214m         [48;5;136m [48;5;94m   [48;5;136m [48;5;214m    [48;5;65m [49m
+     [48;5;58m [48;5;214m  [48;5;172m [48;5;64m [48;5;77m             [48;5;71m [48;5;65m [49m
+     [48;5;16m [48;5;71m [48;5;77m  [48;5;71m [48;5;77m         [48;5;71m [48;5;77m   [48;5;65m  [49m
+     [48;5;59m [48;5;71m [48;5;77m [48;5;77m [48;5;16m [48;5;77m         [48;5;16m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m  [48;5;77m      [48;5;71m [48;5;16m [48;5;77m    [48;5;113m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m [48;5;16m [48;5;77m  [48;5;150m [48;5;113m [48;5;77m        [48;5;150m [48;5;113m [48;5;77m [48;5;65m [48;5;59m [48;5;65m [49m
+     [48;5;16m [48;5;65m [48;5;71m [48;5;77m             [48;5;71m [48;5;22m [48;5;65m  [49m
+     [48;5;108m  [48;5;107m [48;5;59m [48;5;77m           [48;5;16m [48;5;114m [48;5;108m   [49m
+[1;94m  linpeas v2.3.8[0m[1;33m by carlospolop
+[0m
+[1;33mADVISORY: [1;34mlinpeas should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+[0m
+[1;34mLinux Privesc Checklist: [1;33mhttps://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+[0m [1;4mLEGEND[0m:
+  [1;31;103mRED/YELLOW[0m: 99% a PE vector
+  [1;31mRED[0m: You must take a look at it
+  [1;96mLightCyan[0m: Users with console
+  [1;34mBlue[0m: Users without console & mounted devs
+  [1;32mGreen[0m: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMangeta: Your username
+
+
+[1;34m====================================( [1;32mBasic information[1;34m )=====================================
+[0m[1;37mOS: [0mLinux version 4.4.0-104-generic (buildd@lgw01-amd64-022) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) ) #127-Ubuntu SMP Mon Dec 11 12:16:42 UTC 2017
+[1;37mUser & Groups: [0muid=1001([1;34m[1;95mnibbler[0m[0m) gid=1001([1;34m[1;95mnibbler[0m[0m) groups=1001([1;34m[1;95mnibbler[0m[0m)
+[1;37mHostname: [0mNibbles
+[1;37mWritable folder: [0m/dev/shm
+[1;33m[+] [1;32m/bin/ping[1;34m is available for network discovery[1;37m (linpeas can discover hosts, learn more with -h)
+[0m[1;33m[+] [1;32m/bin/nc[1;34m is available for network discover & port scanning[1;37m (linpeas can discover hosts and scan ports, learn more with -h)
+[0m
+
+[1;34m====================================( [1;32mSystem Information[1;34m )====================================
+[0m[1;33m[+] [1;32mOperative system
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits
+[0mLinux version 4.4.0-104-generic (buildd@lgw01-amd64-022) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) ) #127-Ubuntu SMP Mon Dec 11 12:16:42 UTC 2017
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.3 LTS
+Release:	16.04
+Codename:	xenial
+
+[1;33m[+] [1;32mSudo version
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-version
+[0mSudo version 1.8.16
+
+[1;33m[+] [1;32mPATH
+[0m[1;34m[i] [1;33mAny writable folder in original PATH? (a new completed path will be exported)
+[0m/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+New path exported: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[1;33m[+] [1;32mDate
+[0mFri Jan  8 21:56:02 EST 2021
+
+[1;33m[+] [1;32mSystem stats
+[0mFilesystem                    Size  Used Avail Use% Mounted on
+udev                          468M     0  468M   0% /dev
+tmpfs                          98M  4.4M   94M   5% /run
+/dev/mapper/Shocker--vg-root  4.4G  2.5G  1.6G  62% /
+tmpfs                         488M  168K  488M   1% /dev/shm
+tmpfs                         5.0M     0  5.0M   0% /run/lock
+tmpfs                         488M     0  488M   0% /sys/fs/cgroup
+/dev/sda1                     472M  133M  330M  29% /boot
+              total        used        free      shared  buff/cache   available
+Mem:         998228      239824      140228       11412      618176      533044
+Swap:       1044476           0     1044476
+
+[1;33m[+] [1;32mEnvironment
+[0m[1;34m[i] [1;33mAny private information inside environment variables?
+[0mHISTFILESIZE=0
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+APACHE_LOCK_DIR=/var/lock/apache2
+LANG=C
+HISTSIZE=0
+APACHE_RUN_USER=nibbler
+APACHE_RUN_GROUP=nibbler
+APACHE_LOG_DIR=/var/log/apache2
+HISTFILE=/dev/null
+
+[1;33m[+] [1;32mLooking for Signature verification failed in dmseg
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mselinux enabled? .............. [0m[1;90msestatus Not Found
+[0m[1;33m[+] [1;32mPrinter? ...................... [0m[1;90mlpstat Not Found
+[0m[1;33m[+] [1;32mIs this a container? .......... [0m[1;90mNo
+[0m[1;33m[+] [1;32mIs ASLR enabled? .............. [0m[1;32mYes[0m
+
+[1;34m=========================================( [1;32mDevices[1;34m )==========================================
+[0m[1;33m[+] [1;32mAny sd* disk in /dev? (limit 20)
+[0msda
+sda1
+sda2
+sda5
+
+[1;33m[+] [1;32mUnmounted file-system?
+[0m[1;34m[i] [1;33mCheck if you can mount umounted devices
+[0m[1;34m/dev/mapper/Shocker--vg-root[0m /               ext4    errors=remount-ro 0       1
+UUID=c227aef1-7e4c-4094-8b0b-095581dd0bc6 /boot           ext2    defaults        0       2
+/dev/mapper/Shocker--vg-[1;32mswap[0m_1 none            [1;32mswap[0m    sw              0       0
+
+
+[1;34m====================================( [1;32mAvailable Software[1;34m )====================================
+[0m[1;33m[+] [1;32mUseful software
+[0m/bin/nc
+/bin/netcat
+/usr/bin/wget
+/usr/bin/curl
+/bin/ping
+/usr/bin/gcc
+/usr/bin/g++
+/usr/bin/make
+/usr/bin/base64
+/usr/bin/python3
+/usr/bin/perl
+/usr/bin/php
+/usr/bin/sudo
+
+[1;33m[+] [1;32mCompilers Installed
+[0mii  g++                                 4:5.3.1-1ubuntu1                           amd64        GNU C++ compiler
+ii  g++-5                               5.4.0-6ubuntu1~16.04.5                     amd64        GNU C++ compiler
+ii  gcc                                 4:5.3.1-1ubuntu1                           amd64        GNU C compiler
+ii  gcc-5                               5.4.0-6ubuntu1~16.04.5                     amd64        GNU C compiler
+/usr/bin/gcc
+/usr/bin/g++
+
+
+[1;34m================================( [1;32mProcesses, Cron & Services[1;34m )================================
+[0m[1;33m[+] [1;32mCleaned processes
+[0m[1;34m[i] [1;33mCheck weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0mUSER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+[1;31mroot[0m          1  0.0  0.6 119764  6028 ?        Ss   20:56   0:02 /sbin[1;32m/init[0m
+[1;31mroot[0m        409  0.0  0.3  28336  3000 ?        Ss   20:57   0:00 /lib/[1;34msys[0mtemd/systemd-journald
+[1;31mroot[0m        443  0.0  0.1 102972  1688 ?        Ss   20:57   0:00 /sbin/lvmetad -f
+[1;31mroot[0m        455  0.0  0.3  44324  3872 ?        Ss   20:57   0:00 /lib/[1;34msys[0mtemd/systemd-[1;32mudev[0md
+[1;34msys[0mtemd+    730  0.0  0.2 100324  2612 ?        Ssl  20:57   0:00 /lib/systemd/systemd-timesyncd
+[1;31mroot[0m        867  0.0  1.0 192244 10308 ?        Ssl  20:57   0:03 /usr/bin[1;32m/vmtoolsd[0m
+[1;31mroot[0m        876  0.0  2.4 268684 24700 ?        Ssl  20:57   0:00 /usr/lib/snapd/snapd
+[1;31mroot[0m        878  0.0  0.2  20104  2772 ?        Ss   20:57   0:00 /lib/[1;34msys[0mtemd/systemd-logind
+[1;31mroot[0m        884  0.0  0.6 275860  6232 ?        Ssl  20:57   0:00 /usr/lib/accountsservice/accounts-[1;34mdaemon[0m
+[1;31mroot[0m        887  0.0  0.3  29012  3048 ?        Ss   20:57   0:00 /usr/sbin/[1;32mcron[0m -f
+[1;34m[1;32msyslog[0m[0m      890  0.0  0.3 260632  3552 ?        Ssl  20:57   0:00 /usr/sbin/rsyslogd -n
+[1;31mroot[0m        894  0.0  0.3 531216  3924 ?        Ssl  20:57   0:00 /usr/bin/lxcfs /var/lib/lxcfs/
+[1;32mmessage+[0m    900  0.0  0.3  42904  3804 ?        Ss   20:57   0:00 /usr/bin/dbus-[1;34mdaemon[0m --system --address=systemd: --nofork --nopidfile --systemd-activation
+[1;31mroot[0m        925  0.0  0.1   4400  1360 ?        Ss   20:57   0:00 /usr/sbin/acpid
+[1;34mdaemon[0m      928  0.0  0.2  26048  2180 ?        Ss   20:57   0:00 /usr/sbin/atd -f
+[1;31mroot[0m        960  0.0  0.8 277092  8040 ?        Ssl  20:57   0:00 /usr/lib/policykit-1/polkitd --no-debug
+[1;31mroot[0m        969  0.0  0.0  13376   168 ?        Ss   20:57   0:00 /sbin/mdadm --monitor --pid-file /run/mdadm/monitor.pid --[1;34mdaemon[0mise --scan --[1;32msyslog[0m
+[1;31mroot[0m       1107  0.0  0.6  65524  6296 ?        Ss   20:57   0:00 /usr/sbin/[1;34msshd[0m -D
+[1;31mroot[0m       1129  0.0  0.0   5224   160 ?        Ss   20:57   0:00 /sbin/iscsid
+[1;31mroot[0m       1130  0.0  0.3   5724  3516 ?        S<Ls 20:57   0:00 /sbin/iscsid
+[1;34mmysql[0m      1134  0.0 15.9 1115980 159484 ?      Ssl  20:57   0:01 /usr/sbin/mysqld
+[1;31mroot[0m       1199  0.0  0.1  15940  1828 tty1     Ss+  20:57   0:00 /sbin/agetty --noclear tty1 linux
+[1;31mroot[0m       1326  0.0  2.4 328296 24588 ?        Ss   20:57   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1350  0.0  1.7 332732 17704 ?        S    20:57   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1454  0.0  2.0 333224 19992 ?        S    21:03   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1484  0.0  1.8 331980 18536 ?        S    21:07   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1552  0.0  1.6 331940 16696 ?        S    21:17   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1555  0.0  1.8 332456 18896 ?        S    21:17   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1562  0.0  1.8 332712 18760 ?        S    21:19   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1568  0.0  1.6 331612 16380 ?        S    21:20   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1572  0.0  1.8 332452 18120 ?        S    21:20   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1573  0.0  1.7 331604 17172 ?        S    21:20   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1574  0.0  0.8 328336  8168 ?        S    21:35   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;34m[1;95mnibbler[0m[0m    1637  0.0  0.0   4508   796 ?        S    21:54   0:00 sh -c /bin/sh 
+[1;34m[1;95mnibbler[0m[0m    1638  0.0  0.0   4508   788 ?        S    21:54   0:00 /bin/sh
+[1;34m[1;95mnibbler[0m[0m    1642  0.0  0.1   4640  1928 ?        S    21:55   0:00 /bin/sh ./linpeas.sh
+[1;34m[1;95mnibbler[0m[0m    1643  0.0  0.0   4384   684 ?        S    21:55   0:00 tee linpeas.out
+[1;34m[1;95mnibbler[0m[0m    1839  0.0  0.2  34428  2944 ?        R    21:56   0:00 ps aux
+
+[1;33m[+] [1;32mBinary processes permissions
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0mlrwxrwxrwx 1 [1;32mroot[0m root        4 Sep 22  2017 /bin/sh -> dash
+-rwxr-xr-x 1 [1;32mroot[0m root   326224 Oct 27  2017 /lib/[1;34msys[0mtemd/systemd-journald
+-rwxr-xr-x 1 [1;32mroot[0m root   618520 Oct 27  2017 /lib/[1;34msys[0mtemd/systemd-logind
+-rwxr-xr-x 1 [1;32mroot[0m root   141904 Oct 27  2017 /lib/[1;34msys[0mtemd/systemd-timesyncd
+-rwxr-xr-x 1 [1;32mroot[0m root   453240 Oct 27  2017 /lib/[1;34msys[0mtemd/systemd-udevd
+-rwxr-xr-x 1 [1;32mroot[0m root    44104 Jun 14  2017 /sbin/agetty
+lrwxrwxrwx 1 [1;32mroot[0m root       20 Oct 27  2017 /sbin/init -> /lib/[1;34msys[0mtemd/systemd
+-rwxr-xr-x 1 [1;32mroot[0m root   783984 Jul 26  2017 /sbin/iscsid
+-rwxr-xr-x 1 [1;32mroot[0m root    51336 Apr 16  2016 /sbin/lvmetad
+-rwxr-xr-x 1 [1;32mroot[0m root   513216 Nov  8  2017 /sbin/mdadm
+-rwxr-xr-x 1 [1;32mroot[0m root   224208 Jan 12  2017 /usr/bin/dbus-[1;34mdaemon[0m
+-rwxr-xr-x 1 [1;32mroot[0m root    18504 Nov  8  2017 /usr/bin/lxcfs
+-rwxr-xr-x 1 [1;32mroot[0m root    44528 Feb  9  2017 /usr/bin/vmtoolsd
+-rwxr-xr-x 1 [1;32mroot[0m root   164928 Nov  3  2016 /usr/lib/accountsservice/accounts-[1;34mdaemon[0m
+-rwxr-xr-x 1 [1;32mroot[0m root    15048 Jan 17  2016 /usr/lib/policykit-1/polkitd
+-rwxr-xr-x 1 [1;32mroot[0m root 21178072 Nov 30  2017 /usr/lib/snapd/snapd
+-rwxr-xr-x 1 [1;32mroot[0m root    48112 Apr  8  2016 /usr/sbin/acpid
+-rwxr-xr-x 1 [1;32mroot[0m root   662496 Sep 18  2017 /usr/sbin/apache2
+-rwxr-xr-x 1 [1;32mroot[0m root    26632 Jan 14  2016 /usr/sbin/atd
+-rwxr-xr-x 1 [1;32mroot[0m root    44472 Apr  5  2016 /usr/sbin/cron
+-rwxr-xr-x 1 [1;32mroot[0m root 24803912 Oct 18  2017 /usr/sbin/[1;34mmysql[0md
+-rwxr-xr-x 1 [1;32mroot[0m root   599328 Apr  5  2016 /usr/sbin/r[1;34m[1;32msyslog[0m[0md
+-rwxr-xr-x 1 [1;32mroot[0m root   799216 Mar 16  2017 /usr/sbin/[1;34msshd[0m
+
+[1;33m[+] [1;32mCron jobs
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-jobs
+[0m-rw-r--r-- 1 root root  722 Apr  5  2016 /etc/crontab
+
+/etc/cron.d:
+total 24
+drwxr-xr-x  2 root root 4096 Dec 28  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 [1;32m.placeholder[0m
+-rw-r--r--  1 root root  589 Jul 16  2014 [1;32mmdadm[0m
+-rw-r--r--  1 root root  712 Sep  5  2017 [1;32mphp[0m
+-rw-r--r--  1 root root  191 Sep 22  2017 popularity-contest
+
+/etc/cron.daily:
+total 60
+drwxr-xr-x  2 root root 4096 Dec 28  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 [1;32m.placeholder[0m
+-rwxr-xr-x  1 root root  539 Apr  5  2016 [1;32mapache2[0m
+-rwxr-xr-x  1 root root  376 Mar 31  2016 [1;32mapport[0m
+-rwxr-xr-x  1 root root 1474 Jun 19  2017 [1;32mapt-compat[0m
+-rwxr-xr-x  1 root root  355 May 22  2012 [1;32mbsdmainutils[0m
+-rwxr-xr-x  1 root root 1597 Nov 26  2015 [1;32mdpkg[0m
+-rwxr-xr-x  1 root root  372 May  6  2015 [1;32mlogrotate[0m
+-rwxr-xr-x  1 root root 1293 Nov  6  2015 [1;32mman-db[0m
+-rwxr-xr-x  1 root root  539 Jul 16  2014 [1;32mmdadm[0m
+-rwxr-xr-x  1 root root  435 Nov 18  2014 [1;32mmlocate[0m
+-rwxr-xr-x  1 root root  249 Nov 12  2015 [1;32mpasswd[0m
+-rwxr-xr-x  1 root root 3449 Feb 26  2016 popularity-contest
+-rwxr-xr-x  1 root root  214 May 24  2016 [1;32mupdate-notifier-common[0m
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x  2 root root 4096 Sep 22  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 [1;32m.placeholder[0m
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x  2 root root 4096 Sep 22  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 [1;32m.placeholder[0m
+
+/etc/cron.weekly:
+total 24
+drwxr-xr-x  2 root root 4096 Sep 22  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root  102 Apr  5  2016 [1;32m.placeholder[0m
+-rwxr-xr-x  1 root root   86 Apr 13  2016 fstrim
+-rwxr-xr-x  1 root root  771 Nov  6  2015 [1;32mman-db[0m
+-rwxr-xr-x  1 root root  211 May 24  2016 [1;32mupdate-notifier-common[0m
+
+SHELL=/bin/sh
+PATH=/usr/local/s[1;34mbin:[0m/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+[1;33m[+] [1;32mServices
+[0m[1;34m[i] [1;33mSearch for outdated versions
+[0m [ + ]  acpid
+ [ + ]  apache-htcacheclean
+ [ + ]  apache2
+ [ + ]  apparmor
+ [ + ]  apport
+ [ + ]  atd
+ [ - ]  bootmisc.sh
+ [ - ]  checkfs.sh
+ [ - ]  checkroot-bootclean.sh
+ [ - ]  checkroot.sh
+ [ + ]  console-setup
+ [ + ]  cron
+ [ - ]  cryptdisks
+ [ - ]  cryptdisks-early
+ [ + ]  dbus
+ [ + ]  grub-common
+ [ - ]  hostname.sh
+ [ - ]  hwclock.sh
+ [ + ]  irqbalance
+ [ + ]  iscsid
+ [ - ]  keyboard-setup.dpkg-bak
+ [ - ]  killprocs
+ [ + ]  kmod
+ [ - ]  lvm2
+ [ + ]  lvm2-lvmetad
+ [ + ]  lvm2-lvmpolld
+ [ + ]  lxcfs
+ [ - ]  lxd
+ [ + ]  mdadm
+ [ - ]  mdadm-waitidle
+ [ - ]  mountall-bootclean.sh
+ [ - ]  mountall.sh
+ [ - ]  mountdevsubfs.sh
+ [ - ]  mountkernfs.sh
+ [ - ]  mountnfs-bootclean.sh
+ [ - ]  mountnfs.sh
+ [ + ]  mysql
+ [ + ]  networking
+ [ + ]  ondemand
+ [ + ]  open-iscsi
+ [ + ]  open-vm-tools
+ [ - ]  plymouth
+ [ - ]  plymouth-log
+ [ + ]  procps
+ [ + ]  rc.local
+ [ + ]  resolvconf
+ [ - ]  rsync
+ [ + ]  rsyslog
+ [ - ]  screen-cleanup
+ [ - ]  sendsigs
+ [ + ]  ssh
+ [ + ]  udev
+ [ + ]  ufw
+ [ - ]  umountfs
+ [ - ]  umountnfs.sh
+ [ - ]  umountroot
+ [ + ]  unattended-upgrades
+ [ + ]  urandom
+ [ - ]  uuidd
+
+
+[1;34m===================================( [1;32mNetwork Information[1;34m )====================================
+[0m[1;33m[+] [1;32mHostname, hosts and DNS
+[0mNibbles
+127.0.0.1	localhost
+127.0.1.1	Shocker
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+nameserver 10.10.10.2
+[1;90mdnsdomainname Not Found
+[0m
+[1;33m[+] [1;32mContent of /etc/inetd.conf & /etc/xinetd.conf
+[0m[1;90m/etc/inetd.conf Not Found
+[0m
+[1;33m[+] [1;32mNetworks and neighbours
+[0m# symbolic names for networks, see networks(5) for more information
+link-local 169.254.0.0
+ens192    Link encap:Ethernet  HWaddr 00:50:56:b9:ed:0c  
+          inet addr:10.10.10.75  Bcast:10.10.10.255  Mask:255.255.255.0
+          inet6 addr: dead:beef::250:56ff:feb9:ed0c/64 Scope:Global
+          inet6 addr: fe80::250:56ff:feb9:ed0c/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:325119 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:318761 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:46454677 (46.4 MB)  TX bytes:129127095 (129.1 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:380 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:380 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:33492 (33.4 KB)  TX bytes:33492 (33.4 KB)
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         10.10.10.2      0.0.0.0         UG    0      0        0 ens192
+10.10.10.0      *               255.255.255.0   U     0      0        0 ens192
+
+[1;33m[+] [1;32mIptables rules
+[0m[1;90miptables rules Not Found
+[0m
+[1;33m[+] [1;32mActive Ports
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#internal-open-ports
+[0mActive Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 [1;31m127.0.0.1[0m:3306          0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0    976 10.10.10.75:39388       10.10.14.28:4444        ESTABLISHED 1637/sh         
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       1      0 10.10.10.75:80          10.10.14.28:35841       CLOSE_WAIT  -               
+udp        0      0 10.10.10.75:59521       10.10.10.2:53           ESTABLISHED -               
+
+[1;33m[+] [1;32mCan I sniff with tcpdump?
+[0m[1;90mNo
+[0m
+
+[1;34m====================================( [1;32mUsers Information[1;34m )=====================================
+[0m[1;33m[+] [1;32mMy user
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#groups
+[0muid=1001([1;95m[1;34mnibbler[0m[0m) gid=1001([1;95m[1;34mnibbler[0m[0m) groups=1001([1;95m[1;34mnibbler[0m[0m)
+
+[1;33m[+] [1;32mDo I have PGP keys?
+[0m
+[1;33m[+] [1;32mClipboard or highlighted text?
+[0m[1;90mxsel and xclip Not Found
+[0m
+[1;33m[+] [1;32mTesting 'sudo -l' without password & /etc/sudoers
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0mMatching Defaults entries for [1;31mnibbler[0m on Nibbles:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User [1;31mnibbler[0m may run the following commands on Nibbles:
+    (root) [1;31mNOPASSWD[0m: /home/[1;31mnibbler[0m/personal/stuff/monitor.sh
+
+[1;33m[+] [1;32mChecking /etc/doas.conf
+[0m[1;90m/etc/doas.conf Not Found
+[0m
+[1;33m[+] [1;32mChecking Pkexec policy
+[0m
+[Configuration]
+AdminIdentities=unix-user:0
+[Configuration]
+AdminIdentities=unix-group:sudo;unix-group:admin
+
+[1;33m[+] [1;32mDo not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+[0m[1;33m[+] [1;32mDo not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+[0m
+[1;33m[+] [1;32mSuperusers
+[0m[1;31mroot[0m:x:0:0:root:/root:/bin/bash
+
+[1;33m[+] [1;32mUsers with console
+[0m[1;31mroot[0m:x:0:0:root:/root:/bin/bash
+
+[1;33m[+] [1;32mAll users & groups
+[0muid=0([1;31mroot[0m) gid=0[1;31m(root)[0m groups=0[1;31m(root)[0m
+uid=1([1;34mdaemon[0m) gid=1([1;34mdaemon[0m) groups=1([1;34mdaemon[0m)
+uid=10([1;34muucp[0m) gid=10([1;34muucp[0m) groups=10([1;34muucp[0m)
+uid=100([1;34msystemd-timesync[0m) gid=102([1;34msystemd-timesync[0m) groups=102([1;34msystemd-timesync[0m)
+uid=1001([1;95m[1;34mnibbler[0m[0m) gid=1001([1;95m[1;34mnibbler[0m[0m) groups=1001([1;95m[1;34mnibbler[0m[0m)
+uid=101([1;34msystemd-network[0m) gid=103([1;34msystemd-network[0m) groups=103([1;34msystemd-network[0m)
+uid=102([1;34msystemd-resolve[0m) gid=104([1;34msystemd-resolve[0m) groups=104([1;34msystemd-resolve[0m)
+uid=103([1;34msystemd-bus-proxy[0m) gid=105([1;34msystemd-bus-proxy[0m) groups=105([1;34msystemd-bus-proxy[0m)
+uid=104([1;34m[1;32msyslog[0m[0m) gid=108([1;34m[1;32msyslog[0m[0m) groups=108([1;34m[1;32msyslog[0m[0m),4[1;32m(adm)[0m
+uid=105([1;34m_apt[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=106([1;34mlxd[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=107([1;34mmessagebus[0m) gid=111([1;34mmessagebus[0m) groups=111([1;34mmessagebus[0m)
+uid=108([1;34muuidd[0m) gid=112([1;34muuidd[0m) groups=112([1;34muuidd[0m)
+uid=109([1;34mdnsmasq[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=110([1;34msshd[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=111([1;34mmysql[0m) gid=118([1;34mmysql[0m) groups=118([1;34mmysql[0m)
+uid=13([1;34mproxy[0m) gid=13([1;34mproxy[0m) groups=13([1;34mproxy[0m)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3([1;34msys[0m) gid=3([1;34msys[0m) groups=3([1;34msys[0m)
+uid=33([1;34m[1;32mwww-data[0m[0m) gid=33([1;34m[1;32mwww-data[0m[0m) groups=33([1;34m[1;32mwww-data[0m[0m)
+uid=34([1;34mbackup[0m) gid=34([1;34mbackup[0m) groups=34([1;34mbackup[0m)
+uid=38([1;34mlist[0m) gid=38([1;34mlist[0m) groups=38([1;34mlist[0m)
+uid=39([1;34mirc[0m) gid=39([1;34mirc[0m) groups=39([1;34mirc[0m)
+uid=4([1;34msync[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=41([1;34mgnats[0m) gid=41([1;34mgnats[0m) groups=41([1;34mgnats[0m)
+uid=5([1;34mgames[0m) gid=60([1;34mgames[0m) groups=60([1;34mgames[0m)
+uid=6([1;34mman[0m) gid=12([1;34mman[0m) groups=12([1;34mman[0m)
+uid=65534([1;34mnobody[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=7([1;34mlp[0m) gid=7([1;34mlp[0m) groups=7([1;34mlp[0m)
+uid=8([1;34m[1;32mmail[0m[0m) gid=8([1;34m[1;32mmail[0m[0m) groups=8([1;34m[1;32mmail[0m[0m)
+uid=9([1;34mnews[0m) gid=9([1;34mnews[0m) groups=9([1;34mnews[0m)
+
+[1;33m[+] [1;32mLogin now
+[0m 21:56:43 up 59 min,  0 users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+[1;33m[+] [1;32mLast logons
+[0mshelly   pts/0        10.10.10.1       Sun Dec 10 12:35 - 12:47  (00:11)
+shelly   tty1                          Sun Dec 10 12:30 - down   (00:16)
+reboot   [1;34msys[0mtem boot  4.4.0-103-generi Sun Dec 10 12:29 - 12:47  (00:17)
+shelly   pts/0        10.10.10.1       Sun Dec 10 12:06 - 12:29  (00:22)
+shelly   tty1                          Sun Dec 10 12:04 - crash  (00:25)
+reboot   [1;34msys[0mtem boot  4.4.0-96-generic Sun Dec 10 12:04 - 12:47  (00:43)
+shelly   tty1                          Fri Sep 22 12:35 - down   (00:11)
+reboot   [1;34msys[0mtem boot  4.4.0-31-generic Fri Sep 22 12:34 - 12:46  (00:12)
+
+wtmp begins Fri Sep 22 12:34:37 2017
+
+[1;33m[+] [1;32mLast time logon each user
+[0mUsername         Port     From             Latest
+[1;31mroot[0m             tty1                      Tue Dec 15 05:00:11 -0500 2020
+
+[1;33m[+] [1;32mPassword policy
+[0mPASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_WARN_AGE	7
+ENCRYPT_METHOD SHA512
+
+[1;33m[+] [1;32mUser timers
+[0m[1;90m Not Found
+[0m
+[1;34m===================================( [1;32mSoftware Information[1;34m )===================================
+[0m[1;33m[+] [1;32mMySQL version
+[0mmysql  Ver 14.14 Distrib 5.7.20, for Linux (x86_64) using  EditLine wrapper
+
+[1;33m[+] [1;32mMySQL connection using default root/root ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mMySQL connection using root/toor ................... [0m[1;31mYes[0m
+[1;31mUser	Host	authentication_string[0m
+[1;31mroot	localhost	*9CFBBC772F3F6C106020035386DA5BBBF1249A11[0m
+[1;31mmysql.session	localhost	*THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE[0m
+[1;31mmysql.sys	localhost	*THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE[0m
+[1;31mdebian-sys-maint	localhost	*0B46F5EC336AFB411DB534D6A50EA98C619B0DE4[0m
+[1;33m[+] [1;32mMySQL connection using root/NOPASS ................. [0m[1;90mNo
+[0m[1;33m[+] [1;32mLooking for mysql credentials and exec
+[0mFrom '/etc/[1;34mmysql[0m/mysql.conf.d/mysqld.cnf' Mysql user: user		= mysql
+Found readable /etc/mysql/my.cnf
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+[1;33m[+] [1;32mPostgreSQL version and pgadmin credentials
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mPostgreSQL connection to template0 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template0 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m
+[1;33m[+] [1;32mApache server info
+[0mVersion: Server version: Apache/2.4.18 (Ubuntu)
+Server built:   2017-09-18T15:09:02
+
+[1;33m[+] [1;32mLooking for PHPCookies
+[0msess_59ukbaadvj0jeso98obi5igho3
+sess_631rsddi2113kkvkk6u59ko436
+sess_9ee0anbit5sojotudedsrc3j46
+sess_ecbdk54vpdlbqv77gd35c09ie0
+sess_k22qgn95ed5rb3rkkqphksg7n1
+sess_llmnbrigb7gk57egcig513mha3
+sess_pqg0u5e5s9c53sc63f33frpci7
+sess_qmh9e95j0nde6o5nv6vedhubk5
+sess_vscm3cmkqtlql1nsh6dbvb8dd2
+
+[1;33m[+] [1;32mLooking for Wordpress wp-config.php files
+[0m[1;90mwp-config.php Not Found
+[0m
+[1;33m[+] [1;32mLooking for Tomcat users file
+[0m[1;90mtomcat-users.xml Not Found
+[0m
+[1;33m[+] [1;32mMongo information
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for supervisord configuration file
+[0m[1;90msupervisord.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for cesi configuration file
+[0m[1;90mcesi.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for Rsyncd config file
+[0m/usr/share/doc/rsync/examples/rsyncd.conf
+[ftp]
+	comment = public archive
+	path = /var/www/pub
+	use chroot = yes
+	lock file = /var/lock/rsyncd
+	read only = yes
+	list = yes
+	uid = nobody
+	gid = nogroup
+	strict modes = yes
+	ignore errors = no
+	ignore nonreadable = yes
+	transfer logging = no
+	timeout = 600
+	refuse options = checksum dry-run
+	dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+[1;33m[+] [1;32mLooking for Hostapd config file
+[0m[1;90mhostapd.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for wifi conns file
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Anaconda-ks config files
+[0m[1;90manaconda-ks.cfg Not Found
+[0m
+[1;33m[+] [1;32mLooking for .vnc directories and their passwd files
+[0m[1;90m.vnc Not Found
+[0m
+[1;33m[+] [1;32mLooking for ldap directories and their hashes
+[0m/etc/ldap
+The password hash is from the {SSHA} to 'structural'
+
+[1;33m[+] [1;32mLooking for .ovpn files and credentials
+[0m[1;90m.ovpn Not Found
+[0m
+[1;33m[+] [1;32mLooking for ssl/ssh files
+[0mPort 22
+[1;31mPermitRootLogin yes[0m
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+Looking inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+[1;33m[+] [1;32mLooking for unexpected auth lines in /etc/pam.d/sshd
+[0m[1;90mNo
+[0m
+[1;33m[+] [1;32mLooking for Cloud credentials (AWS, Azure, GC)
+[0m
+[1;33m[+] [1;32mNFS exports?
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation/nfs-no_root_squash-misconfiguration-pe
+[0m[1;90m/etc/exports Not Found
+[0m
+[1;33m[+] [1;32mLooking for kerberos conf files and tickets
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/pentesting/pentesting-kerberos-88#pass-the-ticket-ptt
+[0m[1;90mkrb5.conf Not Found
+[0m[1;90mtickets kerberos Not Found
+[0m[1;90mklist Not Found
+[0m
+[1;33m[+] [1;32mLooking for Kibana yaml
+[0m[1;90mkibana.yml Not Found
+[0m
+[1;33m[+] [1;32mLooking for Knock configuration
+[0m[1;90mKnock.config Not Found
+[0m
+[1;33m[+] [1;32mLooking for logstash files
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for elasticsearch files
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Vault-ssh files
+[0m[1;90mvault-ssh-helper.hcl Not Found
+[0m
+[1;33m[+] [1;32mLooking for AD cached hahses
+[0m[1;90mcached hashes Not Found
+[0m
+[1;33m[+] [1;32mLooking for screen sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;31m[32mNo Sockets found in /var/run/screen/S-nibbler.[0m[0m
+[1;31m[0m
+[1;33m[+] [1;32mLooking for tmux sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;90mtmux Not Found
+[0m
+[1;33m[+] [1;32mLooking for Couchdb directory
+[0m
+[1;33m[+] [1;32mLooking for redis.conf
+[0m
+[1;33m[+] [1;32mLooking for dovecot files
+[0m[1;90mdovecot credentials Not Found
+[0m
+[1;33m[+] [1;32mLooking for mosquitto.conf
+[0m
+[1;33m[+] [1;32mLooking for neo4j auth file
+[0m
+[1;33m[+] [1;32mLooking Cloud-Init conf file
+[0m
+
+[1;34m====================================( [1;32mInteresting Files[1;34m )=====================================
+[0m[1;33m[+] [1;32mSUID - Check easy privesc, exploits and write perms
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/usr/lib/dbus-1.0[1;32m/dbus-daemon-launch-helper[0m
+/usr/lib/x86_64-linux-gnu/lxc[1;32m/lxc-user-nic[0m
+/usr/lib/openssh[1;32m/ssh-keysign[0m
+/usr/lib/policykit-1[1;32m/polkit-agent-helper-1[0m
+/usr/lib/eject[1;32m/dmcrypt-get-device[0m
+/usr/lib/snapd[1;32m/snap-confine[0m
+/usr/bin[1;32m/chsh[0m
+/usr/bin[1;31m/sudo		--->	/sudo$[0m
+/usr/bin[1;31m/chfn		--->	SuSE_9.3/10[0m
+/usr/bin[1;31m/passwd		--->	Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)[0m
+/usr/bin[1;32m/gpasswd[0m
+/usr/bin[1;31m/at		--->	RTru64_UNIX_4.0g(CVE-2002-1614)[0m
+/usr/bin[1;31m/newgrp		--->	HP-UX_10.20[0m
+/usr/bin[1;32m/newgidmap[0m
+/usr/bin[1;31m/pkexec		--->	Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)[0m
+/usr/bin[1;32m/newuidmap[0m
+/bin[1;32m/ping6[0m
+/bin[1;32m/su[0m
+/bin[1;32m/fusermount[0m
+/bin[1;31m/ntfs-3g		--->	Debian9/8/7/Ubuntu/Gentoo/others/Ubuntu_Server_16.10_and_others(02-2017)[0m
+/bin[1;31m/umount		--->	BSD/Linux(08-1996)[0m
+/bin[1;32m/ping[0m
+/bin[1;31m/mount		--->	Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8[0m
+
+[1;33m[+] [1;32mSGID
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/sbin[1;32m/unix_chkpwd[0m
+/sbin[1;32m/pam_extrausers_chkpwd[0m
+/usr/lib/x86_64-linux-gnu/utempter[1;32m/utempter[0m
+/usr/lib/snapd[1;32m/snap-confine[0m
+/usr/bin[1;32m/wall[0m
+/usr/bin[1;32m/expiry[0m
+/usr/bin[1;31m/screen		--->	GNU_Screen_4.5.0[0m
+/usr/bin[1;31m/at		--->	RTru64_UNIX_4.0g(CVE-2002-1614)[0m
+/usr/bin[1;32m/crontab[0m
+/usr/bin[1;32m/mlocate[0m
+/usr/bin[1;32m/chage[0m
+/usr/bin[1;32m/bsd-write[0m
+/usr/bin[1;32m/ssh-agent[0m
+
+[1;33m[+] [1;32mCapabilities
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities
+[0m/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin[1;31m/mtr[0m = cap_net_raw+ep
+/usr/bin/systemd-detect-virt = [1;31mcap_dac_override[0m,cap_sys_ptrace+ep
+
+[1;33m[+] [1;32mUsers with capabilities
+[0m[1;90m/etc/security/capability.conf Not Found
+[0m
+[1;33m[+] [1;32m.sh files in path
+[0m/usr/bin[1;32m/gettext.sh[0m
+
+[1;33m[+] [1;32mFiles (scripts) in /etc/profile.d/
+[0mtotal 24
+drwxr-xr-x  2 root root 4096 Dec 28  2017 .
+drwxr-xr-x 92 root root 4096 Dec 15 05:08 ..
+-rw-r--r--  1 root root 1557 Apr 14  2016 Z97-byobu.sh
+-rw-r--r--  1 root root  580 Nov 30  2017 [1;32mapps-bin-path.sh[0m
+-rw-r--r--  1 root root  663 May 18  2016 [1;32mbash_completion.sh[0m
+-rw-r--r--  1 root root 1003 Dec 29  2015 [1;32mcedilla-portuguese.sh[0m
+
+[1;33m[+] [1;32mHashes inside passwd file? ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mCredentials in fstab/mtab? ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read shadow files? ............. [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read root folder? .............. [0m[1;90mNo
+[0m
+[1;33m[+] [1;32mLooking for root files in home dirs (limit 20)
+[0m/home
+
+[1;33m[+] [1;32mLooking for others files in folders owned by me
+[0m
+[1;33m[+] [1;32mReadable files belonging to root and readable by me but not world readable
+[0m
+[1;33m[+] [1;32mModified interesting files in the last 5mins
+[0m/var/log/syslog
+/var/log/kern.log
+/var/log/auth.log
+[1;31m/home/nibbler[0m/.gnupg/gpg.conf
+[1;31m/home/nibbler[0m/.gnupg/trustdb.gpg
+[1;31m/home/nibbler[0m/.gnupg/pubring.gpg
+
+[1;33m[+] [1;32mWritable log files (logrotten)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation
+[0m
+[1;33m[+] [1;32mFiles inside /home/nibbler (limit 20)
+[0mtotal 24
+drwxr-xr-x 4 nibbler nibbler 4096 Jan  8 21:56 .
+drwxr-xr-x 3 root    root    4096 Dec 10  2017 ..
+-rw------- 1 nibbler nibbler    0 Dec 29  2017 .bash_history
+drwx------ 2 nibbler nibbler 4096 Jan  8 21:56 .gnupg
+drwxrwxr-x 2 nibbler nibbler 4096 Dec 10  2017 .nano
+-r-------- 1 nibbler nibbler 1855 Dec 10  2017 personal.zip
+-r-------- 1 nibbler nibbler   33 Jan  8 20:57 user.txt
+
+[1;33m[+] [1;32mFiles inside others home (limit 20)
+[0m
+[1;33m[+] [1;32mLooking for installed mail applications
+[0m
+[1;33m[+] [1;32mMails (limit 50)
+[0m
+[1;33m[+] [1;32mBackup files?
+[0m-rw-r--r-- 1 root root 128 Sep 22  2017 /var/lib/sgml-base/supercatalog[1;31m.old[0m
+-rw-r--r-- 1 root root 673 Sep 22  2017 /etc/xml/xml-core.xml[1;31m.old[0m
+-rw-r--r-- 1 root root 610 Sep 22  2017 /etc/xml/catalog[1;31m.old[0m
+-rw-r--r-- 1 root root 20 Apr 15  2016 /etc/vmware-tools/tools.conf[1;31m.old[0m
+
+[1;33m[+] [1;32mLooking for tables inside readable .db/.sqlite files (limit 100)
+[0m[1;32m -> Extracting tables from[0m /var/lib/lxd/lxd.db [1;90m(limit 20)
+[0m
+
+[1;33m[+] [1;32mWeb files?(output limit)
+[0m/var/www/:
+total 12K
+drwxr-xr-x  3 root root 4.0K Dec 10  2017 .
+drwxr-xr-x 14 root root 4.0K Dec 10  2017 ..
+drwxr-xr-x  3 root root 4.0K Dec 28  2017 html
+
+/var/www/html:
+total 16K
+drwxr-xr-x 3 root    root    4.0K Dec 28  2017 .
+drwxr-xr-x 3 root    root    4.0K Dec 10  2017 ..
+
+[1;33m[+] [1;32mReadable *_history, .sudo_as_admin_successful, profile, bashrc, httpd.conf, .plan, .htpasswd, .gitconfig, .git-credentials, .git, .svn, .rhosts, hosts.equiv, Dockerfile, docker-compose.yml
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#read-sensitive-data
+[0m-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 3771 Aug 31  2015 /etc/skel/.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 655 Jun 24  2016 /etc/skel/[1;31m.profile[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 2188 Aug 31  2015 /etc/bash.[1;31mbashrc[0m
+-rw------- 1 [1;95mnibbler[0m [1;95mnibbler[0m 0 Dec 29  2017 /home/[1;95mnibbler[0m/.bash[1;31m_history[0m
+[1;32mLooking for possible passwords inside /home/nibbler/.bash_history
+[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 3161 Apr 14  2016 /usr/share/byobu[1;31m/profile[0ms/bashrc
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 1865 Jul  2  2015 /usr/share/doc/adduser/examples/adduser.local.conf.examples/skel/dot.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 870 Jul  2  2015 /usr/share/doc/adduser/examples/adduser.local.conf.examples/bash.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 3106 Oct 22  2015 /usr/share/base-files/dot.[1;31mbashrc[0m
+
+[1;33m[+] [1;32mAll hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+[0m-rw-r--r-- 1 root root 1319 Sep 22  2017 /var/lib/apparmor/profiles/.apparmor.md5sums
+-rw-r--r-- 1 root root 0 Jan  8 20:57 /run/network/.ifstate.lock
+-rw-r--r-- 1 root root 189934 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/.config
+-rw-r--r-- 1 root root 22 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/.17323.d
+-rw-r--r-- 1 root root 2391 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.conmakehash.cmd
+-rw-r--r-- 1 root root 5191 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.devicetable-offsets.s.cmd
+-rw-r--r-- 1 root root 104 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.elfconfig.h.cmd
+-rw-r--r-- 1 root root 2289 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.empty.o.cmd
+-rw-r--r-- 1 root root 2537 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.mk_elfconfig.cmd
+-rw-r--r-- 1 root root 546 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.devicetable-offsets.h.cmd
+-rw-r--r-- 1 root root 4451 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.sumversion.o.cmd
+-rw-r--r-- 1 root root 129 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.modpost.cmd
+-rw-r--r-- 1 root root 3485 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.file2alias.o.cmd
+-rw-r--r-- 1 root root 4622 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/mod/.modpost.o.cmd
+-rw-r--r-- 1 root root 2380 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.kallsyms.cmd
+-rw-r--r-- 1 root root 3568 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.sortextable.cmd
+-rw-r--r-- 1 root root 3253 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.asn1_compiler.cmd
+-rw-r--r-- 1 root root 3972 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.insert-sys-cert.cmd
+-rw-r--r-- 1 root root 3755 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/kconfig/.conf.o.cmd
+-rw-r--r-- 1 root root 110 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/kconfig/.conf.cmd
+-rw-r--r-- 1 root root 4917 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/kconfig/.zconf.tab.o.cmd
+-rw-r--r-- 1 root root 2719 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/genksyms/.genksyms.o.cmd
+-rw-r--r-- 1 root root 153 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/genksyms/.genksyms.cmd
+-rw-r--r-- 1 root root 2481 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/genksyms/.parse.tab.o.cmd
+-rw-r--r-- 1 root root 3347 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/genksyms/.lex.lex.o.cmd
+-rw-r--r-- 1 root root 2839 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/selinux/mdp/.mdp.cmd
+-rw-r--r-- 1 root root 3239 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/selinux/genheaders/.genheaders.cmd
+-rw-r--r-- 1 root root 5133 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.sign-file.cmd
+-rw-r--r-- 1 root root 3387 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.recordmcount.cmd
+-rw-r--r-- 1 root root 1193 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/basic/.bin2c.cmd
+-rw-r--r-- 1 root root 4268 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/basic/.fixdep.cmd
+-rw-r--r-- 1 root root 4495 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/scripts/.extract-cert.cmd
+-rw-r--r-- 1 root root 54037 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/kernel/.asm-offsets.s.cmd
+-rw-r--r-- 1 root root 1304 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.stack.o.cmd
+-rw-r--r-- 1 root root 1374 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.setup-x86_64.o.cmd
+-rw-r--r-- 1 root root 333 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.purgatory.ro.cmd
+-rw-r--r-- 1 root root 9092 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.sha256.o.cmd
+-rw-r--r-- 1 root root 3529 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.string.o.cmd
+-rw-r--r-- 1 root root 155 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.kexec-purgatory.c.cmd
+-rw-r--r-- 1 root root 3615 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.purgatory.o.cmd
+-rw-r--r-- 1 root root 1324 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/purgatory/.entry64.o.cmd
+-rw-r--r-- 1 root root 146 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/tools/.relocs.cmd
+-rw-r--r-- 1 root root 3342 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/tools/.relocs_common.o.cmd
+-rw-r--r-- 1 root root 3362 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/tools/.relocs_64.o.cmd
+-rw-r--r-- 1 root root 3362 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/tools/.relocs_32.o.cmd
+-rw-r--r-- 1 root root 402 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/asm/.xen-hypercalls.h.cmd
+-rw-r--r-- 1 root root 292 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/asm/.syscalls_64.h.cmd
+-rw-r--r-- 1 root root 292 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/asm/.syscalls_32.h.cmd
+-rw-r--r-- 1 root root 320 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/asm/.unistd_32_ia32.h.cmd
+-rw-r--r-- 1 root root 316 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/asm/.unistd_64_x32.h.cmd
+-rw-r--r-- 1 root root 340 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/uapi/asm/.unistd_x32.h.cmd
+-rw-r--r-- 1 root root 315 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/uapi/asm/.unistd_32.h.cmd
+-rw-r--r-- 1 root root 320 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/arch/x86/include/generated/uapi/asm/.unistd_64.h.cmd
+-rw-r--r-- 1 root root 14210 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/kernel/.bounds.s.cmd
+-rw-r--r-- 1 root root 190058 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/.config.old
+-rw-r--r-- 1 root root 820 Jan 18  2017 /usr/src/linux-headers-4.4.0-62-generic/.missing-syscalls.d
+-rw-r--r-- 1 root root 190404 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/.config
+-rw-r--r-- 1 root root 2391 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/.conmakehash.cmd
+-rw-r--r-- 1 root root 5191 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.devicetable-offsets.s.cmd
+-rw-r--r-- 1 root root 104 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.elfconfig.h.cmd
+-rw-r--r-- 1 root root 2289 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.empty.o.cmd
+-rw-r--r-- 1 root root 2537 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.mk_elfconfig.cmd
+-rw-r--r-- 1 root root 546 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.devicetable-offsets.h.cmd
+-rw-r--r-- 1 root root 4451 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.sumversion.o.cmd
+-rw-r--r-- 1 root root 129 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.modpost.cmd
+-rw-r--r-- 1 root root 3485 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.file2alias.o.cmd
+-rw-r--r-- 1 root root 4622 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/mod/.modpost.o.cmd
+-rw-r--r-- 1 root root 2380 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/.kallsyms.cmd
+-rw-r--r-- 1 root root 3568 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/.sortextable.cmd
+-rw-r--r-- 1 root root 3253 Dec 11  2017 /usr/src/linux-headers-4.4.0-104-generic/scripts/.asn1_compiler.cmd
+
+[1;33m[+] [1;32mReadable files inside /tmp, /var/tmp, /var/backups(limit 70)
+[0m-rw-r--r-- 1 root root 51200 Dec 28  2017 /var/backups/alternatives.tar.0
+-rw-r--r-- 1 root root 10690 Dec 28  2017 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 11 Sep 22  2017 /var/backups/dpkg.arch.0
+-rw-r--r-- 1 root root 437 Sep 22  2017 /var/backups/dpkg.diversions.0
+-rw-r--r-- 1 root root 1258 Dec 10  2017 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 207 Dec 10  2017 /var/backups/dpkg.statoverride.0
+-rw-r--r-- 1 root root 744 Sep 22  2017 /var/backups/apt.extended_states.3.gz
+-rw-r--r-- 1 root root 1269 Dec 10  2017 /var/backups/apt.extended_states.2.gz
+-rw-r--r-- 1 root root 553108 Dec 28  2017 /var/backups/dpkg.status.0
+
+[1;33m[+] [1;32mInteresting writable files owned by me or writable by everyone (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m/dev/mqueue
+/dev/mqueue/linpeas.txt
+/dev/shm
+/dev/shm/linpeas.out
+/dev/shm/linpeas[1;31m.sh[0m
+/home/nibbler
+/run/lock
+/run/lock/apache2
+/run/screen/S-nibbler
+/tmp
+/tmp/.ICE-unix
+/tmp/.Test-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+/tmp/tmux-1001
+/var/crash
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/init.scope/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/-.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/accounts-daemon.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/acpid.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/apache2.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/apparmor.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/apport.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/atd.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/boot.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/console-setup.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/cron.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dbus.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-Shocker\x2dvg-swap_1.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-disk-by\x2did-dm\x2dname\x2dShocker\x2d\x2dvg\x2dswap_1.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-disk-by\x2did-dm\x2duuid\x2dLVM\x2dA8Nf2cf3f9JkrekQJrNARDzwv0j098QCY3Ohk3T8fhG01Olf9I72klADFcrUCqAM.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-disk-by\x2duuid-485d4e4e\x2da446\x2d4c3e\x2d8a83\x2d46602d7462c0.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-dm\x2d1.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-hugepages.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-mapper-Shocker\x2d\x2dvg\x2dswap_1.swap/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/dev-mqueue.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/grub-common.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/ifup@ens192.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/irqbalance.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/iscsid.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/keyboard-setup.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/kmod-static-nodes.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/lvm2-lvmetad.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/lvm2-monitor.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/lxcfs.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/lxd-containers.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/mdadm.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/mysql.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/networking.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/ondemand.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/open-iscsi.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/open-vm-tools.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/polkitd.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/proc-sys-fs-binfmt_misc.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/rc-local.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/resolvconf.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/rsyslog.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/setvtrgb.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/snapd.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/ssh.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/sys-kernel-debug.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/system-getty.slice/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/system-systemd\x2dfsck.slice/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-journal-flush.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-journald.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-logind.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-modules-load.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-random-seed.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-remount-fs.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-sysctl.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-timesyncd.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-tmpfiles-setup-dev.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-tmpfiles-setup.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-udev-trigger.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-udevd.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-update-utmp.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/systemd-user-sessions.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/ufw.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/unattended-upgrades.service/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/system.slice/var-lib-lxcfs.mount/cgroup.event_control
+/var[1;31m/lib/[0mlxcfs/cgroup/memory/user.slice/cgroup.event_control
+/var[1;31m/lib/[0mphp/sessions
+/var[1;31m/lib/[0mphp/sessions/sess_59ukbaadvj0jeso98obi5igho3
+/var[1;31m/lib/[0mphp/sessions/sess_631rsddi2113kkvkk6u59ko436
+/var[1;31m/lib/[0mphp/sessions/sess_9ee0anbit5sojotudedsrc3j46
+/var[1;31m/lib/[0mphp/sessions/sess_ecbdk54vpdlbqv77gd35c09ie0
+/var[1;31m/lib/[0mphp/sessions/sess_k22qgn95ed5rb3rkkqphksg7n1
+/var[1;31m/lib/[0mphp/sessions/sess_llmnbrigb7gk57egcig513mha3
+/var[1;31m/lib/[0mphp/sessions/sess_pqg0u5e5s9c53sc63f33frpci7
+/var[1;31m/lib/[0mphp/sessions/sess_qmh9e95j0nde6o5nv6vedhubk5
+/var[1;31m/lib/[0mphp/sessions/sess_vscm3cmkqtlql1nsh6dbvb8dd2
+/var/tmp
+/var/www/html/nibbleblog
+
+[1;33m[+] [1;32mInteresting GROUP writable files (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m  Group [1;32mnibbler:
+[0m/var/www/html/nibbleblog
+
+[1;33m[+] [1;32mSearching passwords in config PHP files
+[0m
+[1;33m[+] [1;32mFinding IPs inside logs (limit 70)
+[0m     87 /var/log/dpkg.log:1.16.04.1
+     39 /var/log/dpkg.log:1.16.04.3
+     24 /var/log/dpkg.log:1.16.04.4
+     20 /var/log/dpkg.log:3.16.04.1
+     16 /var/log/dpkg.log:2.29.4.2
+     15 /var/log/dpkg.log:3.16.04.2
+     13 /var/log/apt/history.log:1.16.04.1
+      9 /var/log/wtmp:10.10.10.1
+      9 /var/log/dpkg.log:2.16.04.2
+      6 /var/log/apt/history.log:1.16.04.3
+      4 /var/log/installer/status:1.2.3.3
+      3 /var/log/apt/history.log:1.16.04.4
+      2 /var/log/apt/history.log:3.16.04.1
+      2 /var/log/apt/history.log:2.29.4.2
+      1 /var/log/wtmp:10.10.14.4
+      1 /var/log/installer/status:2.21.63.2
+      1 /var/log/apt/history.log:3.16.04.2
+      1 /var/log/apt/history.log:2.16.04.2
+
+[1;33m[+] [1;32mFinding passwords inside logs (limit 70)
+[0m/var/log/bootstrap.log: base-[1;31mpassw[0md depends on libc6 (>= 2.8); however:
+/var/log/bootstrap.log: base-[1;31mpassw[0md depends on libdebconfclient0 (>= 0.145); however:
+/var/log/bootstrap.log:Preparing to unpack .../base-[1;31mpassw[0md_3.5.39_amd64.deb ...
+/var/log/bootstrap.log:Preparing to unpack .../[1;31mpassw[0md_1%3a4.2-3.1ubuntu5_amd64.deb ...
+/var/log/bootstrap.log:Selecting previously unselected package base-[1;31mpassw[0md.
+/var/log/bootstrap.log:Selecting previously unselected package [1;31mpassw[0md.
+/var/log/bootstrap.log:Setting up base-[1;31mpassw[0md (3.5.39) ...
+/var/log/bootstrap.log:Setting up [1;31mpassw[0md (1:4.2-3.1ubuntu5) ...
+/var/log/bootstrap.log:Shadow [1;31mpassw[0mords are now on.
+/var/log/bootstrap.log:Unpacking base-[1;31mpassw[0md (3.5.39) ...
+/var/log/bootstrap.log:Unpacking base-[1;31mpassw[0md (3.5.39) over (3.5.39) ...
+/var/log/bootstrap.log:Unpacking [1;31mpassw[0md (1:4.2-3.1ubuntu5) ...
+/var/log/bootstrap.log:dpkg: base-[1;31mpassw[0md: dependency problems, but configuring anyway as you requested:
+/var/log/dpkg.log:2016-07-19 20:43:06 configure base-[1;31mpassw[0md:amd64 3.5.39 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:06 install base-[1;31mpassw[0md:amd64 <none> 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:06 status half-configured base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:06 status half-installed base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:06 status installed base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:06 status unpacked base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:08 status half-configured base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:08 status half-installed base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:08 status unpacked base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:08 upgrade base-[1;31mpassw[0md:amd64 3.5.39 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:13 install [1;31mpassw[0md:amd64 <none> 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2016-07-19 20:43:13 status half-installed [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2016-07-19 20:43:13 status unpacked [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2016-07-19 20:43:16 configure base-[1;31mpassw[0md:amd64 3.5.39 <none>
+/var/log/dpkg.log:2016-07-19 20:43:16 status half-configured base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:16 status installed base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:16 status unpacked base-[1;31mpassw[0md:amd64 3.5.39
+/var/log/dpkg.log:2016-07-19 20:43:21 configure [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5 <none>
+/var/log/dpkg.log:2016-07-19 20:43:21 status half-configured [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2016-07-19 20:43:21 status installed [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2016-07-19 20:43:21 status unpacked [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2017-09-22 12:40:47 status half-configured [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2017-09-22 12:40:47 status half-installed [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2017-09-22 12:40:47 status unpacked [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5
+/var/log/dpkg.log:2017-09-22 12:40:47 status unpacked [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5.3
+/var/log/dpkg.log:2017-09-22 12:40:47 upgrade [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5 1:4.2-3.1ubuntu5.3
+/var/log/dpkg.log:2017-09-22 12:40:48 configure [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5.3 <none>
+/var/log/dpkg.log:2017-09-22 12:40:48 status half-configured [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5.3
+/var/log/dpkg.log:2017-09-22 12:40:48 status installed [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5.3
+/var/log/dpkg.log:2017-09-22 12:40:48 status unpacked [1;31mpassw[0md:amd64 1:4.2-3.1ubuntu5.3
+/var/log/installer/status:Description: Set up users and [1;31mpassw[0mords
+
+[1;33m[+] [1;32mFinding emails inside logs (limit 70)
+[0m     58 /var/log/installer/status:ubuntu-devel-discuss@lists.ubuntu.com
+     28 /var/log/installer/status:ubuntu-installer@lists.ubuntu.com
+     17 /var/log/installer/status:kernel-team@lists.ubuntu.com
+      4 /var/log/bootstrap.log:[1;32mftpmaster@ubuntu.com[0m
+
+[1;33m[+] [1;32mFinding *password* or *credential* files in home (limit 70)
+[0m
+[1;33m[+] [1;32mFinding 'pwd' or 'passw' variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/acpi/powerbtn.sh:                userhome=`getent [1;31mpassw[0md $user | cut -d: -f6`
+/etc/bash_completion.d/grub:__grub_mk[1;31mpassw[0md_pbkdf2_program="grub-mk[1;31mpassw[0md-pbkdf2"
+/etc/nsswitch.conf:[1;31mpassw[0md:         compat
+/etc/php/5.6/apache2/php.ini:; Define the anonymous ftp [1;31mpassw[0mord (your email address). PHP's default setting
+/etc/php/5.6/cli/php.ini:; Define the anonymous ftp [1;31mpassw[0mord (your email address). PHP's default setting
+/etc/security/namespace.init:                gid=$(echo "$[1;31mpassw[0md" | cut -f4 -d":")
+/etc/security/namespace.init:        homedir=$(echo "$[1;31mpassw[0md" | cut -f6 -d":")
+/etc/security/namespace.init:        [1;31mpassw[0md=$(getent [1;31mpassw[0md "$user")
+/var/backups/dpkg.status.0:Depends: adduser, [1;31mpassw[0md, init-system-helpers (>= 1.18~), libc6 (>= 2.14), libsystemd0
+/var/backups/dpkg.status.0:Depends: base-[1;31mpassw[0md (>= 3.0.4)
+/var/backups/dpkg.status.0:Depends: [1;31mpassw[0md, libc6 (>= 2.4)
+/var/backups/dpkg.status.0:Depends: perl-base (>= 5.6.0), [1;31mpassw[0md (>= 1:4.1.5.1-1.1ubuntu6), debconf | debconf-2.0
+
+[1;33m[+] [1;32mFinding possible password variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m
+[1;33m[+] [1;32mFinding 'username' string inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m
+[1;33m[+] [1;32mLooking for specific hashes inside files - less false positives (limit 70)
+[0m
