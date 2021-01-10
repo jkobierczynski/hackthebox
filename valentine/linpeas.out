@@ -1,0 +1,1021 @@
+
+     [48;5;108m     [48;5;59m [48;5;71m [48;5;77m       [48;5;22m [48;5;108m   [48;5;114m [48;5;59m [49m
+     [48;5;108m  [48;5;71m [48;5;22m [48;5;113m [48;5;71m [48;5;94m [48;5;214m  [48;5;58m [48;5;214m    [48;5;100m [48;5;71m  [48;5;16m [48;5;108m  [49m
+     [48;5;65m [48;5;16m [48;5;22m [48;5;214m      [48;5;16m [48;5;214m        [48;5;65m  [49m
+     [48;5;65m [48;5;214m       [48;5;16m [48;5;214m [48;5;16m [48;5;214m       [48;5;136m [48;5;65m [49m
+     [48;5;23m [48;5;214m          [48;5;178m [48;5;214m       [48;5;65m [49m
+     [48;5;16m [48;5;214m         [48;5;136m [48;5;94m   [48;5;136m [48;5;214m    [48;5;65m [49m
+     [48;5;58m [48;5;214m  [48;5;172m [48;5;64m [48;5;77m             [48;5;71m [48;5;65m [49m
+     [48;5;16m [48;5;71m [48;5;77m  [48;5;71m [48;5;77m         [48;5;71m [48;5;77m   [48;5;65m  [49m
+     [48;5;59m [48;5;71m [48;5;77m [48;5;77m [48;5;16m [48;5;77m         [48;5;16m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m  [48;5;77m      [48;5;71m [48;5;16m [48;5;77m    [48;5;113m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m [48;5;16m [48;5;77m  [48;5;150m [48;5;113m [48;5;77m        [48;5;150m [48;5;113m [48;5;77m [48;5;65m [48;5;59m [48;5;65m [49m
+     [48;5;16m [48;5;65m [48;5;71m [48;5;77m             [48;5;71m [48;5;22m [48;5;65m  [49m
+     [48;5;108m  [48;5;107m [48;5;59m [48;5;77m           [48;5;16m [48;5;114m [48;5;108m   [49m
+[1;94m  linpeas v2.3.8[0m[1;33m by carlospolop
+[0m
+[1;33mADVISORY: [1;34mlinpeas should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+[0m
+[1;34mLinux Privesc Checklist: [1;33mhttps://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+[0m [1;4mLEGEND[0m:
+  [1;31;103mRED/YELLOW[0m: 99% a PE vector
+  [1;31mRED[0m: You must take a look at it
+  [1;96mLightCyan[0m: Users with console
+  [1;34mBlue[0m: Users without console & mounted devs
+  [1;32mGreen[0m: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMangeta: Your username
+
+
+[1;34m====================================( [1;32mBasic information[1;34m )=====================================
+[0m[1;37mOS: [0mLinux version [1;31;103m3.2.0-23-generic[0m (buildd@crested) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu4) ) #36-Ubuntu SMP Tue Apr 10 20:39:51 UTC 2012
+[1;37mUser & Groups: [0muid=1000([1;96m[1;95mhype[0m[0m) gid=1000([1;96m[1;95mhype[0m[0m) groups=1000([1;96m[1;95mhype[0m[0m),24[1;32m(cdrom)[0m,30(dip),46[1;32m(plugdev)[0m,124(sambashare)
+[1;37mHostname: [0mValentine
+[1;37mWritable folder: [0m/home/hype
+[1;33m[+] [1;32m/bin/ping[1;34m is available for network discovery[1;37m (linpeas can discover hosts, learn more with -h)
+[0m[1;33m[+] [1;32m/bin/nc[1;34m is available for network discover & port scanning[1;37m (linpeas can discover hosts and scan ports, learn more with -h)
+[0m
+
+[1;34m====================================( [1;32mSystem Information[1;34m )====================================
+[0m[1;33m[+] [1;32mOperative system
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits
+[0mLinux version [1;31;103m3.2.0-23-generic[0m (buildd@crested) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu4) ) #36-Ubuntu SMP Tue Apr 10 20:39:51 UTC 2012
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04 LTS
+Release:	12.04
+Codename:	precise
+
+[1;33m[+] [1;32mSudo version
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-version
+[0mSudo version 1.8.3p1
+
+[1;33m[+] [1;32mPATH
+[0m[1;34m[i] [1;33mAny writable folder in original PATH? (a new completed path will be exported)
+[0m/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+New path exported: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+[1;33m[+] [1;32mDate
+[0mSun Jan 10 10:58:37 PST 2021
+
+[1;33m[+] [1;32mSystem stats
+[0mFilesystem      Size  Used Avail Use% Mounted on
+/dev/sda1       9.0G  3.0G  5.9G  34% /
+udev            483M  4.0K  483M   1% /dev
+tmpfs           197M  676K  196M   1% /run
+none            5.0M     0  5.0M   0% /run/lock
+none            491M     0  491M   0% /run/shm
+             total       used       free     shared    buffers     cached
+Mem:       1005176     701872     303304          0      65580     409032
+-/+ buffers/cache:     227260     777916
+Swap:      1046524          0    1046524
+
+[1;33m[+] [1;32mEnvironment
+[0m[1;34m[i] [1;33mAny private information inside environment variables?
+[0mLESSOPEN=| /usr/bin/lesspipe %s
+HISTFILESIZE=0
+MAIL=/var/mail/hype
+SSH_CLIENT=10.10.14.28 59044 22
+USER=hype
+SHLVL=1
+HOME=/home/hype
+XDG_SESSION_COOKIE=c9052f1b76300a5447f46cc700000004-1610304509.749354-29627389
+SSH_TTY=/dev/pts/0
+LOGNAME=hype
+_=./linpeas.sh
+TERM=screen
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+LANG=en_US.UTF-8
+HISTSIZE=0
+SHELL=/bin/bash
+LESSCLOSE=/usr/bin/lesspipe %s %s
+SSH_CONNECTION=10.10.14.28 59044 10.10.10.79 22
+HISTFILE=/dev/null
+
+[1;33m[+] [1;32mLooking for Signature verification failed in dmseg
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mselinux enabled? .............. [0m[1;90msestatus Not Found
+[0m[1;33m[+] [1;32mPrinter? ...................... [0m[1;90mlpstat Not Found
+[0m[1;33m[+] [1;32mIs this a container? .......... [0m[1;90mNo
+[0m[1;33m[+] [1;32mIs ASLR enabled? .............. [0m[1;32mYes[0m
+
+[1;34m=========================================( [1;32mDevices[1;34m )==========================================
+[0m[1;33m[+] [1;32mAny sd* disk in /dev? (limit 20)
+[0msda
+sda1
+sda2
+sda5
+
+[1;33m[+] [1;32mUnmounted file-system?
+[0m[1;34m[i] [1;33mCheck if you can mount umounted devices
+[0mproc            /proc           proc    nodev,[1;32mnoexec[0m,[1;32mnosuid[0m 0       0
+[1;34mUUID=95d83c75-2be1-4714-bd77-fed615f4b5d9[0m /               ext4    errors=remount-ro 0       1
+UUID=3281446a-d6dc-4ffa-b85a-1e852a310dd7 none            [1;32mswap[0m    sw              0       0
+/dev/fd0        /media[1;32m/floppy[0m0  auto    rw[1;31m,user[0m,noauto[1;31m,exec[0m,utf8 0       0
+
+
+[1;34m====================================( [1;32mAvailable Software[1;34m )====================================
+[0m[1;33m[+] [1;32mUseful software
+[0m/bin/nc
+/bin/netcat
+/usr/bin/wget
+/usr/bin/curl
+/bin/ping
+/usr/bin/gcc
+/usr/bin/make
+/usr/bin/gdb
+/usr/bin/base64
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/python2.7
+/usr/bin/perl
+/usr/bin/php
+/usr/bin/xterm
+/usr/bin/sudo
+
+[1;33m[+] [1;32mCompilers Installed
+[0mii  gcc                                    4:4.6.3-1ubuntu5                        GNU C compiler
+ii  gcc-4.6                                4.6.3-1ubuntu5                          GNU C compiler
+ii  protobuf-compiler                      2.4.1-1ubuntu2                          compiler for protocol buffer definition files
+/usr/bin/gcc
+/usr/bin/gcc-4.6
+
+
+[1;34m================================( [1;32mProcesses, Cron & Services[1;34m )================================
+[0m[1;33m[+] [1;32mCleaned processes
+[0m[1;34m[i] [1;33mCheck weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0mUSER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+[1;31mroot[0m          1  0.0  0.2  24432  2420 ?        Ss   06:19   0:00 /sbin[1;32m/init[0m
+[1;31mroot[0m        305  0.0  0.0  17488   900 ?        S    06:20   0:00 [1;32mupstart-udev-bridge[0m --[1;96mdaemon[0m
+[1;31mroot[0m        312  0.0  0.1  21940  1744 ?        Ss   06:20   0:00 /sbin/[1;32mudev[0md --[1;96mdaemon[0m
+[1;34m[1;32msyslog[0m[0m      501  0.0  0.1 249464  1624 ?        Sl   06:20   0:00 rsyslogd -c5
+[1;31mroot[0m        525  0.0  0.1  21944  1276 ?        S    06:20   0:00 /sbin/[1;32mudev[0md --[1;96mdaemon[0m
+102         535  0.0  0.1  24076  1252 ?        Ss   06:20   0:00 dbus-[1;96mdaemon[0m --system --fork --activation=upstart
+[1;31mroot[0m        548  0.0  0.3  79036  3204 ?        Ss   06:20   0:00 /usr/sbin/modem-[1;96mman[0mager
+[1;31mroot[0m        557  0.0  0.1  21180  1716 ?        Ss   06:20   0:00 /usr/sbin/bluetoothd
+[1;31mroot[0m        583  0.0  0.1  21804  1144 ?        S    06:20   0:00 /sbin/[1;32mudev[0md --[1;96mdaemon[0m
+[1;34mavahi[0m       683  0.0  0.0  32172   468 ?        S    06:20   0:00 avahi-[1;96mdaemon[0m: ch[1;31mroot[0m helper
+[1;31mroot[0m        686  0.0  0.3 104088  3944 ?        Ss   06:20   0:00 /usr/sbin/cupsd -F
+[1;31mroot[0m        690  0.0  0.6 174444  6612 ?        Ssl  06:20   0:00 NetworkManager
+[1;31mroot[0m        726  0.0  0.0  15180   396 ?        S    06:20   0:00 upstart-socket-bridge --[1;96mdaemon[0m
+[1;31mroot[0m        734  0.0  0.3 203500  3888 ?        Sl   06:20   0:00 /usr/lib/policykit-1/polkitd --no-debug
+[1;31mroot[0m        904  0.0  0.2  49952  2856 ?        Ss   06:20   0:00 /usr/sbin/[1;34msshd[0m -D
+[1;31mroot[0m        993  0.0  0.0  19976   972 tty4     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty4
+[1;31mroot[0m       1001  0.0  0.0  19976   968 tty5     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty5
+[1;31mroot[0m       1007  0.0  0.1  26416  1672 ?        Ss   06:20   0:05 /usr/bin/[1;31;103mtmux[0m -S /.devs/dev_sess
+[1;31mroot[0m       1011  0.0  0.4  20652  4588 pts/14   Ss+  06:20   0:00 -bash
+[1;31mroot[0m       1017  0.0  0.0  19976   972 tty2     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty2
+[1;31mroot[0m       1018  0.0  0.0  19976   976 tty3     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty3
+[1;31mroot[0m       1021  0.0  0.0  19976   968 tty6     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty6
+[1;31mroot[0m       1041  0.0  0.0   4452   808 ?        Ss   06:20   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+[1;31mroot[0m       1042  0.0  0.1  19104  1040 ?        Ss   06:20   0:00 [1;32mcron[0m
+[1;96mdaemon[0m     1043  0.0  0.0  16900   372 ?        Ss   06:20   0:00 atd
+[1;34mwhoopsie[0m   1050  0.0  0.5 202804  5280 ?        Ssl  06:20   0:00 whoopsie
+[1;31mroot[0m       1091  0.0  0.4 162284  4324 ?        Sl   06:20   0:10 /usr/bin[1;32m/vmtoolsd[0m
+[1;31mroot[0m       1255  0.0  1.0 113124 10976 ?        Ss   06:20   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;31mroot[0m       1436  0.0  0.0  19976   980 tty1     Ss+  06:20   0:00 /sbin[1;32m/getty[0m -8 38400 tty1
+[1;31mroot[0m       1593  0.0  1.0  66916 10304 ?        S    06:20   0:00 /usr/lib/vmware-vgauth[1;32m/VGAuthService[0m -s
+[1;31mroot[0m       1628  0.0  0.5 510124  5464 ?        Sl   06:20   0:04 //usr/lib/vmware-caf/pme/bin/ManagementAgentHost
+[1;96m[1;32mwww-data[0m[0m   2490  0.0  0.8 113892  8740 ?        S    07:15   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2633  0.0  0.8 113892  8720 ?        S    08:08   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2656  0.0  0.8 113892  8712 ?        S    08:09   0:01 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2661  0.0  0.8 113892  8620 ?        S    08:10   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2669  0.0  0.8 113900  8628 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2671  0.0  0.8 113892  8596 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2672  0.0  0.8 113892  8604 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2673  0.0  0.8 113892  8612 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2679  0.0  0.8 113892  8612 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;96m[1;32mwww-data[0m[0m   2680  0.0  0.8 113892  8716 ?        S    08:11   0:00 /usr/sbin/[1;32mapache2[0m -k start
+[1;31mroot[0m       3041  0.0  0.3 584296  3884 ?        Sl   10:34   0:00 /usr/sbin/console-kit-[1;96mdaemon[0m --no-daemon
+[1;96m[1;95mhype[0m[0m       3527  0.0  0.1  92220  1664 ?        S    10:48   0:00 [1;34msshd[0m: hype@pts/0    
+[1;96m[1;95mhype[0m[0m       3528  0.0  0.8  31648  8720 pts/0    Ss   10:48   0:00 -bash
+[1;96m[1;95mhype[0m[0m       3659  0.0  0.0   4528   840 pts/0    S+   10:58   0:00 /bin/sh ./linpeas.sh
+[1;96m[1;95mhype[0m[0m       3660  0.0  0.0  11356   656 pts/0    S+   10:58   0:00 tee linpeas.out
+[1;96m[1;95mhype[0m[0m       3845  0.0  0.1  22352  1276 pts/0    R+   10:58   0:00 ps aux
+
+[1;33m[+] [1;32mBinary processes permissions
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0m   0 lrwxrwxrwx 1 [1;32mroot[0m root    4 Dec 11  2017 /bin/sh -> dash
+ 32K -rwxr-xr-x 1 [1;32mroot[0m root  32K Mar 29  2012 /sbin/getty
+160K -rwxr-xr-x 1 [1;32mroot[0m root 160K Apr 16  2012 /sbin/init
+136K -rwxr-xr-x 1 [1;32mroot[0m root 135K Apr  5  2012 /sbin/udevd
+416K -rwxr-xr-x 1 [1;32mroot[0m root 413K Feb 13  2012 /usr/bin/tmux
+ 44K -rwxr-xr-x 1 [1;32mroot[0m root  44K Dec  2  2015 /usr/bin/vmtoolsd
+ 16K -rwxr-xr-x 1 [1;32mroot[0m root  15K Jan  6  2012 /usr/lib/policykit-1/polkitd
+784K -rwxr-xr-x 4 [1;32mroot[0m root 783K Dec 11  2017 //usr/lib/vmware-caf/pme/bin/ManagementAgentHost
+   0 lrwxrwxrwx 1 [1;32mroot[0m root   37 Dec 11  2017 /usr/lib/vmware-vgauth/VGAuthService -> /usr/lib/vmware-tools/bin64/appLoader
+   0 lrwxrwxrwx 1 [1;32mroot[0m root   34 Jul 15  2016 /usr/sbin/apache2 -> ../lib/apache2/mpm-prefork/apache2
+856K -rwxr-xr-x 1 [1;32mroot[0m root 856K Mar 21  2012 /usr/sbin/bluetoothd
+144K -rwxr-xr-x 1 [1;32mroot[0m root 141K Feb 25  2012 /usr/sbin/console-kit-[1;31mdaemon[0m
+436K -rwxr-xr-x 1 [1;32mroot[0m root 434K Apr  9  2012 /usr/sbin/cupsd
+388K -rwxr-xr-x 1 [1;32mroot[0m root 388K Mar 24  2012 /usr/sbin/modem-[1;31mman[0mager
+508K -rwxr-xr-x 1 [1;32mroot[0m root 505K Aug 11  2016 /usr/sbin/[1;34msshd[0m
+
+[1;33m[+] [1;32mCron jobs
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-jobs
+[0m-rw-r--r-- 1 root root  722 Apr  2  2012 /etc/crontab
+
+/etc/cron.d:
+total 28
+drwxr-xr-x   2 root root  4096 Dec 11  2017 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rw-r--r--   1 root root   288 Jun 20  2010 anacron
+-rw-r--r--   1 root root   544 Feb 13  2017 [1;32mphp[0m5
+-rw-r--r--   1 root root   102 Apr  2  2012 [1;32m.placeholder[0m
+
+/etc/cron.daily:
+total 84
+drwxr-xr-x   2 root root  4096 Dec 11  2017 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rwxr-xr-x   1 root root   311 Jun 20  2010 [1;32m0anacron[0m
+-rwxr-xr-x   1 root root   633 Jul 15  2016 [1;32mapache2[0m
+-rwxr-xr-x   1 root root   219 Apr 10  2012 [1;32mapport[0m
+-rwxr-xr-x   1 root root 15399 Apr 20  2012 apt
+-rwxr-xr-x   1 root root   502 Mar 31  2012 [1;32mbsdmainutils[0m
+-rwxr-xr-x   1 root root   256 Apr 12  2012 [1;32mdpkg[0m
+-rwxr-xr-x   1 root root   372 Oct  4  2011 [1;32mlogrotate[0m
+-rwxr-xr-x   1 root root  1365 Mar 31  2012 [1;32mman-db[0m
+-rwxr-xr-x   1 root root   606 Aug 17  2011 [1;32mmlocate[0m
+-rwxr-xr-x   1 root root   249 Apr  8  2012 [1;32mpasswd[0m
+-rw-r--r--   1 root root   102 Apr  2  2012 [1;32m.placeholder[0m
+-rwxr-xr-x   1 root root  2417 Jul  1  2011 popularity-contest
+-rwxr-xr-x   1 root root  2947 Apr  2  2012 standard
+-rwxr-xr-x   1 root root   214 Apr 19  2012 [1;32mupdate-notifier-common[0m
+
+/etc/cron.hourly:
+total 20
+drwxr-xr-x   2 root root  4096 Apr 25  2012 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rw-r--r--   1 root root   102 Apr  2  2012 [1;32m.placeholder[0m
+
+/etc/cron.monthly:
+total 24
+drwxr-xr-x   2 root root  4096 Apr 25  2012 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rwxr-xr-x   1 root root   313 Jun 20  2010 [1;32m0anacron[0m
+-rw-r--r--   1 root root   102 Apr  2  2012 [1;32m.placeholder[0m
+
+/etc/cron.weekly:
+total 32
+drwxr-xr-x   2 root root  4096 Apr 25  2012 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rwxr-xr-x   1 root root   312 Jun 20  2010 [1;32m0anacron[0m
+-rwxr-xr-x   1 root root   730 Dec 30  2011 apt-xapian-index
+-rwxr-xr-x   1 root root   907 Mar 31  2012 [1;32mman-db[0m
+-rw-r--r--   1 root root   102 Apr  2  2012 [1;32m.placeholder[0m
+
+SHELL=/bin/sh
+PATH=/usr/local/s[1;96mbin:[0m/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+
+SHELL=/bin/sh
+PATH=/usr/local/s[1;96mbin:[0m/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+1	5	cron.daily	 nice run-parts --report /etc/cron.daily
+7	10	cron.weekly	 nice run-parts --report /etc/cron.weekly
+@monthly	15	cron.monthly nice run-parts --report /etc/cron.monthly
+
+
+[1;33m[+] [1;32mServices
+[0m[1;34m[i] [1;33mSearch for outdated versions
+[0m [ + ]  apache2
+ [ - ]  apparmor
+ [ - ]  bootlogd
+ [ - ]  brltty
+ [ - ]  grub-common
+ [ - ]  kerneloops
+ [ - ]  pulseaudio
+ [ - ]  rsync
+ [ + ]  saned
+ [ + ]  ssh
+ [ - ]  stop-bootlogd
+ [ - ]  stop-bootlogd-single
+ [ - ]  unattended-upgrades
+ [ - ]  urandom
+ [ - ]  x11-common
+
+
+[1;34m===================================( [1;32mNetwork Information[1;34m )====================================
+[0m[1;33m[+] [1;32mHostname, hosts and DNS
+[0mValentine
+127.0.0.1	localhost
+127.0.1.1       Valentine
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+nameserver 8.8.8.8
+
+[1;33m[+] [1;32mContent of /etc/inetd.conf & /etc/xinetd.conf
+[0m[1;90m/etc/inetd.conf Not Found
+[0m
+[1;33m[+] [1;32mNetworks and neighbours
+[0m# symbolic names for networks, see networks(5) for more information
+link-local 169.254.0.0
+eth0      Link encap:Ethernet  HWaddr 00:50:56:b9:e4:4c  
+          inet addr:10.10.10.79  Bcast:10.10.10.255  Mask:255.255.255.0
+          inet6 addr: dead:beef::d5c9:510b:2010:b024/64 Scope:Global
+          inet6 addr: dead:beef::250:56ff:feb9:e44c/64 Scope:Global
+          inet6 addr: fe80::250:56ff:feb9:e44c/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:441096 errors:0 dropped:26 overruns:0 frame:0
+          TX packets:429834 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:63692978 (63.6 MB)  TX bytes:182960435 (182.9 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:2909 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2909 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:604673 (604.6 KB)  TX bytes:604673 (604.6 KB)
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         10.10.10.2      0.0.0.0         UG    100    0        0 eth0
+10.10.10.0      *               255.255.255.0   U     0      0        0 eth0
+link-local      *               255.255.0.0     U     1000   0        0 eth0
+
+[1;33m[+] [1;32mIptables rules
+[0m[1;90miptables rules Not Found
+[0m
+[1;33m[+] [1;32mActive Ports
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#internal-open-ports
+[0mActive Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0      0 [1;31m127.0.0.1[0m:631           0.0.0.0:*               LISTEN      -               
+tcp        0    952 10.10.10.79:22          10.10.14.28:59044       ESTABLISHED -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
+tcp6       0      0 :::443                  :::*                    LISTEN      -               
+udp        0      0 0.0.0.0:60572           0.0.0.0:*                           -               
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           -               
+udp6       0      0 :::53361                :::*                                -               
+udp6       0      0 :::5353                 :::*                                -               
+
+[1;33m[+] [1;32mCan I sniff with tcpdump?
+[0m[1;90mNo
+[0m
+
+[1;34m====================================( [1;32mUsers Information[1;34m )=====================================
+[0m[1;33m[+] [1;32mMy user
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#groups
+[0muid=1000([1;96m[1;95mhype[0m[0m) gid=1000([1;96m[1;95mhype[0m[0m) groups=1000([1;96m[1;95mhype[0m[0m),24[1;32m(cdrom)[0m,30(dip),46[1;32m(plugdev)[0m,124(sambashare)
+
+[1;33m[+] [1;32mDo I have PGP keys?
+[0m
+[1;33m[+] [1;32mClipboard or highlighted text?
+[0m[1;90mxsel and xclip Not Found
+[0m
+[1;33m[+] [1;32mTesting 'sudo -l' without password & /etc/sudoers
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m
+[1;33m[+] [1;32mChecking /etc/doas.conf
+[0m[1;90m/etc/doas.conf Not Found
+[0m
+[1;33m[+] [1;32mChecking Pkexec policy
+[0m
+[Configuration]
+AdminIdentities=unix-user:0
+[Configuration]
+AdminIdentities=unix-group:sudo;unix-group:admin
+
+[1;33m[+] [1;32mDo not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+[0m[1;33m[+] [1;32mDo not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+[0m
+[1;33m[+] [1;32mSuperusers
+[0m[1;31mroot[0m:x:0:0:root:/root:/bin/bash
+
+[1;33m[+] [1;32mUsers with console
+[0m[1;96mbackup[0m:x:34:34:backup:/var/backups:/bin/sh
+[1;96mbin:[0mx:2:2:bin:/bin:/bin/sh
+[1;96mdaemon[0m:x:1:1:daemon:/usr/sbin:/bin/sh
+[1;96mgames[0m:x:5:60:games:/usr/games:/bin/sh
+[1;96mgnats[0m:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+[1;96m[1;95mhype[0m[0m:x:1000:1000:Hemorrhage,,,:/home/hype:/bin/bash
+[1;96mirc[0m:x:39:39:ircd:/var/run/ircd:/bin/sh
+[1;96mlibuuid[0m:x:100:101::/var/lib/libuuid:/bin/sh
+[1;96mlist[0m:x:38:38:Mailing List Manager:/var/list:/bin/sh
+[1;96mlp[0m:x:7:7:lp:/var/spool/lpd:/bin/sh
+[1;96mmail[0m:x:8:8:mail:/var/mail:/bin/sh
+[1;96mman[0m:x:6:12:man:/var/cache/man:/bin/sh
+[1;96mnews[0m:x:9:9:news:/var/spool/news:/bin/sh
+[1;96mnobody[0m:x:65534:65534:nobody:/nonexistent:/bin/sh
+[1;96mproxy[0m:x:13:13:proxy:/bin:/bin/sh
+[1;31mroot[0m:x:0:0:root:/root:/bin/bash
+[1;96mspeech-dispatcher[0m:x:112:29:Speech Dispatcher,,,:/var/run/speech-dispatcher:/bin/sh
+[1;96msys:[0mx:3:3:sys:/dev:/bin/sh
+[1;96muucp[0m:x:10:10:uucp:/var/spool/uucp:/bin/sh
+[1;96mwww-data[0m:x:33:33:www-data:/var/www:/bin/sh
+
+[1;33m[+] [1;32mAll users & groups
+[0muid=0([1;31mroot[0m) gid=0[1;31m(root)[0m groups=0[1;31m(root)[0m
+uid=1000([1;96m[1;95mhype[0m[0m) gid=1000([1;96m[1;95mhype[0m[0m) groups=1000([1;96m[1;95mhype[0m[0m),24[1;32m(cdrom)[0m,30(dip),46[1;32m(plugdev)[0m,124(sambashare)
+uid=100([1;96mlibuuid[0m) gid=101([1;96mlibuuid[0m) groups=101([1;96mlibuuid[0m)
+uid=101([1;34m[1;32msyslog[0m[0m) gid=103([1;34m[1;32msyslog[0m[0m) groups=103([1;34m[1;32msyslog[0m[0m)
+uid=102([1;34mmessagebus[0m) gid=105([1;34mmessagebus[0m) groups=105([1;34mmessagebus[0m)
+uid=103([1;34mcolord[0m) gid=108([1;34mcolord[0m) groups=108([1;34mcolord[0m)
+uid=104([1;34mlightdm[0m) gid=111([1;34mlightdm[0m) groups=111([1;34mlightdm[0m)
+uid=105([1;34mwhoopsie[0m) gid=114([1;34mwhoopsie[0m) groups=114([1;34mwhoopsie[0m)
+uid=106([1;34mavahi-autoipd[0m) gid=117([1;34mavahi-autoipd[0m) groups=117([1;34mavahi-autoipd[0m)
+uid=107([1;34mavahi[0m) gid=118([1;34mavahi[0m) groups=118([1;34mavahi[0m)
+uid=108([1;34musbmux[0m) gid=46[1;32m(plugdev)[0m groups=46[1;32m(plugdev)[0m
+uid=109([1;34mkernoops[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=10([1;96muucp[0m) gid=10([1;96muucp[0m) groups=10([1;96muucp[0m)
+uid=110([1;34mpulse[0m) gid=119([1;34mpulse[0m) groups=119([1;34mpulse[0m),29(audio)
+uid=111([1;34m[1;32mrtkit[0m[0m) gid=122([1;34m[1;32mrtkit[0m[0m) groups=122([1;34m[1;32mrtkit[0m[0m)
+uid=112([1;96mspeech-dispatcher[0m) gid=29(audio) groups=29(audio)
+uid=113([1;34mhplip[0m) gid=7([1;96mlp[0m) groups=7([1;96mlp[0m)
+uid=114([1;34msaned[0m) gid=123([1;34msaned[0m) groups=123([1;34msaned[0m)
+uid=115([1;34msshd[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=13([1;96mproxy[0m) gid=13([1;96mproxy[0m) groups=13([1;96mproxy[0m)
+uid=1([1;96mdaemon[0m) gid=1([1;96mdaemon[0m) groups=1([1;96mdaemon[0m)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=33([1;96m[1;32mwww-data[0m[0m) gid=33([1;96m[1;32mwww-data[0m[0m) groups=33([1;96m[1;32mwww-data[0m[0m)
+uid=34([1;96mbackup[0m) gid=34([1;96mbackup[0m) groups=34([1;96mbackup[0m)
+uid=38([1;96mlist[0m) gid=38([1;96mlist[0m) groups=38([1;96mlist[0m)
+uid=39([1;96mirc[0m) gid=39([1;96mirc[0m) groups=39([1;96mirc[0m)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=41([1;96mgnats[0m) gid=41([1;96mgnats[0m) groups=41([1;96mgnats[0m)
+uid=4([1;34msync[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=5([1;96mgames[0m) gid=60([1;96mgames[0m) groups=60([1;96mgames[0m)
+uid=65534([1;96mnobody[0m) gid=65534[1;32m(nogroup)[0m groups=65534[1;32m(nogroup)[0m
+uid=6([1;96mman[0m) gid=12([1;96mman[0m) groups=12([1;96mman[0m)
+uid=7([1;96mlp[0m) gid=7([1;96mlp[0m) groups=7([1;96mlp[0m)
+uid=8([1;96m[1;32mmail[0m[0m) gid=8([1;96m[1;32mmail[0m[0m) groups=8([1;96m[1;32mmail[0m[0m)
+uid=9([1;96mnews[0m) gid=9([1;96mnews[0m) groups=9([1;96mnews[0m)
+
+[1;33m[+] [1;32mLogin now
+[0m 10:58:55 up  4:38,  1 user,  load average: 0.31, 0.19, 0.11
+USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+[1;96m[1;95mhype[0m[0m     pts/0    10.10.14.28      10:48   19.00s  0.25s  0.00s w
+
+[1;33m[+] [1;32mLast logons
+[0m[1;96m[1;95mhype[0m[0m     pts/0        10.10.14.28      Sun Jan 10 10:48   still logged in   
+[1;96m[1;95mhype[0m[0m     pts/0        10.10.14.28      Sun Jan 10 10:34 - 10:44  (00:10)    
+
+wtmp begins Sun Jan 10 10:34:10 2021
+
+[1;33m[+] [1;32mLast time logon each user
+[0mUsername         Port     From             Latest
+[1;31mroot[0m             tty1                      Fri Feb 16 14:38:30 -0800 2018
+[1;96m[1;95mhype[0m[0m             pts/0    10.10.14.28      Sun Jan 10 10:48:29 -0800 2021
+
+[1;33m[+] [1;32mPassword policy
+[0mPASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_WARN_AGE	7
+ENCRYPT_METHOD SHA512
+
+[1;33m[+] [1;32mUser timers
+[0m[1;90m Not Found
+[0m
+[1;34m===================================( [1;32mSoftware Information[1;34m )===================================
+[0m[1;33m[+] [1;32mMySQL version
+[0m[1;90mmysql Not Found
+[0m
+[1;33m[+] [1;32mMySQL connection using default root/root ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mMySQL connection using root/toor ................... [0m[1;90mNo
+[0m[1;33m[+] [1;32mMySQL connection using root/NOPASS ................. [0m[1;90mNo
+[0m[1;33m[+] [1;32mLooking for mysql credentials and exec
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mPostgreSQL version and pgadmin credentials
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mPostgreSQL connection to template0 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template0 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m
+[1;33m[+] [1;32mApache server info
+[0mVersion: Server version: Apache/2.2.22 (Ubuntu)
+Server built:   Jul 15 2016 15:32:34
+
+[1;33m[+] [1;32mLooking for PHPCookies
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Wordpress wp-config.php files
+[0m[1;90mwp-config.php Not Found
+[0m
+[1;33m[+] [1;32mLooking for Tomcat users file
+[0m[1;90mtomcat-users.xml Not Found
+[0m
+[1;33m[+] [1;32mMongo information
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for supervisord configuration file
+[0m[1;90msupervisord.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for cesi configuration file
+[0m[1;90mcesi.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for Rsyncd config file
+[0m/usr/share/doc/rsync/examples/rsyncd.conf
+[ftp]
+	comment = public archive
+	path = /var/www/pub
+	use chroot = yes
+	lock file = /var/lock/rsyncd
+	read only = yes
+	list = yes
+	uid = nobody
+	gid = nogroup
+	strict modes = yes
+	ignore errors = no
+	ignore nonreadable = yes
+	transfer logging = no
+	timeout = 600
+	refuse options = checksum dry-run
+	dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+[1;33m[+] [1;32mLooking for Hostapd config file
+[0m[1;90mhostapd.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for wifi conns file
+[0m/etc/NetworkManager/system-connections/
+
+[1;33m[+] [1;32mLooking for Anaconda-ks config files
+[0m[1;90manaconda-ks.cfg Not Found
+[0m
+[1;33m[+] [1;32mLooking for .vnc directories and their passwd files
+[0m[1;90m.vnc Not Found
+[0m
+[1;33m[+] [1;32mLooking for ldap directories and their hashes
+[0m/etc/ldap
+The password hash is from the {SSHA} to 'structural'
+
+[1;33m[+] [1;32mLooking for .ovpn files and credentials
+[0m[1;90m.ovpn Not Found
+[0m
+[1;33m[+] [1;32mLooking for ssl/ssh files
+[0m/home/hype/.ssh/id_rsa
+/home/hype/.ssh/known_hosts
+/home/hype/.ssh/id_rsa.pub
+/home/hype/.ssh/authorized_keys
+Port 22
+[1;31mPermitRootLogin yes[0m
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication yes
+UsePAM yes
+[1;31mPrivate SSH keys found!:[0m
+[1;31m/home/hype/.ssh/id_rsa[0m
+  --> Some certificates were found:
+/etc/vmware-tools/GuestProxyData/server/cert.pem
+/etc/apache2/ssl/webserver.crt
+
+
+Looking inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+[1;33m[+] [1;32mLooking for unexpected auth lines in /etc/pam.d/sshd
+[0m[1;90mNo
+[0m
+[1;33m[+] [1;32mLooking for Cloud credentials (AWS, Azure, GC)
+[0m
+[1;33m[+] [1;32mNFS exports?
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation/nfs-no_root_squash-misconfiguration-pe
+[0m[1;90m/etc/exports Not Found
+[0m
+[1;33m[+] [1;32mLooking for kerberos conf files and tickets
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/pentesting/pentesting-kerberos-88#pass-the-ticket-ptt
+[0m[1;90mkrb5.conf Not Found
+[0m[1;90mtickets kerberos Not Found
+[0m[1;90mklist Not Found
+[0m
+[1;33m[+] [1;32mLooking for Kibana yaml
+[0m[1;90mkibana.yml Not Found
+[0m
+[1;33m[+] [1;32mLooking for Knock configuration
+[0m[1;90mKnock.config Not Found
+[0m
+[1;33m[+] [1;32mLooking for logstash files
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for elasticsearch files
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Vault-ssh files
+[0m[1;90mvault-ssh-helper.hcl Not Found
+[0m
+[1;33m[+] [1;32mLooking for AD cached hahses
+[0m[1;90mcached hashes Not Found
+[0m
+[1;33m[+] [1;32mLooking for screen sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;90mscreen Not Found
+[0m
+[1;33m[+] [1;32mLooking for tmux sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;31m[0m
+[1;31mroot       1007  0.0  0.1  26416  1672 ?        Ss   06:20   0:05 /usr/bin/tmux -S /.devs/dev_sess[0m
+
+[1;33m[+] [1;32mLooking for Couchdb directory
+[0m
+[1;33m[+] [1;32mLooking for redis.conf
+[0m
+[1;33m[+] [1;32mLooking for dovecot files
+[0m[1;90mdovecot credentials Not Found
+[0m
+[1;33m[+] [1;32mLooking for mosquitto.conf
+[0m
+[1;33m[+] [1;32mLooking for neo4j auth file
+[0m
+[1;33m[+] [1;32mLooking Cloud-Init conf file
+[0m
+
+[1;34m====================================( [1;32mInteresting Files[1;34m )=====================================
+[0m[1;33m[+] [1;32mSUID - Check easy privesc, exploits and write perms
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/bin[1;32m/su[0m
+/bin[1;32m/fusermount[0m
+/bin[1;31m/umount		--->	BSD/Linux(08-1996)[0m
+/bin[1;32m/ping[0m
+/bin[1;32m/ping6[0m
+/bin[1;31m/mount		--->	Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8[0m
+/usr/lib/dbus-1.0[1;32m/dbus-daemon-launch-helper[0m
+/usr/lib[1;31m/pt_chown		--->	GNU_glibc_2.1/2.1.1_-6(08-1999)[0m
+/usr/lib/vmware-tools/bin64[1;32m/vmware-user-suid-wrapper[0m
+/usr/lib/vmware-tools/bin32[1;32m/vmware-user-suid-wrapper[0m
+/usr/lib/policykit-1[1;32m/polkit-agent-helper-1[0m
+/usr/lib/eject[1;32m/dmcrypt-get-device[0m
+/usr/lib/openssh[1;32m/ssh-keysign[0m
+/usr/bin[1;31m/pkexec		--->	Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)[0m
+/usr/bin[1;31m/sudoedit		--->	Sudo/SudoEdit_1.6.9p21/1.7.2p4/(RHEL_5/6/7/Ubuntu)/Sudo<=1.8.14[0m
+/usr/bin[1;32m/X[0m
+/usr/bin[1;31m/newgrp		--->	HP-UX_10.20[0m
+/usr/bin[1;32m/lppasswd[0m
+/usr/bin[1;32m/mtr[0m
+/usr/bin[1;32m/chsh[0m
+/usr/bin[1;32m/arping[0m
+/usr/bin[1;31m/passwd		--->	Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)[0m
+/usr/bin[1;31m/sudo		--->	/sudo$[0m
+/usr/bin[1;31m/at		--->	RTru64_UNIX_4.0g(CVE-2002-1614)[0m
+/usr/bin[1;31m/chfn		--->	SuSE_9.3/10[0m
+/usr/bin[1;32m/traceroute6.iputils[0m
+/usr/bin[1;32m/gpasswd[0m
+/usr/sbin[1;32m/uuidd[0m
+/usr/sbin[1;31m/pppd		--->	Apple_Mac_OSX_10.4.8(05-2007)[0m
+
+[1;33m[+] [1;32mSGID
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/usr/lib/utempter[1;32m/utempter[0m
+/usr/lib/libvte-2.90-9[1;32m/gnome-pty-helper[0m
+/usr/lib/evolution[1;32m/camel-lock-helper-1.2[0m
+/usr/bin[1;32m/X[0m
+/usr/bin[1;32m/mail-lock[0m
+/usr/bin[1;32m/dotlockfile[0m
+/usr/bin[1;32m/mlocate[0m
+/usr/bin[1;32m/mail-touchlock[0m
+/usr/bin[1;32m/ssh-agent[0m
+/usr/bin[1;31m/at		--->	RTru64_UNIX_4.0g(CVE-2002-1614)[0m
+/usr/bin[1;32m/crontab[0m
+/usr/bin[1;32m/bsd-write[0m
+/usr/bin[1;32m/expiry[0m
+/usr/bin[1;32m/mail-unlock[0m
+/usr/bin[1;32m/wall[0m
+/usr/bin[1;32m/chage[0m
+/usr/sbin[1;32m/uuidd[0m
+/usr/games[1;32m/gnomine[0m
+/usr/games[1;32m/mahjongg[0m
+/sbin[1;32m/unix_chkpwd[0m
+
+[1;33m[+] [1;32mCapabilities
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities
+[0m/usr/bin/gnome-keyring-daemon = cap_ipc_lock+ep
+
+[1;33m[+] [1;32mUsers with capabilities
+[0m
+[1;33m[+] [1;32m.sh files in path
+[0m/usr/bin[1;32m/gettext.sh[0m
+/usr/bin/amuFormat.sh
+
+[1;33m[+] [1;32mFiles (scripts) in /etc/profile.d/
+[0mtotal 20
+drwxr-xr-x   2 root root  4096 Apr 25  2012 .
+drwxr-xr-x 132 root root 12288 Jan 10 06:20 ..
+-rw-r--r--   1 root root   475 Mar 30  2012 [1;32mbash_completion.sh[0m
+
+[1;33m[+] [1;32mHashes inside passwd file? ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mCredentials in fstab/mtab? ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read shadow files? ............. [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read root folder? .............. [0m[1;90mNo
+[0m
+[1;33m[+] [1;32mLooking for root files in home dirs (limit 20)
+[0m/home
+/home/[1;96m[1;31mhype[0m[0m/.tmux.conf
+
+[1;33m[+] [1;32mLooking for others files in folders owned by me
+[0m
+[1;33m[+] [1;32mReadable files belonging to root and readable by me but not world readable
+[0m[1;31m-rw-r----- 1 root dip 656 Apr 25  2012 /etc/chatscripts/provider[0m
+[1;31m-rw-r----- 1 root dip 1093 Apr 25  2012 /etc/ppp/peers/provider[0m
+
+[1;33m[+] [1;32mModified interesting files in the last 5mins
+[0m/var/log/auth.log
+/var/log/kern.log
+/var/log/syslog
+[1;31m/home/hype/Downloads[0m/linpeas.out
+[1;31m/home/hype[0m/.gnupg/gpg.conf
+[1;31m/home/hype[0m/.gnupg/trustdb.gpg
+[1;31m/home/hype[0m/.gnupg/pubring.gpg
+
+[1;33m[+] [1;32mWritable log files (logrotten)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation
+[0mWritable:[1;31m /home/hype/.cache/unity/migration_script.log
+[0m
+[1;33m[+] [1;32mFiles inside /home/hype (limit 20)
+[0mtotal 148
+drwxr-xr-x 22 hype hype  4096 Jan 10 10:58 .
+drwxr-xr-x  3 root root  4096 Dec 11  2017 ..
+-rw-------  1 hype hype   176 Jan 10 10:44 .bash_history
+-rw-r--r--  1 hype hype   220 Dec 11  2017 .bash_logout
+-rw-r--r--  1 hype hype  3486 Dec 11  2017 .bashrc
+drwx------ 11 hype hype  4096 Dec 11  2017 .cache
+drwx------  9 hype hype  4096 Dec 11  2017 .config
+drwx------  3 hype hype  4096 Dec 11  2017 .dbus
+drwxr-xr-x  2 hype hype  4096 Dec 13  2017 Desktop
+-rw-r--r--  1 hype hype    26 Dec 11  2017 .dmrc
+drwxr-xr-x  2 hype hype  4096 Dec 11  2017 Documents
+drwxr-xr-x  2 hype hype  4096 Jan 10 10:58 Downloads
+drwxr-xr-x  2 hype hype  4096 Dec 11  2017 .fontconfig
+drwx------  3 hype hype  4096 Dec 11  2017 .gconf
+drwx------  4 hype hype  4096 Dec 11  2017 .gnome2
+drwx------  2 hype hype  4096 Jan 10 10:58 .gnupg
+-rw-rw-r--  1 hype hype   132 Dec 11  2017 .gtk-bookmarks
+drwx------  2 hype hype  4096 Dec 11  2017 .gvfs
+-rw-------  1 hype hype   636 Dec 11  2017 .ICEauthority
+drwxr-xr-x  3 hype hype  4096 Dec 11  2017 .local
+drwx------  3 hype hype  4096 Dec 11  2017 .mission-control
+drwxr-xr-x  2 hype hype  4096 Dec 11  2017 Music
+
+[1;33m[+] [1;32mFiles inside others home (limit 20)
+[0m
+[1;33m[+] [1;32mLooking for installed mail applications
+[0m
+[1;33m[+] [1;32mMails (limit 50)
+[0m
+[1;33m[+] [1;32mBackup files?
+[0m-rw-r--r-- 1 root root 39293 Dec 11  2017 /var/log/Xorg.0.log[1;31m.old[0m
+-rw-r--r-- 1 root root 198 Dec 11  2017 /var/lib/belocs/hashfile[1;31m.old[0m
+-rw-r--r-- 1 root root 366 Apr 25  2012 /etc/sgml/catalog[1;31m.old[0m
+-rw-r--r-- 1 root root 20 Dec  2  2015 /etc/vmware-tools/tools.conf[1;31m.old[0m
+-rw-r--r-- 1 root root 673 Apr 25  2012 /etc/xml/xml-core.xml[1;31m.old[0m
+-rw-r--r-- 1 root root 610 Apr 25  2012 /etc/xml/catalog[1;31m.old[0m
+-rw------- 1 hype hype 9659 Dec 11  2017 /home/hype/.xsession-errors[1;31m.old[0m
+
+[1;33m[+] [1;32mLooking for tables inside readable .db/.sqlite files (limit 100)
+[0m[1;32m -> Extracting tables from[0m /var/lib/colord/mapping.db [1;90m(limit 20)
+[0m
+[1;32m -> Extracting tables from[0m /var/lib/colord/storage.db [1;90m(limit 20)
+[0m
+[1;32m -> Extracting tables from[0m /home/hype/.cache/unity-lens-video/videos.db [1;90m(limit 20)
+[0m[1;32m -> Extracting tables from[0m /home/hype/.cache/indicator-appmenu/hud-usage-log.sqlite [1;90m(limit 20)
+[0m
+[1;32m -> Extracting tables from[0m /home/hype/.local/share/zeitgeist/activity.sqlite [1;90m(limit 20)
+[0m
+[1;32m -> Extracting tables from[0m /home/hype/.local/share/webkit/icondatabase/WebpageIcons.db [1;90m(limit 20)
+[0m
+
+[1;33m[+] [1;32mWeb files?(output limit)
+[0m/var/www/:
+total 176K
+drwxr-xr-x  3 root root 4.0K Dec 13  2017 .
+drwxr-xr-x 14 root root 4.0K Feb  6  2018 ..
+-rw-r--r--  1 root root  760 Feb  5  2018 decode.php
+drwxr-xr-x  2 root root 4.0K Dec 13  2017 dev
+-rw-r--r--  1 root root  739 Feb  5  2018 encode.php
+-rw-r--r--  1 root root   38 Dec 12  2017 index.php
+-rw-rw-r--  1 hype hype 150K Dec 12  2017 omg.jpg
+
+
+[1;33m[+] [1;32mReadable *_history, .sudo_as_admin_successful, profile, bashrc, httpd.conf, .plan, .htpasswd, .gitconfig, .git-credentials, .git, .svn, .rhosts, hosts.equiv, Dockerfile, docker-compose.yml
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#read-sensitive-data
+[0m-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 0 Dec 11  2017 /etc/apache2/[1;31mhttpd.conf[0m
+[1;32mReading /etc/apache2/httpd.conf
+[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 2076 Apr  3  2012 /etc/bash.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 675 Apr  3  2012 /etc/skel/[1;31m.profile[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 3486 Apr  3  2012 /etc/skel/.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;96m[1;95mhype[0m[0m [1;96m[1;95mhype[0m[0m 675 Dec 11  2017 /home/[1;96m[1;95mhype[0m[0m/[1;31m.profile[0m
+-rw------- 1 [1;96m[1;95mhype[0m[0m [1;96m[1;95mhype[0m[0m 176 Jan 10 10:44 /home/[1;96m[1;95mhype[0m[0m/.bash[1;31m_history[0m
+[1;32mLooking for possible passwords inside /home/hype/.bash_history
+[0m
+-rw-r--r-- 1 [1;96m[1;95mhype[0m[0m [1;96m[1;95mhype[0m[0m 3486 Dec 11  2017 /home/[1;96m[1;95mhype[0m[0m/.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 3106 Apr 19  2012 /usr/share/base-files/dot.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 870 Oct 19  2011 /usr/share/doc/adduser/examples/adduser.local.conf.examples/bash.[1;31mbashrc[0m
+-rw-r--r-- 1 [1;31mroot[0m [1;31mroot[0m 1865 Oct 19  2011 /usr/share/doc/adduser/examples/adduser.local.conf.examples/skel/dot.[1;31mbashrc[0m
+
+[1;33m[+] [1;32mAll hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+[0m-rw-r--r-- 1 root root 2177 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/.conmakehash.cmd
+-rw-r--r-- 1 root root 3952 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/basic/.fixdep.cmd
+-rw-r--r-- 1 root root 104 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.elfconfig.h.cmd
+-rw-r--r-- 1 root root 4083 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.sumversion.o.cmd
+-rw-r--r-- 1 root root 2329 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.mk_elfconfig.cmd
+-rw-r--r-- 1 root root 1575 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.empty.o.cmd
+-rw-r--r-- 1 root root 3382 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.modpost.o.cmd
+-rw-r--r-- 1 root root 3068 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.file2alias.o.cmd
+-rw-r--r-- 1 root root 129 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/mod/.modpost.cmd
+-rw-r--r-- 1 root root 2657 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/selinux/mdp/.mdp.cmd
+-rw-r--r-- 1 root root 3057 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/selinux/genheaders/.genheaders.cmd
+-rw-r--r-- 1 root root 2317 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/genksyms/.parse.tab.o.cmd
+-rw-r--r-- 1 root root 2549 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/genksyms/.genksyms.o.cmd
+-rw-r--r-- 1 root root 3187 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/genksyms/.lex.lex.o.cmd
+-rw-r--r-- 1 root root 153 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/genksyms/.genksyms.cmd
+-rw-r--r-- 1 root root 2119 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/.kallsyms.cmd
+-rw-r--r-- 1 root root 110 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/kconfig/.conf.cmd
+-rw-r--r-- 1 root root 3101 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/kconfig/.conf.o.cmd
+-rw-r--r-- 1 root root 4501 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/kconfig/.zconf.tab.o.cmd
+-rw-r--r-- 1 root root 3018 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/scripts/.recordmcount.cmd
+-rw-r--r-- 1 root root 608 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/.missing-syscalls.d
+-rw-r--r-- 1 root root 140251 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/.config
+-rw-r--r-- 1 root root 39130 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/arch/x86/kernel/.asm-offsets.s.cmd
+-rw-r--r-- 1 root root 4854 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/kernel/.bounds.s.cmd
+-rw-r--r-- 1 root root 140290 Apr 10  2012 /usr/src/linux-headers-3.2.0-23-generic/.config.old
+-rw-r--r-- 1 hype hype 220 Dec 11  2017 /home/hype/.bash_logout
+-rw-r--r-- 1 hype hype 26 Dec 11  2017 /home/hype/.dmrc
+-rw------- 1 hype hype 0 Dec 11  2017 /home/hype/.Xauthority
+-rw-rw-r-- 1 hype hype 0 Dec 11  2017 /home/hype/.local/share/.converted-launchers
+-rw-r--r-- 1 root root 39 Dec 13  2017 /home/hype/.tmux.conf
+-rw------- 1 hype hype 12173 Dec 11  2017 /home/hype/.xsession-errors
+-rw------- 1 hype hype 636 Dec 11  2017 /home/hype/.ICEauthority
+-rw-rw-r-- 1 hype hype 132 Dec 11  2017 /home/hype/.gtk-bookmarks
+-rw------- 1 hype hype 256 Dec 11  2017 /home/hype/.pulse-cookie
+-rw------- 1 hype hype 9659 Dec 11  2017 /home/hype/.xsession-errors.old
+-rw-r--r-- 1 root root 628 Dec 11  2017 /etc/apparmor.d/cache/.features
+-rw-r--r-- 1 root root 220 Apr  3  2012 /etc/skel/.bash_logout
+-rw-r--r-- 1 root root 0 Apr 25  2012 /etc/init.d/.legacy-bootordering
+-rw------- 1 root root 0 Apr 25  2012 /etc/.pwd.lock
+
+[1;33m[+] [1;32mReadable files inside /tmp, /var/tmp, /var/backups(limit 70)
+[0m-rw-r--r-- 1 root root 1860 Jan 10 06:20 /tmp/_cafenv-appconfig_
+-rw-r--r-- 1 root root 383125 Dec 11  2017 /var/backups/dpkg.status.3.gz
+-rw-r--r-- 1 root root 385533 Dec 11  2017 /var/backups/dpkg.status.2.gz
+-rw-r--r-- 1 root root 2100 Feb 16  2018 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 315 Dec 13  2017 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 387716 Dec 13  2017 /var/backups/dpkg.status.1.gz
+-rw-r--r-- 1 root root 282 Dec 11  2017 /var/backups/apt.extended_states.3.gz
+-rw-r--r-- 1 root root 1405164 Feb 16  2018 /var/backups/dpkg.status.0
+-rw-r--r-- 1 root root 299 Dec 11  2017 /var/backups/apt.extended_states.2.gz
+
+[1;33m[+] [1;32mInteresting writable files owned by me or writable by everyone (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m/home/hype
+/run/lock
+/run/shm
+/tmp
+/tmp/.ICE-unix
+/tmp/tmux-1000
+/tmp/.X11-unix
+/var/crash
+/var[1;31m/lib/[0mphp5
+/var/tmp
+
+[1;33m[+] [1;32mInteresting GROUP writable files (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m  Group [1;32mhype:
+[0m  Group [1;32mcdrom:
+[0m  Group [1;32mdip:
+[0m  Group [1;32mplugdev:
+[0m  Group [1;32msambashare:
+[0m
+[1;33m[+] [1;32mSearching passwords in config PHP files
+[0m
+[1;33m[+] [1;32mFinding IPs inside logs (limit 70)
+[0m     26 /var/log/vmware-vmsvc.log:10.1.15.62
+     19 /var/log/bootstrap.log:1.16.1.2
+     16 /var/log/ConsoleKit/history.1:10.10.14.3
+      7 /var/log/bootstrap.log:4.1.4.2
+      6 /var/log/wtmp.1:10.10.14.3
+      3 /var/log/ConsoleKit/history:10.10.14.28
+      3 /var/log/bootstrap.log:1.2.3.4
+      2 /var/log/wtmp:10.10.14.28
+      1 /var/log/lastlog:10.10.14.28
+
+[1;33m[+] [1;32mFinding passwords inside logs (limit 70)
+[0mBinary file /var/log/installer/initial-status.gz matches
+/var/log/bootstrap.log: base-[1;31mpassw[0md depends on libc6 (>= 2.8); however:
+/var/log/bootstrap.log:dpkg: base-[1;31mpassw[0md: dependency problems, but configuring anyway as you requested:
+/var/log/bootstrap.log:Preparing to replace base-[1;31mpassw[0md 3.5.24 (using .../base-passwd_3.5.24_amd64.deb) ...
+/var/log/bootstrap.log:Selecting previously unselected package base-[1;31mpassw[0md.
+/var/log/bootstrap.log:Selecting previously unselected package [1;31mpassw[0md.
+/var/log/bootstrap.log:Setting up base-[1;31mpassw[0md (3.5.24) ...
+/var/log/bootstrap.log:Setting up [1;31mpassw[0md (1:4.1.4.2+svn3283-3ubuntu5) ...
+/var/log/bootstrap.log:Shadow [1;31mpassw[0mords are now on.
+/var/log/bootstrap.log:Unpacking base-[1;31mpassw[0md (from .../base-passwd_3.5.24_amd64.deb) ...
+/var/log/bootstrap.log:Unpacking [1;31mpassw[0md (from .../passwd_1%3a4.1.4.2+svn3283-3ubuntu5_amd64.deb) ...
+/var/log/bootstrap.log:Unpacking replacement base-[1;31mpassw[0md ...
+
+[1;33m[+] [1;32mFinding emails inside logs (limit 70)
+[0m      4 /var/log/bootstrap.log:[1;32mftpmaster@ubuntu.com[0m
+      2 /var/log/bootstrap.log:cdimage@ubuntu.com
+
+[1;33m[+] [1;32mFinding *password* or *credential* files in home (limit 70)
+[0m
+[1;33m[+] [1;32mFinding 'pwd' or 'passw' variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/acpi/powerbtn.sh:                userhome=`getent [1;31mpassw[0md $user | cut -d: -f6`
+/etc/bash_completion:        COMPREPLY=( $( compgen -W '$( getent [1;31mpassw[0md | cut -d: -f3 )' -- "$cur" ) )
+/etc/bash_completion.d/cvs:                [1;31mpwd[0m=$( [1;31mpwd[0m )
+/etc/bash_completion.d/grub:__grub_mk[1;31mpassw[0md_pbkdf2_program=$( echo grub-mk[1;31mpassw[0md-pbkdf2 | sed "s,x,x," )
+/etc/gconf/2/evoldap.conf:        <source save-[1;31mpassw[0md="false" keep-on-server="false" auto-check="false" auto-check-timeout="10">
+/etc/gconf/2/evoldap.conf:        <transport save-[1;31mpassw[0md="false">
+/etc/group:no[1;31mpassw[0mdlogin:x:112:
+/etc/nsswitch.conf:[1;31mpassw[0md:         compat
+/etc/php5/apache2/php.ini:; Define the anonymous ftp [1;31mpassw[0mord (your email address). PHP's default setting
+/etc/php5/cli/php.ini:; Define the anonymous ftp [1;31mpassw[0mord (your email address). PHP's default setting
+/etc/samba/smb.conf:   [1;31mpassw[0md chat = *Enter\snew\s*\s[1;31mpassw[0mord:* %n\n *Retype\snew\s*\s[1;31mpassw[0mord:* %n\n *[1;31mpassw[0mord\supdated\ssuccessfully* .
+/etc/samba/smb.conf:   [1;31mpassw[0md program = /usr/bin/[1;31mpassw[0md %u
+/etc/security/namespace.init:                gid=$(echo "$[1;31mpassw[0md" | cut -f4 -d":")
+/etc/security/namespace.init:        homedir=$(echo "$[1;31mpassw[0md" | cut -f6 -d":")
+/etc/security/namespace.init:        [1;31mpassw[0md=$(getent [1;31mpassw[0md "$user")
+/home/hype/Downloads/linpeas.sh:      SHELLUSERS=`cat /etc/[1;31mpassw[0md 2>/dev/null | grep -i "sh$" | cut -d ":" -f 1`
+/var/backups/dpkg.status.0:Depends: base-[1;31mpassw[0md (>= 3.0.4)
+/var/backups/dpkg.status.0:Depends: libc6 (>= 2.8), libpopt0 (>= 1.16), libselinux1 (>= 1.32), cron | anacron | fcron, base-[1;31mpassw[0md (>= 2.0.3.4)
+/var/backups/dpkg.status.0:Depends: [1;31mpassw[0md, libc6 (>= 2.4)
+/var/backups/dpkg.status.0:Depends: [1;31mpassw[0md, libuuid1 (>= 2.20.1), libc6 (>= 2.4)
+/var/backups/dpkg.status.0:Depends: perl-base (>= 5.6.0), [1;31mpassw[0md (>= 1:4.0.12), debconf | debconf-2.0
+
+[1;33m[+] [1;32mFinding possible password variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/alternatives/gnome-www-browser:MOZ_[1;31mAPP_NAME[0m=firefox
+/etc/alternatives/x-www-browser:MOZ_[1;31mAPP_NAME[0m=firefox
+/etc/xdg/ubuntuone/syncdaemon.conf:oauth.metavar = [[1;31mCONSUMER_KEY[0m:CONSUMER_SECRET:]KEY:SECRET
+
+[1;33m[+] [1;32mFinding 'username' string inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/bash_completion.d/git:		local remote_opts="--[1;31musername[0m= --config-dir= --no-auth-cache"
+/etc/vmware-caf/pme/install/caf-dbg.sh:   local [1;31musername[0m="$1"
+/etc/vmware-caf/pme/scripts/setUpVgAuth:   echo "    subject: Subject that maps to the [1;31muserName[0m in the SAML [default: $subject]"
+/etc/vmware-caf/pme/scripts/setUpVgAuth:   echo "    [1;31muserName[0m: The name of the user to be added [default: $[1;31muserName[0m]"
+/etc/vmware-caf/pme/scripts/setUpVgAuth:if [ $[1;31muserName[0m != "" ]; then
+/etc/vmware-caf/pme/scripts/setUpVgAuth:[1;31muserName[0m=""
+/etc/vmware-caf/pme/scripts/setUpVgAuth:   [1;31muserName[0m=$1
+/etc/vmware-caf/pme/scripts/tearDownVgAuth:   echo "    subject: Subject that maps to the [1;31muserName[0m in the SAML [default: $subject]"
+/etc/vmware-caf/pme/scripts/tearDownVgAuth:   echo "    [1;31muserName[0m: The name of the user to be removed [default: $[1;31muserName[0m]"
+/etc/vmware-caf/pme/scripts/tearDownVgAuth:if [ $[1;31muserName[0m != "" ]; then
+/etc/vmware-caf/pme/scripts/tearDownVgAuth:[1;31muserName[0m=""
+/etc/vmware-caf/pme/scripts/tearDownVgAuth:   [1;31muserName[0m=$1
+/etc/vmware-caf/pme/scripts/vgAuth:	echo "    [1;31mUsername[0m: The name of the user to add to the alias store [default: $[1;31musername[0m]"
+/etc/vmware-caf/pme/scripts/vgAuth:		userLineCnt=$($vgAuthCli list --[1;31musername[0m=$[1;31musername[0m | wc -l)
+/etc/vmware-caf/pme/scripts/vgAuth:	[1;31musername[0m=$2
+/etc/vmware-caf/pme/scripts/vgAuth:[1;31musername[0m="testuser"
+/etc/vmware-caf/pme/scripts/vgAuth:			$vgAuthCli add --global --[1;31musername[0m=$[1;31musername[0m --file $cert --subject=$subject
+/etc/vmware-caf/pme/scripts/vgAuth:		$vgAuthCli list --[1;31musername[0m=$[1;31musername[0m
+/etc/vmware-caf/pme/scripts/vgAuth:			$vgAuthCli remove --[1;31musername[0m=$[1;31musername[0m --file $cert --subject=$subject
+/etc/vmware-tools/messages/de/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "Benutzer, dessen Zertifikatsspeicher hinzugefügt wird zu"
+/etc/vmware-tools/messages/de/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "Benutzername"
+/etc/vmware-tools/messages/de/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "Benutzername"
+/etc/vmware-tools/messages/de/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "Benutzer, dessen Zertifikatsspeicher abgefragt wird"
+/etc/vmware-tools/messages/de/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "Benutzer, dessen Zertifikatsspeicher entfernt wurde aus"
+/etc/vmware-tools/messages/en/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "User whose certificate store is being added to"
+/etc/vmware-tools/messages/en/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "[1;31musername[0m"
+/etc/vmware-tools/messages/en/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "[1;31mUsername[0m"
+/etc/vmware-tools/messages/es/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "El usuario cuyo almacén de certificados se está añadiendo a"
+/etc/vmware-tools/messages/es/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "nombre de usuario"
+/etc/vmware-tools/messages/es/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "Nombre de usuario"
+/etc/vmware-tools/messages/es/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "El usuario cuyo almacén de certificados se está consultando"
+/etc/vmware-tools/messages/es/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "El usuario cuyo almacén de certificados se está eliminando de"
+/etc/vmware-tools/messages/fr/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "Utilisateur dont le magasin de certificats est ajouté à"
+/etc/vmware-tools/messages/fr/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "nom d'utilisateur"
+/etc/vmware-tools/messages/fr/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "Nom d'utilisateur"
+/etc/vmware-tools/messages/fr/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "Utilisateur dont le magasin de certificats est interrogé"
+/etc/vmware-tools/messages/fr/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "Utilisateur dont le magasin de certificats est supprimé de"
+/etc/vmware-tools/messages/it/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "Utente a cui viene aggiunto l'archivio certificati"
+/etc/vmware-tools/messages/it/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "nome utente"
+/etc/vmware-tools/messages/it/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "Nome utente"
+/etc/vmware-tools/messages/it/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "Utente il cui archivio certificati viene interrogato"
+/etc/vmware-tools/messages/it/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "L'utente da cui viene rimosso l'archivio certificati"
+/etc/vmware-tools/messages/ja/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "証明書ストアが追加されているユーザー"
+/etc/vmware-tools/messages/ja/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "ユーザー名"
+/etc/vmware-tools/messages/ja/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "ユーザー名"
+/etc/vmware-tools/messages/ja/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "証明書ストアが照会されているユーザー"
+/etc/vmware-tools/messages/ja/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "証明書ストアが削除されているユーザー"
+/etc/vmware-tools/messages/ko/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "인증서 저장소를 추가 중인 사용자"
+/etc/vmware-tools/messages/ko/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "사용자 이름"
+/etc/vmware-tools/messages/ko/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "사용자 이름"
+/etc/vmware-tools/messages/ko/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "인증서 저장소를 쿼리 중인 사용자"
+/etc/vmware-tools/messages/ko/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "인증서 저장소를 제거 중인 사용자"
+/etc/vmware-tools/messages/zh_CN/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "要在以下位置添加证书存储的用户"
+/etc/vmware-tools/messages/zh_CN/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "用户名"
+/etc/vmware-tools/messages/zh_CN/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "用户名"
+/etc/vmware-tools/messages/zh_CN/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "要查询其证书存储的用户"
+/etc/vmware-tools/messages/zh_CN/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "要从以下位置删除证书存储的用户"
+/etc/vmware-tools/messages/zh_TW/VGAuthCli.vmsg:addoptions.[1;31musername[0m = "正將其憑證存放區新增至以下項目的使用者"
+/etc/vmware-tools/messages/zh_TW/VGAuthCli.vmsg:cmdline.summary.[1;31musername[0m = "使用者名稱"
+/etc/vmware-tools/messages/zh_TW/VGAuthCli.vmsg:listmapped.[1;31musername[0m = "使用者名稱"
+/etc/vmware-tools/messages/zh_TW/VGAuthCli.vmsg:listoptions.[1;31musername[0m = "正要查詢其憑證存放區的使用者"
+/etc/vmware-tools/messages/zh_TW/VGAuthCli.vmsg:removeoptions.[1;31musername[0m = "正從以下項目中移除其憑證存放區的使用者"
+/home/hype/Downloads/linpeas.sh:    for f in $tomcat; do grep "[1;31musername[0m=" $f 2>/dev/null | grep "password=" | sed "s,.*,${C}[1;31m&${C}[0m,"; done
+
+[1;33m[+] [1;32mLooking for specific hashes inside files - less false positives (limit 70)
+[0m

@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.91 scan initiated Sun Jan 10 15:22:26 2021 as: nmap -sC -sV -p 22,80,443 -&#45;script vuln -oA nmap/valentine-vuln 10.10.10.79 -->
+<nmaprun scanner="nmap" args="nmap -sC -sV -p 22,80,443 -&#45;script vuln -oA nmap/valentine-vuln 10.10.10.79" start="1610288546" startstr="Sun Jan 10 15:22:26 2021" version="7.91" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="3" services="22,80,443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.10.10.79" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1610288557" endtime="1610288597"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<address addr="10.10.10.79" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="ssh" product="OpenSSH" version="5.9p1 Debian 5ubuntu1.10" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:5.9p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="vulners" output="&#xa;  cpe:/a:openbsd:openssh:5.9p1: &#xa;    &#x9;EDB-ID:40888&#x9;7.8&#x9;https://vulners.com/exploitdb/EDB-ID:40888&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:41173&#x9;7.2&#x9;https://vulners.com/exploitdb/EDB-ID:41173&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60656&#x9;5.0&#x9;https://vulners.com/seebug/SSV:60656&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2017-15906&#x9;5.0&#x9;https://vulners.com/cve/CVE-2017-15906&#xa;    &#x9;CVE-2010-5107&#x9;5.0&#x9;https://vulners.com/cve/CVE-2010-5107&#xa;    &#x9;SSV:90447&#x9;4.6&#x9;https://vulners.com/seebug/SSV:90447&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:45233&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:45233&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:45210&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:45210&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:45001&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:45001&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:45000&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:45000&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:40963&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:40963&#x9;*EXPLOIT*&#xa;    &#x9;EDB-ID:40962&#x9;4.6&#x9;https://vulners.com/exploitdb/EDB-ID:40962&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2016-0778&#x9;4.6&#x9;https://vulners.com/cve/CVE-2016-0778&#xa;    &#x9;CVE-2016-0777&#x9;4.0&#x9;https://vulners.com/cve/CVE-2016-0777"><table key="cpe:/a:openbsd:openssh:5.9p1">
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">7.8</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:40888</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">7.2</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:41173</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60656</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-15906</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2010-5107</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:90447</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:45233</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:45210</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:45001</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:45000</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:40963</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:40962</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.6</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2016-0778</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2016-0777</elem>
+</table>
+</table>
+</script></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.2.22" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.22</cpe></service><script id="http-csrf" output="Couldn&apos;t find any CSRF vulnerabilities."/><script id="http-dombased-xss" output="Couldn&apos;t find any DOM based XSS."/><script id="http-enum" output="&#xa;  /dev/: Potentially interesting directory w/ listing on &apos;apache/2.2.22 (ubuntu)&apos;&#xa;  /index/: Potentially interesting folder&#xa;"/><script id="http-server-header" output="Apache/2.2.22 (Ubuntu)"><elem>Apache/2.2.22 (Ubuntu)</elem>
+</script><script id="http-stored-xss" output="Couldn&apos;t find any stored XSS vulnerabilities."/><script id="http-vuln-cve2017-1001000" output="ERROR: Script execution failed (use -d to debug)"/><script id="vulners" output="&#xa;  cpe:/a:apache:http_server:2.2.22: &#xa;    &#x9;SSV:60913&#x9;7.5&#x9;https://vulners.com/seebug/SSV:60913&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2017-7679&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-7679&#xa;    &#x9;CVE-2017-7668&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-7668&#xa;    &#x9;CVE-2017-3169&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-3169&#xa;    &#x9;CVE-2017-3167&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-3167&#xa;    &#x9;CVE-2013-2249&#x9;7.5&#x9;https://vulners.com/cve/CVE-2013-2249&#xa;    &#x9;CVE-2018-1312&#x9;6.8&#x9;https://vulners.com/cve/CVE-2018-1312&#xa;    &#x9;CVE-2017-9788&#x9;6.4&#x9;https://vulners.com/cve/CVE-2017-9788&#xa;    &#x9;SSV:60788&#x9;5.1&#x9;https://vulners.com/seebug/SSV:60788&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2013-1862&#x9;5.1&#x9;https://vulners.com/cve/CVE-2013-1862&#xa;    &#x9;SSV:96537&#x9;5.0&#x9;https://vulners.com/seebug/SSV:96537&#x9;*EXPLOIT*&#xa;    &#x9;SSV:62058&#x9;5.0&#x9;https://vulners.com/seebug/SSV:62058&#x9;*EXPLOIT*&#xa;    &#x9;SSV:61874&#x9;5.0&#x9;https://vulners.com/seebug/SSV:61874&#x9;*EXPLOIT*&#xa;    &#x9;MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED&#x9;5.0&#x9;https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED&#x9;*EXPLOIT*&#xa;    &#x9;EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D&#x9;5.0&#x9;https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2017-9798&#x9;5.0&#x9;https://vulners.com/cve/CVE-2017-9798&#xa;    &#x9;CVE-2014-0231&#x9;5.0&#x9;https://vulners.com/cve/CVE-2014-0231&#xa;    &#x9;CVE-2014-0098&#x9;5.0&#x9;https://vulners.com/cve/CVE-2014-0098&#xa;    &#x9;CVE-2013-6438&#x9;5.0&#x9;https://vulners.com/cve/CVE-2013-6438&#xa;    &#x9;CVE-2013-5704&#x9;5.0&#x9;https://vulners.com/cve/CVE-2013-5704&#xa;    &#x9;1337DAY-ID-28573&#x9;5.0&#x9;https://vulners.com/zdt/1337DAY-ID-28573&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60905&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60905&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60657&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60657&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60653&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60653&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60345&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60345&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2016-4975&#x9;4.3&#x9;https://vulners.com/cve/CVE-2016-4975&#xa;    &#x9;CVE-2013-1896&#x9;4.3&#x9;https://vulners.com/cve/CVE-2013-1896&#xa;    &#x9;CVE-2012-4558&#x9;4.3&#x9;https://vulners.com/cve/CVE-2012-4558&#xa;    &#x9;CVE-2012-3499&#x9;4.3&#x9;https://vulners.com/cve/CVE-2012-3499&#xa;    &#x9;CVE-2012-2687&#x9;2.6&#x9;https://vulners.com/cve/CVE-2012-2687&#xa;    &#x9;EDB-ID:42745&#x9;0.0&#x9;https://vulners.com/exploitdb/EDB-ID:42745&#x9;*EXPLOIT*"><table key="cpe:/a:apache:http_server:2.2.22">
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60913</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-7679</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-7668</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-3169</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-3167</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-2249</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">6.8</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2018-1312</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">6.4</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-9788</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.1</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60788</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.1</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-1862</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:96537</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:62058</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:61874</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">metasploit</elem>
+<elem key="id">MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">exploitpack</elem>
+<elem key="id">EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-9798</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2014-0231</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2014-0098</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-6438</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-5704</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">zdt</elem>
+<elem key="id">1337DAY-ID-28573</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60905</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60657</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60653</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60345</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2016-4975</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-1896</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-4558</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-3499</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">2.6</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-2687</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">0.0</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:42745</elem>
+</table>
+</table>
+</script></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.2.22" extrainfo="(Ubuntu)" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.22</cpe></service><script id="http-csrf" output="Couldn&apos;t find any CSRF vulnerabilities."/><script id="http-dombased-xss" output="Couldn&apos;t find any DOM based XSS."/><script id="http-enum" output="&#xa;  /dev/: Potentially interesting directory w/ listing on &apos;apache/2.2.22 (ubuntu)&apos;&#xa;  /index/: Potentially interesting folder&#xa;"/><script id="http-server-header" output="Apache/2.2.22 (Ubuntu)"><elem>Apache/2.2.22 (Ubuntu)</elem>
+</script><script id="http-stored-xss" output="Couldn&apos;t find any stored XSS vulnerabilities."/><script id="http-vuln-cve2017-1001000" output="ERROR: Script execution failed (use -d to debug)"/><script id="ssl-ccs-injection" output="&#xa;  VULNERABLE:&#xa;  SSL/TLS MITM vulnerability (CCS Injection)&#xa;    State: VULNERABLE&#xa;    Risk factor: High&#xa;      OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h&#xa;      does not properly restrict processing of ChangeCipherSpec messages,&#xa;      which allows man-in-the-middle attackers to trigger use of a zero&#xa;      length master key in certain OpenSSL-to-OpenSSL communications, and&#xa;      consequently hijack sessions or obtain sensitive information, via&#xa;      a crafted TLS handshake, aka the &quot;CCS Injection&quot; vulnerability.&#xa;          &#xa;    References:&#xa;      http://www.openssl.org/news/secadv_20140605.txt&#xa;      http://www.cvedetails.com/cve/2014-0224&#xa;      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224&#xa;"><table key="NMAP-14">
+<elem key="title">SSL/TLS MITM vulnerability (CCS Injection)</elem>
+<elem key="state">VULNERABLE</elem>
+<table key="description">
+<elem>OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h&#xa;does not properly restrict processing of ChangeCipherSpec messages,&#xa;which allows man-in-the-middle attackers to trigger use of a zero&#xa;length master key in certain OpenSSL-to-OpenSSL communications, and&#xa;consequently hijack sessions or obtain sensitive information, via&#xa;a crafted TLS handshake, aka the &quot;CCS Injection&quot; vulnerability.&#xa;    </elem>
+</table>
+<table key="refs">
+<elem>http://www.openssl.org/news/secadv_20140605.txt</elem>
+<elem>http://www.cvedetails.com/cve/2014-0224</elem>
+<elem>https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224</elem>
+</table>
+</table>
+</script><script id="ssl-heartbleed" output="&#xa;  VULNERABLE:&#xa;  The Heartbleed Bug is a serious vulnerability in the popular OpenSSL cryptographic software library. It allows for stealing information intended to be protected by SSL/TLS encryption.&#xa;    State: VULNERABLE&#xa;    Risk factor: High&#xa;      OpenSSL versions 1.0.1 and 1.0.2-beta releases (including 1.0.1f and 1.0.2-beta1) of OpenSSL are affected by the Heartbleed bug. The bug allows for reading memory of systems protected by the vulnerable OpenSSL versions and could allow for disclosure of otherwise encrypted confidential information as well as the encryption keys themselves.&#xa;          &#xa;    References:&#xa;      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160&#xa;      http://cvedetails.com/cve/2014-0160/&#xa;      http://www.openssl.org/news/secadv_20140407.txt &#xa;"><table key="NMAP-13">
+<elem key="title">The Heartbleed Bug is a serious vulnerability in the popular OpenSSL cryptographic software library. It allows for stealing information intended to be protected by SSL/TLS encryption.</elem>
+<elem key="state">VULNERABLE</elem>
+<table key="description">
+<elem>OpenSSL versions 1.0.1 and 1.0.2-beta releases (including 1.0.1f and 1.0.2-beta1) of OpenSSL are affected by the Heartbleed bug. The bug allows for reading memory of systems protected by the vulnerable OpenSSL versions and could allow for disclosure of otherwise encrypted confidential information as well as the encryption keys themselves.&#xa;    </elem>
+</table>
+<table key="refs">
+<elem>https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160</elem>
+<elem>http://cvedetails.com/cve/2014-0160/</elem>
+<elem>http://www.openssl.org/news/secadv_20140407.txt </elem>
+</table>
+</table>
+</script><script id="ssl-poodle" output="&#xa;  VULNERABLE:&#xa;  SSL POODLE information leak&#xa;    State: VULNERABLE&#xa;    IDs:  CVE:CVE-2014-3566  BID:70574&#xa;          The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other&#xa;          products, uses nondeterministic CBC padding, which makes it easier&#xa;          for man-in-the-middle attackers to obtain cleartext data via a&#xa;          padding-oracle attack, aka the &quot;POODLE&quot; issue.&#xa;    Disclosure date: 2014-10-14&#xa;    Check results:&#xa;      TLS_RSA_WITH_AES_128_CBC_SHA&#xa;    References:&#xa;      https://www.openssl.org/~bodo/ssl-poodle.pdf&#xa;      https://www.imperialviolet.org/2014/10/14/poodle.html&#xa;      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566&#xa;      https://www.securityfocus.com/bid/70574&#xa;"><table key="CVE-2014-3566">
+<elem key="title">SSL POODLE information leak</elem>
+<elem key="state">VULNERABLE</elem>
+<table key="ids">
+<elem>CVE:CVE-2014-3566</elem>
+<elem>BID:70574</elem>
+</table>
+<table key="description">
+<elem>    The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other&#xa;    products, uses nondeterministic CBC padding, which makes it easier&#xa;    for man-in-the-middle attackers to obtain cleartext data via a&#xa;    padding-oracle attack, aka the &quot;POODLE&quot; issue.</elem>
+</table>
+<table key="dates">
+<table key="disclosure">
+<elem key="month">10</elem>
+<elem key="day">14</elem>
+<elem key="year">2014</elem>
+</table>
+</table>
+<elem key="disclosure">2014-10-14</elem>
+<table key="check_results">
+<elem>TLS_RSA_WITH_AES_128_CBC_SHA</elem>
+</table>
+<table key="refs">
+<elem>https://www.openssl.org/~bodo/ssl-poodle.pdf</elem>
+<elem>https://www.imperialviolet.org/2014/10/14/poodle.html</elem>
+<elem>https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566</elem>
+<elem>https://www.securityfocus.com/bid/70574</elem>
+</table>
+</table>
+</script><script id="sslv2-drown" output="&#xa;"></script><script id="vulners" output="&#xa;  cpe:/a:apache:http_server:2.2.22: &#xa;    &#x9;SSV:60913&#x9;7.5&#x9;https://vulners.com/seebug/SSV:60913&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2017-7679&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-7679&#xa;    &#x9;CVE-2017-7668&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-7668&#xa;    &#x9;CVE-2017-3169&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-3169&#xa;    &#x9;CVE-2017-3167&#x9;7.5&#x9;https://vulners.com/cve/CVE-2017-3167&#xa;    &#x9;CVE-2013-2249&#x9;7.5&#x9;https://vulners.com/cve/CVE-2013-2249&#xa;    &#x9;CVE-2018-1312&#x9;6.8&#x9;https://vulners.com/cve/CVE-2018-1312&#xa;    &#x9;CVE-2017-9788&#x9;6.4&#x9;https://vulners.com/cve/CVE-2017-9788&#xa;    &#x9;SSV:60788&#x9;5.1&#x9;https://vulners.com/seebug/SSV:60788&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2013-1862&#x9;5.1&#x9;https://vulners.com/cve/CVE-2013-1862&#xa;    &#x9;SSV:96537&#x9;5.0&#x9;https://vulners.com/seebug/SSV:96537&#x9;*EXPLOIT*&#xa;    &#x9;SSV:62058&#x9;5.0&#x9;https://vulners.com/seebug/SSV:62058&#x9;*EXPLOIT*&#xa;    &#x9;SSV:61874&#x9;5.0&#x9;https://vulners.com/seebug/SSV:61874&#x9;*EXPLOIT*&#xa;    &#x9;MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED&#x9;5.0&#x9;https://vulners.com/metasploit/MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED&#x9;*EXPLOIT*&#xa;    &#x9;EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D&#x9;5.0&#x9;https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2017-9798&#x9;5.0&#x9;https://vulners.com/cve/CVE-2017-9798&#xa;    &#x9;CVE-2014-0231&#x9;5.0&#x9;https://vulners.com/cve/CVE-2014-0231&#xa;    &#x9;CVE-2014-0098&#x9;5.0&#x9;https://vulners.com/cve/CVE-2014-0098&#xa;    &#x9;CVE-2013-6438&#x9;5.0&#x9;https://vulners.com/cve/CVE-2013-6438&#xa;    &#x9;CVE-2013-5704&#x9;5.0&#x9;https://vulners.com/cve/CVE-2013-5704&#xa;    &#x9;1337DAY-ID-28573&#x9;5.0&#x9;https://vulners.com/zdt/1337DAY-ID-28573&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60905&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60905&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60657&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60657&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60653&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60653&#x9;*EXPLOIT*&#xa;    &#x9;SSV:60345&#x9;4.3&#x9;https://vulners.com/seebug/SSV:60345&#x9;*EXPLOIT*&#xa;    &#x9;CVE-2016-4975&#x9;4.3&#x9;https://vulners.com/cve/CVE-2016-4975&#xa;    &#x9;CVE-2013-1896&#x9;4.3&#x9;https://vulners.com/cve/CVE-2013-1896&#xa;    &#x9;CVE-2012-4558&#x9;4.3&#x9;https://vulners.com/cve/CVE-2012-4558&#xa;    &#x9;CVE-2012-3499&#x9;4.3&#x9;https://vulners.com/cve/CVE-2012-3499&#xa;    &#x9;CVE-2012-2687&#x9;2.6&#x9;https://vulners.com/cve/CVE-2012-2687&#xa;    &#x9;EDB-ID:42745&#x9;0.0&#x9;https://vulners.com/exploitdb/EDB-ID:42745&#x9;*EXPLOIT*"><table key="cpe:/a:apache:http_server:2.2.22">
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60913</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-7679</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-7668</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-3169</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-3167</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">7.5</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-2249</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">6.8</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2018-1312</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">6.4</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-9788</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.1</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60788</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.1</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-1862</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:96537</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:62058</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:61874</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">metasploit</elem>
+<elem key="id">MSF:AUXILIARY/SCANNER/HTTP/APACHE_OPTIONSBLEED</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">exploitpack</elem>
+<elem key="id">EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2017-9798</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2014-0231</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2014-0098</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-6438</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-5704</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">5.0</elem>
+<elem key="type">zdt</elem>
+<elem key="id">1337DAY-ID-28573</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60905</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60657</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60653</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">seebug</elem>
+<elem key="id">SSV:60345</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2016-4975</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2013-1896</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-4558</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">4.3</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-3499</elem>
+</table>
+<table>
+<elem key="is_exploit">false</elem>
+<elem key="cvss">2.6</elem>
+<elem key="type">cve</elem>
+<elem key="id">CVE-2012-2687</elem>
+</table>
+<table>
+<elem key="is_exploit">true</elem>
+<elem key="cvss">0.0</elem>
+<elem key="type">exploitdb</elem>
+<elem key="id">EDB-ID:42745</elem>
+</table>
+</table>
+</script></port>
+</ports>
+<times srtt="22523" rttvar="9985" to="100000"/>
+</host>
+<runstats><finished time="1610288597" timestr="Sun Jan 10 15:23:17 2021" summary="Nmap done at Sun Jan 10 15:23:17 2021; 1 IP address (1 host up) scanned in 50.45 seconds" elapsed="50.45" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
