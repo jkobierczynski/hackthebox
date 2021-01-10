@@ -122,7 +122,7 @@ We see the main website is very basic and has only a picture featuring the heart
 
 ![ImgPlaceholder](screenshots/web-secure-heartbleed.png)
 
-We do a vulnerability scan using nmap and this is indeed confirmed, and find also the POODLE vulnerability:
+We do a vulnerability scan using nmap and this is indeed confirmed, and find also the POODLE and the DROWN vulnerability:
 
 ```
 ssl-heartbleed: 
@@ -562,7 +562,8 @@ hype@Valentine:~/Downloads$ chmod +x linpeas.sh
 hype@Valentine:~/Downloads$ ./linpeas.sh | tee linpeas.out
 ```
 
-We find a root owned tmux session with hype group permissions on the session stream file, so we can attach ourselves to it:
+There is a kernel exploit on Linux version 3.2.0-23-generic on this, but I haven't used it. 
+Also is there a root owned tmux session with hype group permissions on the session stream file, and so we can attach ourselves to it:
 
 ```
 hype@Valentine:~/Downloads$ ls -l /.devs/dev_sess
