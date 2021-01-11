@@ -1,0 +1,4 @@
+# Nmap 7.91 scan initiated Mon Jan 11 00:36:49 2021 as: nmap -sC -sV -oA nmap/poison-initial 10.10.10.84
+Host: 10.10.10.84 ()	Status: Up
+Host: 10.10.10.84 ()	Ports: 22/open/tcp//ssh//OpenSSH 7.2 (FreeBSD 20161230; protocol 2.0)/	Ignored State: closed (999)
+# Nmap done at Mon Jan 11 00:37:01 2021 -- 1 IP address (1 host up) scanned in 11.42 seconds

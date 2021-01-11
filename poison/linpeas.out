@@ -1,0 +1,703 @@
+
+     [48;5;108m     [48;5;59m [48;5;71m [48;5;77m       [48;5;22m [48;5;108m   [48;5;114m [48;5;59m [49m
+     [48;5;108m  [48;5;71m [48;5;22m [48;5;113m [48;5;71m [48;5;94m [48;5;214m  [48;5;58m [48;5;214m    [48;5;100m [48;5;71m  [48;5;16m [48;5;108m  [49m
+     [48;5;65m [48;5;16m [48;5;22m [48;5;214m      [48;5;16m [48;5;214m        [48;5;65m  [49m
+     [48;5;65m [48;5;214m       [48;5;16m [48;5;214m [48;5;16m [48;5;214m       [48;5;136m [48;5;65m [49m
+     [48;5;23m [48;5;214m          [48;5;178m [48;5;214m       [48;5;65m [49m
+     [48;5;16m [48;5;214m         [48;5;136m [48;5;94m   [48;5;136m [48;5;214m    [48;5;65m [49m
+     [48;5;58m [48;5;214m  [48;5;172m [48;5;64m [48;5;77m             [48;5;71m [48;5;65m [49m
+     [48;5;16m [48;5;71m [48;5;77m  [48;5;71m [48;5;77m         [48;5;71m [48;5;77m   [48;5;65m  [49m
+     [48;5;59m [48;5;71m [48;5;77m [48;5;77m [48;5;16m [48;5;77m         [48;5;16m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m  [48;5;77m      [48;5;71m [48;5;16m [48;5;77m    [48;5;113m [48;5;77m   [48;5;65m  [49m
+     [48;5;65m [48;5;16m [48;5;77m  [48;5;150m [48;5;113m [48;5;77m        [48;5;150m [48;5;113m [48;5;77m [48;5;65m [48;5;59m [48;5;65m [49m
+     [48;5;16m [48;5;65m [48;5;71m [48;5;77m             [48;5;71m [48;5;22m [48;5;65m  [49m
+     [48;5;108m  [48;5;107m [48;5;59m [48;5;77m           [48;5;16m [48;5;114m [48;5;108m   [49m
+[1;94m  linpeas v2.3.8[0m[1;33m by carlospolop
+[0m
+[1;33mADVISORY: [1;34mlinpeas should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+[0m
+[1;34mLinux Privesc Checklist: [1;33mhttps://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+[0m [1;4mLEGEND[0m:
+  [1;31;103mRED/YELLOW[0m: 99% a PE vector
+  [1;31mRED[0m: You must take a look at it
+  [1;96mLightCyan[0m: Users with console
+  [1;34mBlue[0m: Users without console & mounted devs
+  [1;32mGreen[0m: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMangeta: Your username
+
+
+[1;34m====================================( [1;32mBasic information[1;34m )=====================================
+[0m[1;37mOS: [0m[1;37mUser & Groups: [0muid=1001([1;95mcharix[0m) gid=1001([1;95mcharix[0m) groups=1001([1;95mcharix[0m)
+[1;37mHostname: [0mPoison
+
+[1;33m[+] [1;32m/sbin/ping[1;34m is available for network discovery[1;37m (linpeas can discover hosts, learn more with -h)
+[0m[1;33m[+] [1;32m/usr/bin/nc[1;34m is available for network discover & port scanning[1;37m (linpeas can discover hosts and scan ports, learn more with -h)
+[0m
+
+[1;34m====================================( [1;32mSystem Information[1;34m )====================================
+[0m[1;33m[+] [1;32mOperative system
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits
+[0m
+[1;33m[+] [1;32mSudo version
+[0m[1;90msudo Not Found
+[0m
+[1;33m[+] [1;32mPATH
+[0m[1;34m[i] [1;33mAny writable folder in original PATH? (a new completed path will be exported)
+[0m/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/home/charix/bin
+New path exported: /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/home/charix/bin
+
+[1;33m[+] [1;32mDate
+[0mMon Jan 11 16:43:01 CET 2021
+
+[1;33m[+] [1;32mSystem stats
+[0mFilesystem     Size    Used   Avail Capacity  Mounted on
+/dev/da0s1a     18G    4.4G     13G    26%    /
+devfs          1.0K    1.0K      0B   100%    /dev
+[1;90mfree Not Found
+[0m
+[1;33m[+] [1;32mEnvironment
+[0m[1;34m[i] [1;33mAny private information inside environment variables?
+[0mVENDOR=amd
+SSH_CLIENT=10.10.14.28 32770 22
+LOGNAME=charix
+PAGER=more
+OSTYPE=FreeBSD
+MACHTYPE=x86_64
+MAIL=/var/mail/charix
+HISTFILE=/dev/null
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/home/charix/bin
+EDITOR=vi
+HOST=Poison
+REMOTEHOST=10.10.14.28
+GROUP=charix
+TERM=screen
+SSH_TTY=/dev/pts/1
+HISTSIZE=0
+HOME=/home/charix
+USER=charix
+SSH_CONNECTION=10.10.14.28 32770 10.10.10.84 22
+HOSTTYPE=FreeBSD
+SHELL=/bin/csh
+HISTFILESIZE=0
+BLOCKSIZE=K
+SHLVL=1
+
+[1;33m[+] [1;32mLooking for Signature verification failed in dmseg
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mselinux enabled? .............. [0m[1;90msestatus Not Found
+[0m[1;33m[+] [1;32mPrinter? ...................... [0m[1;90mlpstat Not Found
+[0m[1;33m[+] [1;32mIs this a container? .......... [0m[1;90mNo
+[0m[1;33m[+] [1;32mIs ASLR enabled? .............. [0m[1;90m/proc/sys/kernel/randomize_va_space Not Found
+[0m
+[1;34m=========================================( [1;32mDevices[1;34m )==========================================
+[0m[1;33m[+] [1;32mAny sd* disk in /dev? (limit 20)
+[0m
+[1;33m[+] [1;32mUnmounted file-system?
+[0m[1;34m[i] [1;33mCheck if you can mount umounted devices
+[0m
+
+[1;34m====================================( [1;32mAvailable Software[1;34m )====================================
+[0m[1;33m[+] [1;32mUseful software
+[0m/usr/bin/nc
+/usr/local/bin/ncat
+/usr/local/bin/wget
+/sbin/ping
+/usr/bin/make
+/usr/bin/gdb
+/usr/local/bin/python
+/usr/local/bin/python2
+/usr/local/bin/python2.7
+/usr/local/bin/perl
+/usr/local/bin/php
+/usr/local/bin/ruby
+/usr/local/bin/xterm
+/usr/bin/fetch
+
+[1;33m[+] [1;32mCompilers Installed
+[0m[1;90mCompilers Not Found
+[0m
+
+[1;34m================================( [1;32mProcesses, Cron & Services[1;34m )================================
+[0m[1;33m[+] [1;32mCleaned processes
+[0m[1;34m[i] [1;33mCheck weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0mUSER    PID  %CPU %MEM    VSZ   RSS TT  STAT STARTED     TIME COMMAND
+[1;31mroot[0m      1   0.0  0.1   5408  1040  -  ILs  15:27    0:00.00 /sbin/init --
+[1;31mroot[0m    319   0.0  0.5   9560  5052  -  Ss   15:27    0:00.19 /sbin/devd
+[1;31mroot[0m    390   0.0  0.2  10500  2448  -  Ss   15:27    0:00.07 /usr/sbin/syslogd -s
+[1;31mroot[0m    543   0.0  0.5  56320  5400  -  S    15:27    0:02.31 /usr/local/bin/vmtoolsd -c /usr/local/share/vmware-tools/tools.conf -p /usr/local/lib/open-vm
+[1;31mroot[0m    620   0.0  0.7  57812  7052  -  Is   15:28    0:00.00 /usr/sbin/sshd
+[1;31mroot[0m    625   0.0  1.1  99172 11516  -  Ss   15:29    0:00.10 /usr/local/sbin/httpd -DNOHTTPACCEPT
+www     637   0.0  1.2 101220 12048  -  S    15:29    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+www     638   0.0  1.2 101220 11936  -  I    15:29    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+www     639   0.0  1.2 101220 11936  -  I    15:29    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+www     640   0.0  1.2 101220 11936  -  I    15:29    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+www     641   0.0  1.2 101220 11936  -  I    15:29    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+[1;31mroot[0m    642   0.0  0.6  20636  6140  -  Ss   15:29    0:00.06 sendmail: accepting connections (sendmail)
+smmsp   645   0.0  0.6  20636  5808  -  Is   15:30    0:00.00 sendmail: Queue runner@00:30:00 for /var/spool/clientmqueue (sendmail)
+[1;31mroot[0m    649   0.0  0.2  12592  2436  -  Ss   15:30    0:00.01 /usr/sbin/cron -s
+www     712   0.0  1.2 101220 11936  -  I    15:36    0:00.01 /usr/local/sbin/httpd -DNOHTTPACCEPT
+[1;95mcharix[0m  848   0.0  0.8  85228  7896  -  S    16:42    0:00.02 sshd: charix@pts/1 (sshd)
+[1;31mroot[0m    529   0.0  0.9  23620  8872 v0- I    15:27    0:00.02 Xvnc :1 -desktop X -httpd /usr/local/share/tightvnc/classes -auth /root/.Xauthority -geometry
+[1;31mroot[0m    540   0.0  0.7  67220  7064 v0- I    15:27    0:00.02 xterm -geometry 80x24+10+10 -ls -title X Desktop
+[1;31mroot[0m    541   0.0  0.5  37620  5312 v0- I    15:27    0:00.01 twm
+[1;31mroot[0m    696   0.0  0.2  10484  2076 v0  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv0
+[1;31mroot[0m    697   0.0  0.2  10484  2076 v1  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv1
+[1;31mroot[0m    698   0.0  0.2  10484  2076 v2  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv2
+[1;31mroot[0m    699   0.0  0.2  10484  2076 v3  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv3
+[1;31mroot[0m    700   0.0  0.2  10484  2076 v4  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv4
+[1;31mroot[0m    701   0.0  0.2  10484  2076 v5  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv5
+[1;31mroot[0m    702   0.0  0.2  10484  2076 v6  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv6
+[1;31mroot[0m    703   0.0  0.2  10484  2076 v7  Is+  15:30    0:00.00 /usr/libexec/getty Pc ttyv7
+[1;31mroot[0m    563   0.0  0.4  19660  3616  0  Is+  15:28    0:00.01 -csh (csh)
+[1;95mcharix[0m  849   0.0  0.4  19660  3592  1  Ss   16:42    0:00.01 -csh (csh)
+[1;95mcharix[0m  854   0.0  0.3  13180  2940  1  S+   16:43    0:00.01 /bin/sh ./linpeas.sh
+[1;95mcharix[0m  855   0.0  0.2   8320  1928  1  S+   16:43    0:00.00 tee linpeas.out
+[1;95mcharix[0m 1035   0.0  0.3  21208  2664  1  R+   16:43    0:00.00 ps aux
+[1;95mcharix[0m 1040   0.0  0.2   8356  2016  1  S+   16:43    0:00.00 sed s,/init$\\|upstart-udev-bridge\\|udev\\|/getty\\|cron\\|apache2\\|java\\|tomcat\\|/vmtool
+[1;95mcharix[0m 1041   0.0  0.2   8356  2016  1  S+   16:43    0:00.00 sed s,daemon:\\|daemon\\s\\|^daemon$\\|message+\\|syslog\\|www\\|www-data\\|mail\\|noboby\\|D
+
+[1;33m[+] [1;32mBinary processes permissions
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#processes
+[0m-r-xr-xr-x  1 [1;32mroot[0m  wheel   161936 Jul 21  2017 /bin/sh
+-r-xr-xr-x  1 [1;32mroot[0m  wheel  1203224 Jul 21  2017 /sbin/devd
+-r-xr-xr-x  1 [1;32mroot[0m  wheel  1081600 Jul 21  2017 /sbin/init
+-r-xr-xr-x  1 [1;32mroot[0m  wheel    31008 Jul 21  2017 /usr/libexec/getty
+-rwxr-xr-x  1 [1;32mroot[0m  wheel    42792 Mar 16  2018 /usr/local/bin/vmtoolsd
+-rwxr-xr-x  1 [1;32mroot[0m  wheel   788153 Jan  2  2018 /usr/local/sbin/httpd
+-r-xr-xr-x  1 [1;32mroot[0m  wheel    45304 Jul 21  2017 /usr/sbin/cron
+-r-xr-xr-x  1 [1;32mroot[0m  wheel   313112 Jul 21  2017 /usr/sbin/sshd
+-r-xr-xr-x  1 [1;32mroot[0m  wheel    45296 Jul 21  2017 /usr/sbin/syslogd
+
+[1;33m[+] [1;32mCron jobs
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-jobs
+[0m-rw-r--r--  1 root  wheel  730 Jul 21  2017 /etc/crontab
+
+/etc/cron.d:
+total 8
+drwxr-xr-x   2 root  wheel   512 Jul 21  2017 .
+drwxr-xr-x  27 root  wheel  2560 Mar 19  2018 ..
+Binary file (standard input) matches
+
+[1;33m[+] [1;32mServices
+[0m[1;34m[i] [1;33mSearch for outdated versions
+[0m
+Usage:
+service -e
+service -R
+service [-v] -l | -r
+service [-v] <rc.d script> start|stop|etc.
+service -h
+
+-e	Show services that are enabled
+-R	Stop and start enabled /usr/local/etc/rc.d services
+-l	List all scripts in /etc/rc.d and /usr/local/etc/rc.d
+-r	Show the results of boot time rcorder
+-v	Verbose
+
+[1;90mservice|chkconfig|rc-status Not Found
+[0m
+
+[1;34m===================================( [1;32mNetwork Information[1;34m )====================================
+[0m[1;33m[+] [1;32mHostname, hosts and DNS
+[0m[1;90mdnsdomainname Not Found
+[0m
+[1;33m[+] [1;32mContent of /etc/inetd.conf & /etc/xinetd.conf
+[0m[1;90m/etc/inetd.conf Not Found
+[0m
+[1;33m[+] [1;32mNetworks and neighbours
+[0m# $FreeBSD: releng/11.1/etc/networks 50472 1999-08-27 23:37:10Z peter $
+#	@(#)networks	5.1 (Berkeley) 6/30/90
+#
+# Your Local Networks Database
+#
+your-net	127				# your comment
+your-netmask	255.255.255			# subnet mask for your-net
+
+#
+# Your subnets
+#
+subnet1		127.0.1		alias1		# comment 1
+subnet2		127.0.2		alias2		# comment 2
+
+#
+# Internet networks (from nic.ddn.mil)
+#
+le0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+	options=8<VLAN_MTU>
+	ether 00:50:56:b9:45:d0
+	hwaddr 00:50:56:b9:45:d0
+	inet 10.10.10.84 netmask 0xffffff00 broadcast 10.10.10.255 
+	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+	media: Ethernet autoselect
+	status: active
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> metric 0 mtu 16384
+	options=600003<RXCSUM,TXCSUM,RXCSUM_IPV6,TXCSUM_IPV6>
+	inet6 ::1 prefixlen 128 
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x2 
+	inet 127.0.0.1 netmask 0xff000000 
+	nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
+	groups: lo 
+
+[1;33m[+] [1;32mIptables rules
+[0m[1;90miptables rules Not Found
+[0m
+[1;33m[+] [1;32mActive Ports
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#internal-open-ports
+[0m
+[1;33m[+] [1;32mCan I sniff with tcpdump?
+[0m[1;90mNo
+[0m
+
+[1;34m====================================( [1;32mUsers Information[1;34m )=====================================
+[0m[1;33m[+] [1;32mMy user
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#groups
+[0muid=1001([1;95mcharix[0m) gid=1001([1;95mcharix[0m) groups=1001([1;95mcharix[0m)
+
+[1;33m[+] [1;32mDo I have PGP keys?
+[0m[1;90mgpg Not Found
+[0m
+[1;33m[+] [1;32mClipboard or highlighted text?
+[0m[1;90mxsel and xclip Not Found
+[0m
+[1;33m[+] [1;32mTesting 'sudo -l' without password & /etc/sudoers
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m
+[1;33m[+] [1;32mChecking /etc/doas.conf
+[0m[1;90m/etc/doas.conf Not Found
+[0m
+[1;33m[+] [1;32mChecking Pkexec policy
+[0m
+[1;33m[+] [1;32mDo not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+[0m[1;33m[+] [1;32mDo not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+[0m
+[1;33m[+] [1;32mSuperusers
+[0m[1;31mroot[0m:*:0:0:Charlie &:/root:/bin/csh
+toor:*:0:0:Bourne-again Superuser:/[1;31mroot[0m:
+
+[1;33m[+] [1;32mUsers with console
+[0m[1;95mcharix[0m:*:1001:1001:charix:/home/charix:/bin/csh
+[1;31mroot[0m:*:0:0:Charlie &:/root:/bin/csh
+
+[1;33m[+] [1;32mAll users & groups
+[0muid=0([1;31mroot[0m) gid=0(wheel) groups=0(wheel),5(operator)
+uid=0(toor) gid=0(wheel) groups=0(wheel)
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+uid=1001([1;95mcharix[0m) gid=1001([1;95mcharix[0m) groups=1001([1;95mcharix[0m)
+uid=160(_ypldap) gid=160(_ypldap) groups=160(_ypldap)
+uid=193(cups) gid=193(cups) groups=193(cups)
+uid=2(operator) gid=5(operator) groups=5(operator)
+uid=22(sshd) gid=22(sshd) groups=22(sshd)
+uid=25(smmsp) gid=25(smmsp) groups=25(smmsp)
+uid=26(mailnull) gid=26(mailnull) groups=26(mailnull)
+uid=3(bin) gid=7(bin) groups=7(bin)
+uid=4(tty) gid=65533(nogroup) groups=65533(nogroup)
+uid=5(kmem) gid=65533(nogroup) groups=65533(nogroup)
+uid=53(bind) gid=53(bind) groups=53(bind)
+uid=556(messagebus) gid=556(messagebus) groups=556(messagebus)
+uid=558(avahi) gid=558(avahi) groups=558(avahi)
+uid=59(unbound) gid=59(unbound) groups=59(unbound)
+uid=601(_tss) gid=601(_tss) groups=601(_tss)
+uid=62(proxy) gid=62(proxy) groups=62(proxy)
+uid=64(_pflogd) gid=64(_pflogd) groups=64(_pflogd)
+uid=65(_dhcp) gid=65(_dhcp) groups=65(_dhcp)
+uid=65534(nobody) gid=65534(nobody) groups=65534(nobody)
+uid=66(uucp) gid=66(uucp) groups=66(uucp)
+uid=68(pop) gid=6(mail) groups=6(mail)
+uid=7(games) gid=13(games) groups=13(games)
+uid=78(auditdistd) gid=77(audit) groups=77(audit)
+uid=8(news) gid=8(news) groups=8(news)
+uid=80(www) gid=80(www) groups=80(www)
+uid=845(hast) gid=845(hast) groups=845(hast)
+uid=9(man) gid=9(man) groups=9(man)
+
+[1;33m[+] [1;32mLogin now
+[0m 4:43PM  up  1:16, 1 users, load averages: 0.30, 0.49, 0.49
+USER       TTY      FROM                                      LOGIN@  IDLE WHAT
+[1;95mcharix[0m     pts/1    10.10.14.28                               4:42PM     - sed s,[1;31mroot[0m,\^[[1;31m&\^[[0m,
+
+[1;33m[+] [1;32mLast logons
+[0mshutdown time                              Wed Jan 24 05:04
+[1;31mroot[0m       pts/2    :1.0                   Wed Jan 24 04:42 - shutdown  (00:22)
+[1;31mroot[0m       pts/2    :1.0                   Wed Jan 24 04:40 - 04:42  (00:01)
+[1;31mroot[0m       pts/2    :1                     Wed Jan 24 04:32 - 04:40  (00:08)
+[1;31mroot[0m       pts/2    :1                     Wed Jan 24 04:22 - 04:31  (00:09)
+[1;31mroot[0m       pts/0    192.168.253.133        Wed Jan 24 02:13 - 04:44  (02:30)
+[1;31mroot[0m       ttyv0                           Wed Jan 24 02:08 - shutdown  (02:56)
+boot time                                  Wed Jan 24 02:07
+
+utx.log begins Wed Jan 24 02:07:09 CET 2018
+
+[1;33m[+] [1;32mLast time logon each user
+[0m
+[1;33m[+] [1;32mPassword policy
+[0m[1;90m/etc/login.defs Not Found
+[0m
+[1;33m[+] [1;32mUser timers
+[0m[1;90m Not Found
+[0m
+[1;34m===================================( [1;32mSoftware Information[1;34m )===================================
+[0m[1;33m[+] [1;32mMySQL version
+[0m[1;90mmysql Not Found
+[0m
+[1;33m[+] [1;32mMySQL connection using default root/root ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mMySQL connection using root/toor ................... [0m[1;90mNo
+[0m[1;33m[+] [1;32mMySQL connection using root/NOPASS ................. [0m[1;90mNo
+[0m[1;33m[+] [1;32mLooking for mysql credentials and exec
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mPostgreSQL version and pgadmin credentials
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mPostgreSQL connection to template0 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using postgres/NOPASS ........ [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template0 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mPostgreSQL connection to template1 using pgsql/NOPASS ........... [0m[1;90mNo
+[0m
+[1;33m[+] [1;32mApache server info
+[0mVersion: Server version: Apache/2.4.29 (FreeBSD)
+Server built:   unknown
+
+[1;33m[+] [1;32mLooking for PHPCookies
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Wordpress wp-config.php files
+[0m[1;90mwp-config.php Not Found
+[0m
+[1;33m[+] [1;32mLooking for Tomcat users file
+[0m[1;90mtomcat-users.xml Not Found
+[0m
+[1;33m[+] [1;32mMongo information
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for supervisord configuration file
+[0m[1;90msupervisord.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for cesi configuration file
+[0m[1;90mcesi.conf Not Found
+[0m
+[1;33m[+] [1;32mLooking for Rsyncd config file
+[0m[1;90mrsyncd.conf Not Found
+[0m[1;33m[+] [1;32mLooking for Hostapd config file
+[0m[1;33m[+] [1;32mHostapd conf was found
+[0m/usr/share/examples/hostapd/hostapd.conf
+#private_key_passwd=secret [1;31mpassphrase[0m
+# wpa_psk or wpa_[1;31mpassphrase must be set and wpa_key_mgmt must include WPA-PSK.[0m
+# Instead of wpa_psk / wpa_[1;31mpassphrase, wpa_psk_radius might suffice.[0m
+# secret in hex format (64 hex digits), wpa_psk, or as an ASCII [1;31mpassphrase[0m
+# so the PSK changes when ASCII [1;31mpassphrase is used and the SSID is changed.[0m
+# wpa_[1;31mpassphrase (dot11RSNAConfigPSKPassPhrase)[0m
+#wpa_[1;31mpassphrase=secret passphrase[0m
+# Optionally, WPA [1;31mpassphrase can be received from RADIUS authentication server[0m
+# 1 = optional; use default [1;31mpassphrase/psk if RADIUS server does not include[0m
+# default PSK (wpa_psk/wpa_[1;31mpassphrase) will be delivered to Enrollees. Use of[0m
+
+[1;33m[+] [1;32mLooking for wifi conns file
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Anaconda-ks config files
+[0m[1;90manaconda-ks.cfg Not Found
+[0m
+[1;33m[+] [1;32mLooking for .vnc directories and their passwd files
+[0m[1;90m.vnc Not Found
+[0m
+[1;33m[+] [1;32mLooking for ldap directories and their hashes
+[0m[1;90m.vnc Not Found
+[0m
+[1;33m[+] [1;32mLooking for .ovpn files and credentials
+[0m[1;90m.ovpn Not Found
+[0m
+[1;33m[+] [1;32mLooking for ssl/ssh files
+[0mPermitRootLogin yes
+  --> Some certificates were found:
+/usr/ports/www/py-hyper/files/files-server.crt
+/etc/mail/certs/cacert.pem
+
+
+Looking inside /etc/ssh/ssh_config for interesting info
+
+[1;33m[+] [1;32mLooking for unexpected auth lines in /etc/pam.d/sshd
+[0m[1;31mauth		sufficient	pam_opie.so		no_warn no_fake_prompts[0m
+[1;31mauth		requisite	pam_opieaccess.so	no_warn allow_local[0m
+[1;31mauth		required	pam_unix.so		no_warn try_first_pass[0m
+
+[1;33m[+] [1;32mLooking for Cloud credentials (AWS, Azure, GC)
+[0m
+[1;33m[+] [1;32mNFS exports?
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation/nfs-no_root_squash-misconfiguration-pe
+[0m[1;90m/etc/exports Not Found
+[0m
+[1;33m[+] [1;32mLooking for kerberos conf files and tickets
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/pentesting/pentesting-kerberos-88#pass-the-ticket-ptt
+[0m[1;90mkrb5.conf Not Found
+[0m[1;90mtickets kerberos Not Found
+[0m[1;90mklist Not Found
+[0m
+[1;33m[+] [1;32mLooking for Kibana yaml
+[0m[1;90mkibana.yml Not Found
+[0m
+[1;33m[+] [1;32mLooking for Knock configuration
+[0m[1;90mKnock.config Not Found
+[0m
+[1;33m[+] [1;32mLooking for logstash files
+[0m/usr/ports/sysutils/logstash
+
+[1;33m[+] [1;32mLooking for elasticsearch files
+[0m[1;90m Not Found
+[0m
+[1;33m[+] [1;32mLooking for Vault-ssh files
+[0m[1;90mvault-ssh-helper.hcl Not Found
+[0m
+[1;33m[+] [1;32mLooking for AD cached hahses
+[0m[1;90mcached hashes Not Found
+[0m
+[1;33m[+] [1;32mLooking for screen sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;90mscreen Not Found
+[0m
+[1;33m[+] [1;32mLooking for tmux sessions
+[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#open-shell-sessions
+[0m[1;90mtmux Not Found
+[0m
+[1;33m[+] [1;32mLooking for Couchdb directory
+[0m
+[1;33m[+] [1;32mLooking for redis.conf
+[0m
+[1;33m[+] [1;32mLooking for dovecot files
+[0m[1;90mdovecot credentials Not Found
+[0m
+[1;33m[+] [1;32mLooking for mosquitto.conf
+[0m
+[1;33m[+] [1;32mLooking for neo4j auth file
+[0mFound readable /usr/ports/databases/neo4j
+
+[1;33m[+] [1;32mLooking Cloud-Init conf file
+[0m
+
+[1;34m====================================( [1;32mInteresting Files[1;34m )=====================================
+[0m[1;33m[+] [1;32mSUID - Check easy privesc, exploits and write perms
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/usr/sbin[1;31m/traceroutett--->tLBL_Traceroute_[2000-11-15][0m
+/usr/bin[1;31m/lprtt--->tBSD/OS2.1/FreeBSD2.1.5/NeXTstep4.x/IRIX6.4/SunOS4.1.3/4.1.4(09-1996)[0m
+/usr/bin[1;31m/attt--->tRTru64_UNIX_4.0g(CVE-2002-1614)[0m
+/usr/bin[1;31m/attt--->tRTru64_UNIX_4.0g(CVE-2002-1614)[0mrm
+/usr/bin[1;31m/attt--->tRTru64_UNIX_4.0g(CVE-2002-1614)[0mq
+/usr/bin[1;31m/chpasstt--->t2Vulns:OpenBSD_6.1_to_OpenBSD[0m
+/usr/bin[1;31m/passwdtt--->tApple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)[0m
+/usr/bin[1;31m/logintt--->tIBM_AIX_3.2.5/SGI_IRIX_6.4[0m
+/usr/bin[1;31m/rshtt--->tApple_Mac_OSX_10.9.5/10.10.5(09-2015)[0m
+/bin[1;31m/rcptt--->tRedHat_6.2[0m
+
+[1;33m[+] [1;32mSGID
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#commands-with-sudo-and-suid-commands
+[0m/usr/sbin[1;31m/lpctt--->tS.u.S.E_Linux_5.2[0m
+/usr/libexec/sendmail[1;31m/sendmailtt--->tSendmail_8.10.1/Sendmail_8.11.x/Linux_Kernel_2.2.x_2.4.0-test1_(SGI_ProPack_1.2/1.3)[0m
+/usr/bin[1;31m/lprtt--->tBSD/OS2.1/FreeBSD2.1.5/NeXTstep4.x/IRIX6.4/SunOS4.1.3/4.1.4(09-1996)[0m
+
+[1;33m[+] [1;32mCapabilities
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities
+[0m
+[1;33m[+] [1;32mUsers with capabilities
+[0m[1;90m/etc/security/capability.conf Not Found
+[0m
+[1;33m[+] [1;32m.sh files in path
+[0m/usr/bin/lesspipe.sh
+/usr/local/bin/gettext.sh
+
+[1;33m[+] [1;32mFiles (scripts) in /etc/profile.d/
+[0m
+[1;33m[+] [1;32mHashes inside passwd file? ........... [0m[1;31m# $FreeBSD: releng/11.1/etc/master.passwd 299365 2016-05-10 12:47:36Z bcr $[0m
+[1;31m#[0m
+[1;33m[+] [1;32mCredentials in fstab/mtab? ........... [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read shadow files? ............. [0m[1;90mNo
+[0m[1;33m[+] [1;32mCan I read root folder? .............. [0mtotal 0
+[1;90mNo
+[0m
+[1;33m[+] [1;32mLooking for root files in home dirs (limit 20)
+[0m/home
+/home/[1;31mcharix[0m/user.txt
+/home/[1;31mcharix[0m/secret.zip
+
+[1;33m[+] [1;32mLooking for others files in folders owned by me
+[0m
+[1;33m[+] [1;32mReadable files belonging to root and readable by me but not world readable
+[0m[1;31m-rw-r-----  1 root  charix  33 Mar 19  2018 /home/charix/user.txt[0m
+[1;31m-rw-r-----  1 root  charix  166 Mar 19  2018 /home/charix/secret.zip[0m
+
+[1;33m[+] [1;32mModified interesting files in the last 5mins
+[0m/var/log/utx.lastlogin
+/var/log/utx.log
+/var/log/auth.log
+/var/log/cron
+/var/log/messages
+/var/run/utx.active
+/home/charix/linpeas.sh
+/home/charix/linpeas.out
+
+[1;33m[+] [1;32mWritable log files (logrotten)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation
+[0mWritable folder: /usr/share/man/man5/audit.log.5.gz
+Writable folder: /usr/ports/www/asterisk-stat/files/pgsql__patch-call.log.php
+Writable folder: /var/log/utx.log
+Writable folder: /var/log/httpd-error.log
+Writable folder: /var/log/auth.log
+Writable folder: /var/log/debug.log
+Writable folder: /var/log/ppp.log
+Writable folder: /var/log/devd.log
+Writable folder: /var/log/httpd-access.log
+Writable folder: /var/log/Xorg.0.log
+Writable folder: /var/log/vmware-vmsvc.log
+
+[1;33m[+] [1;32mFiles inside /home/charix (limit 20)
+[0mtotal 236
+drwxr-x---  2 charix  charix     512 Jan 11 16:43 .
+drwxr-xr-x  3 root    wheel      512 Mar 19  2018 ..
+-rw-r-----  1 charix  charix    1041 Mar 19  2018 .cshrc
+-rw-rw----  1 charix  charix       0 Jan 11 16:39 .history
+-rw-r-----  1 charix  charix     254 Mar 19  2018 .login
+-rw-r-----  1 charix  charix     163 Mar 19  2018 .login_conf
+-rw-r-----  1 charix  charix     379 Mar 19  2018 .mail_aliases
+-rw-r-----  1 charix  charix     336 Mar 19  2018 .mailrc
+-rw-r-----  1 charix  charix     802 Mar 19  2018 .profile
+-rw-r-----  1 charix  charix     281 Mar 19  2018 .rhosts
+-rw-r-----  1 charix  charix     849 Mar 19  2018 .shrc
+-rw-r--r--  1 charix  charix   25762 Jan 11 16:45 linpeas.out
+-rwxr-xr-x  1 charix  charix  160486 Jan 11 16:40 linpeas.sh
+-rw-r-----  1 root    charix     166 Mar 19  2018 secret.zip
+-rw-r-----  1 root    charix      33 Mar 19  2018 user.txt
+
+[1;33m[+] [1;32mFiles inside others home (limit 20)
+[0m
+[1;33m[+] [1;32mLooking for installed mail applications
+[0mrc.sendmail
+sendmail
+
+[1;33m[+] [1;32mMails (limit 50)
+[0m/var/mail/_tss
+/var/mail/messagebus
+/var/mail/avahi
+/var/mail/cups
+/var/mail/charix
+/var/mail/root
+
+[1;33m[+] [1;32mBackup files?
+[0m-rwxr-xr-x  1 root  wheel  1746 Jul 21  2017 /var/db/etcupdate/current/etc/periodic/daily/200.backup-passwd
+-rwxr-xr-x  1 root  wheel  1001 Jul 21  2017 /var/db/etcupdate/current/etc/periodic/daily/210.backup-aliases
+-rwxr-xr-x  1 root  wheel  1001 Jul 21  2017 /etc/periodic/daily/210.backup-aliases
+-rwxr-xr-x  1 root  wheel  1746 Jul 21  2017 /etc/periodic/daily/200.backup-passwd
+-rw-r--r--  1 root  wheel  44 Jan 24  2018 /etc/resolv.conf.bak
+
+[1;33m[+] [1;32mLooking for tables inside readable .db/.sqlite files (limit 100)
+[0m[1;32m -> Extracting tables from[0m /var/db/services.db [1;90m(limit 20)
+[0m[1;32m -> Extracting tables from[0m /var/db/pkg/local.sqlite [1;90m(limit 20)
+[0m[1;32m -> Extracting tables from[0m /var/db/pkg/repo-FreeBSD.sqlite [1;90m(limit 20)
+[0m[1;32m -> Extracting tables from[0m /etc/pwd.db [1;90m(limit 20)
+[0m[1;32m -> Extracting tables from[0m /etc/login.conf.db [1;90m(limit 20)
+[0m
+[1;33m[+] [1;32mWeb files?(output limit)
+[0m
+[1;33m[+] [1;32mReadable *_history, .sudo_as_admin_successful, profile, bashrc, httpd.conf, .plan, .htpasswd, .gitconfig, .git-credentials, .git, .svn, .rhosts, hosts.equiv, Dockerfile, docker-compose.yml
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#read-sensitive-data
+[0m-rw-r--r--  1 [1;31mroot[0m  wheel  116 Jul 21  2017 /etc/hosts.equiv
+-rw-r-----  1 [1;95mcharix[0m  [1;95mcharix[0m  281 Mar 19  2018 /home/[1;95mcharix[0m/.rhosts
+-rw-r-----  1 [1;95mcharix[0m  [1;95mcharix[0m  802 Mar 19  2018 /home/[1;95mcharix[0m/.profile
+-r--r--r--  1 [1;31mroot[0m  wheel  116 Jul 21  2017 /usr/share/examples/etc/hosts.equiv
+-rw-r--r--  1 [1;31mroot[0m  wheel  21199 Jan 24  2018 /usr/local/etc/apache24/httpd.conf
+[1;32mReading /usr/local/etc/apache24/httpd.conf
+[0m
+-rw-r--r--  1 [1;31mroot[0m  wheel  2119 Jul 21  2017 /usr/ports/www/validator/files/patch-httpd_conf_httpd.conf
+[1;32mReading /usr/ports/www/validator/files/patch-httpd_conf_httpd.conf
+[0m
+drwxr-xr-x  2 [1;31mroot[0m  wheel  512 Jul 21  2017 /usr/ports/finance/trytond28_account_invoice_history
+[1;32mLooking for possible passwords inside /usr/ports/finance/trytond28_account_invoice_history
+[0m
+drwxr-xr-x  2 [1;31mroot[0m  wheel  512 Jul 21  2017 /usr/ports/finance/trytond28_product_cost_history
+[1;32mLooking for possible passwords inside /usr/ports/finance/trytond28_product_cost_history
+[0m
+
+[1;33m[+] [1;32mAll hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+[0m-rw-r--r--  1 root  wheel  230 Jan  2  2018 /usr/local/share/doc/llvm50/clang/html/.buildinfo
+-rw-r--r--  1 root  wheel  230 Jan  2  2018 /usr/local/share/doc/llvm50/llvm/html/.buildinfo
+-rw-r--r--  1 root  wheel  230 Jan  2  2018 /usr/local/share/doc/llvm50/clang-tools/html/.buildinfo
+-rw-r--r--  1 root  wheel  230 Jan  2  2018 /usr/local/share/doc/llvm50/lld/html/.buildinfo
+-rw-r--r--  1 root  wheel  138789 Dec 10  2017 /usr/local/lib/perl5/5.24/mach/.packlist
+-rw-r--r--  1 root  wheel  85 Jul 21  2017 /usr/ports/.arcconfig
+-rw-r--r--  1 root  wheel  898 Jul 21  2017 /usr/ports/.gitattributes
+-r--r--r--  1 root  wheel  11 Jan 11 15:27 /tmp/.X1-lock
+-rw-r--r--  2 root  wheel  957 Jul 21  2017 /var/db/etcupdate/current/root/.cshrc
+-rw-r--r--  1 root  wheel  149 Jul 21  2017 /var/db/etcupdate/current/root/.k5login
+-rw-r--r--  1 root  wheel  295 Jul 21  2017 /var/db/etcupdate/current/root/.login
+-rw-r--r--  2 root  wheel  957 Jul 21  2017 /var/db/etcupdate/current/.cshrc
+-rw-r--r--  2 root  wheel  943 Mar 19  2018 /.cshrc
+-rw-------  1 root  wheel  1024 Jan 24  2018 /.rnd
+-rw-r-----  1 charix  charix  1041 Mar 19  2018 /home/charix/.cshrc
+-rw-r-----  1 charix  charix  849 Mar 19  2018 /home/charix/.shrc
+-rw-r-----  1 charix  charix  379 Mar 19  2018 /home/charix/.mail_aliases
+-rw-r-----  1 charix  charix  336 Mar 19  2018 /home/charix/.mailrc
+-rw-r-----  1 charix  charix  163 Mar 19  2018 /home/charix/.login_conf
+-rw-r-----  1 charix  charix  254 Mar 19  2018 /home/charix/.login
+-rw-rw----  1 charix  charix  0 Jan 11 16:39 /home/charix/.history
+-r--------  1 root  wheel  33554432 Jan 24  2018 /.sujournal
+
+[1;33m[+] [1;32mReadable files inside /tmp, /var/tmp, /var/backups(limit 70)
+[0m-r--r--r--  1 root  wheel  11 Jan 11 15:27 /tmp/.X1-lock
+
+[1;33m[+] [1;32mInteresting writable files owned by me or writable by everyone (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m/home/charix
+/tmp
+/tmp/.ICE-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+/var/mail/charix
+/var/tmp
+/var/tmp/vi.recover
+
+[1;33m[+] [1;32mInteresting GROUP writable files (not in Home)
+[0m[1;34m[i] [1;33mhttps://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files
+[0m  Group [1;32mcharix:
+[0m
+[1;33m[+] [1;32mSearching passwords in config PHP files
+[0m
+[1;33m[+] [1;32mFinding IPs inside logs (limit 70)
+[0m  30 /var/log/httpd-access.log:10.10.14.28
+  18 192.168.253.133
+  10 10.10.14.4
+   6 /var/log/httpd-access.log:10.10.14.4
+   5 10.10.14.28
+   2 /var/log/utx.log:192.168.253.133
+   1 /var/log/utx.lastlogin:10.10.14.28
+   1 /var/log/messages:10.10.14.28
+   1 /var/log/httpd-access.log:192.168.253.133
+
+[1;33m[+] [1;32mFinding passwords inside logs (limit 70)
+[0m/var/log/bsdinstall_log:DEBUG: variable.subr: New variable VAR_GROUP_PASSWORD -> groupPassword
+/var/log/bsdinstall_log:DEBUG: variable.subr: New variable VAR_USER_PASSWORD -> userPassword
+/var/log/bsdinstall_log:DEBUG: variable.subr: New variable VAR_USER_PASSWORD_EXPIRE -> userPasswordExpire
+
+[1;33m[+] [1;32mFinding emails inside logs (limit 70)
+[0m   1 /var/log/Xorg.0.log:root@releng2.nyi.freebsd.org
+
+[1;33m[+] [1;32mFinding *password* or *credential* files in home (limit 70)
+[0m
+[1;33m[+] [1;32mFinding 'pwd' or 'passw' variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/defaults/periodic.conf:security_status_passwdless_enable="YES"
+/etc/defaults/periodic.conf:security_status_passwdless_period="daily"
+/etc/login.conf:	:passwd_format=sha512:\
+/etc/nsswitch.conf:passwd: compat
+/etc/nsswitch.conf:passwd_compat: nis
+/etc/periodic/daily/200.backup-passwd:		cp -p /etc/master.passwd $bak/master.passwd.bak || rc=3
+/etc/periodic/daily/200.backup-passwd:		echo "$host passwd diffs:"
+/etc/periodic/daily/200.backup-passwd:	    echo "Backup passwd and group files:"
+/etc/security/audit_event:6163:AUE_passwd:passwd:lo
+/home/charix/linpeas.sh:      SHELLUSERS=`cat /etc/passwd 2>/dev/null | grep -i "sh$" | cut -d ":" -f 1`
+
+[1;33m[+] [1;32mFinding possible password variables inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m
+[1;33m[+] [1;32mFinding 'username' string inside /home /var/www /var/backups /tmp /etc /root /mnt (limit 70)
+[0m/etc/rc.d/sdpd:user="${sdpd_[1;31musername[0m:-nobody}"
+/home/charix/linpeas.sh:    for f in $tomcat; do grep "[1;31musername[0m=" $f 2>/dev/null | grep "password=" | sed "s,.*,${C}[1;31m&${C}[0m,"; done
+
+[1;33m[+] [1;32mLooking for specific hashes inside files - less false positives (limit 70)
+[0m
