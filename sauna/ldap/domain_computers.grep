@@ -1,0 +1,2 @@
+cn	sAMAccountName	dNSHostName	operatingSystem	operatingSystemServicePack	operatingSystemVersion	lastLogon	userAccountControl	whenCreated	objectSid	description
+SAUNA	SAUNA$	SAUNA.EGOTISTICAL-BANK.LOCAL	Windows Server 2019 Standard		10.0 (17763)	01/17/21 02:33:41	TRUSTED_FOR_DELEGATION, SERVER_TRUST_ACCOUNT	01/23/20 05:45:30	S-1-5-21-2966785786-3096785034-1186376766-1000	
