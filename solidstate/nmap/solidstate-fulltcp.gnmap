@@ -1,0 +1,4 @@
+# Nmap 7.91 scan initiated Sun Jan 31 08:34:52 2021 as: nmap -sC -sV -p- -oA nmap/solidstate-fulltcp 10.10.10.51
+Host: 10.10.10.51 ()	Status: Up
+Host: 10.10.10.51 ()	Ports: 22/open/tcp//ssh//OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)/, 25/open/tcp//smtp//JAMES smtpd 2.3.2/, 80/open/tcp//http//Apache httpd 2.4.25 ((Debian))/, 110/open/tcp//pop3//JAMES pop3d 2.3.2/, 119/open/tcp//nntp//JAMES nntpd (posting ok)/, 4555/open/tcp//james-admin//JAMES Remote Admin 2.3.2/	Ignored State: closed (65529)
+# Nmap done at Sun Jan 31 08:35:39 2021 -- 1 IP address (1 host up) scanned in 46.83 seconds
