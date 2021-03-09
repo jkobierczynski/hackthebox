@@ -1,4 +1,0 @@
-# Nmap 7.80 scan initiated Sun Jul 19 20:18:21 2020 as: nmap -sC -sV --script=vuln -oA nmap/nmap-vuln 10.10.10.4
-Host: 10.10.10.4 (legacy.htb)	Status: Up
-Host: 10.10.10.4 (legacy.htb)	Ports: 139/open/tcp//netbios-ssn//Microsoft Windows netbios-ssn/, 445/open/tcp//microsoft-ds//Microsoft Windows XP microsoft-ds/, 3389/closed/tcp//ms-wbt-server///	Ignored State: filtered (997)
-# Nmap done at Sun Jul 19 20:18:47 2020 -- 1 IP address (1 host up) scanned in 26.56 seconds
