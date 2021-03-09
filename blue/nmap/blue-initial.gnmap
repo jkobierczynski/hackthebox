@@ -1,0 +1,4 @@
+# Nmap 7.91 scan initiated Tue Mar  9 03:00:24 2021 as: nmap -sV -sC -oA nmap/blue-initial 10.10.10.40
+Host: 10.10.10.40 ()	Status: Up
+Host: 10.10.10.40 ()	Ports: 135/open/tcp//msrpc//Microsoft Windows RPC/, 139/open/tcp//netbios-ssn//Microsoft Windows netbios-ssn/, 445/open/tcp//microsoft-ds//Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)/, 49152/open/tcp//msrpc//Microsoft Windows RPC/, 49153/open/tcp//msrpc//Microsoft Windows RPC/, 49154/open/tcp//msrpc//Microsoft Windows RPC/, 49155/open/tcp//msrpc//Microsoft Windows RPC/, 49156/open/tcp//msrpc//Microsoft Windows RPC/, 49157/open/tcp//msrpc//Microsoft Windows RPC/	Ignored State: closed (991)
+# Nmap done at Tue Mar  9 03:01:34 2021 -- 1 IP address (1 host up) scanned in 70.59 seconds
