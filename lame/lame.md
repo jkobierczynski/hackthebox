@@ -379,7 +379,7 @@ cat /home/makis/user.txt
 
 Now we have root access on the box and we can read both the user and the root flags:
 
-![ImgPlaceholder](screenshots/flags.png)
+![ImgPlaceholder](screenshot/flags.png)
 
 **Vulnerability Fix:**
 
