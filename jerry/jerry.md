@@ -406,7 +406,7 @@ With system privileges we can access the flags on the machine:
 
 **Vulnerability Fix:**
 
-Remove or migrate the Windows 7 box, alternative: place in a separate VLAN and protect with firewall / IPS.
+Change credentials login Tomcat interface, remove public access Tomcat administrative interface
 
 ## Sample Report - Maintaining Access
 
