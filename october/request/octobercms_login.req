@@ -1,0 +1,15 @@
+POST /backend/backend/auth/signin HTTP/1.1
+Host: 10.10.10.16
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 138
+Origin: http://10.10.10.16
+Connection: close
+Referer: http://10.10.10.16/backend/backend/auth/signin
+Cookie: october_session=eyJpdiI6Ik81a1c3eTJKTUdXNkpnUTVXdG5xSkE9PSIsInZhbHVlIjoiQUwwd2srTSt6cUNUbWt6NFRGeWVLZUtLbGQ1WXdzSUtTekhGUEtBSTBpQzh4NjQyYWJDNmRvTXh1eHRoK0t2S2xOUXpzdjZEbzN4UEpKZ1JOSzhYOHc9PSIsIm1hYyI6IjNjZTRjM2ViYTM1MmQ4MTljNzhhMDQ5MmY4NWUzZmRjZTRmNWNhOGYxZGIxNjI3MzJiZmRhMDhkYjk5YzliNTgifQ%3D%3D
+Upgrade-Insecure-Requests: 1
+
+_session_key=SbXOg5Nrf7VpsLX1SMIzFCyauCjgbWLz3zCnYDqz&_token=BSxGiwZFbiZAL3V3PgQBVp0NCdtOn1JAiZbw3fbc&postback=1&login=admin&password=test

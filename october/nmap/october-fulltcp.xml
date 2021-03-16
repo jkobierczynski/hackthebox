@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.91 scan initiated Mon Mar 15 22:38:03 2021 as: nmap -sC -sV -p- -oA nmap/october-fulltcp 10.10.10.16 -->
+<nmaprun scanner="nmap" args="nmap -sC -sV -p- -oA nmap/october-fulltcp 10.10.10.16" start="1615844283" startstr="Mon Mar 15 22:38:03 2021" version="7.91" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.10.10.16" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1615844283" endtime="1615844396"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<address addr="10.10.10.16" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="filtered" count="65533">
+<extrareasons reason="no-responses" count="65533"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="ssh" product="OpenSSH" version="6.6.1p1 Ubuntu 2ubuntu2.8" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:6.6.1p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  1024 79:b1:35:b6:d1:25:12:a3:0c:b5:2e:36:9c:33:26:28 (DSA)&#xa;  2048 16:08:68:51:d1:7b:07:5a:34:66:0d:4c:d0:25:56:f5 (RSA)&#xa;  256 e3:97:a7:92:23:72:bf:1d:09:88:85:b6:6c:17:4e:85 (ECDSA)&#xa;  256 89:85:90:98:20:bf:03:5d:35:7f:4a:a9:e1:1b:65:31 (ED25519)"><table>
+<elem key="key">AAAAB3NzaC1kc3MAAACBANmRR7UDp17vLPWjPYGFFxhFHygkw1gVmWZCAUO+TBY4OPnIWGRwrG+zyo39zVror9IS7wgI8rGUuwSd0Yc0xOYlrnZ9jvE7x/H5+Bm8MLaT4QIOI8PSjoRU4a8dhw2zSYC7oSkndmyf22oTvLCv6I37FrazfIm2KTPh2+GtcA6rAAAAFQD6rlN7SzmW/f8uXdfVU1CjnokgpwAAAIA++cp5Tl4bw7yKZO6Odr1fgs+96yEb0B0pGpuvOXdd970m6Tci3uPlDiUyYLI1mAfBzQ15m4JUgsGyuMcAkI7ScqRt7Ar/O9YKoRG2FUPKQAMyJ1Q2QgmuSuaiQePhVFZBQfeMin77oigq8ftCMvypSSh0xQQ/mQTI46n+rN4K1AAAAIBnU+X2K0HarUrflRS2kY1F0ezirxLPlvbsQSGU3S6ETNXUcrp4YCQBtNRx7vb5WH3GgJ/u3vZcJLPEDEHpLf5dOY9P6dOZaDv1uMQfbfejnzpgej7WqK9f+QZVGh5tG0bZl0TgQfoOeRInCZRPSiuOlhVaRENYD9xKoVvp8arXSg==</elem>
+<elem key="bits">1024</elem>
+<elem key="type">ssh-dss</elem>
+<elem key="fingerprint">79b135b6d12512a30cb52e369c332628</elem>
+</table>
+<table>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQC5Txq4c0jb5/pJpdDRWMw6kGit+0TeEKq3yWPLLPifxMillxkW1P4j51ANiLUE9wQjzBticFF4Ql6lplrrVft50grpQb+2qyB6l7Bg8dd3GZykdJkyGjwS7urx//EhODxvOA2Fl5KL9Zr3/ql8VnfYTgXvvNCfuY0QxTUauG/YYbQ5qwvfbzyqX88Ym2l1S8JRft2MKFhZWzcNKBrWCeBraioFFLRZqPPSir4emSWKp5zRFFteU9OS8xlw0dezzwAJM+maTF2fU4cXpeaC5rig/S4FTNV0B5fmDac4pg+HIvejIMFIMcE1Ue7UsUvfiE/+vQW19vyPZFtq14NdeBJb</elem>
+<elem key="bits">2048</elem>
+<elem key="type">ssh-rsa</elem>
+<elem key="fingerprint">16086851d17b075a34660d4cd02556f5</elem>
+</table>
+<table>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKWJqXjmPMM11lDdFy512ITtTx1mh4bP6jxTLmGYtSBYkUUlQVJkX+WQen/zcnmWFlRvHzlsj5dflsXKnzgifkk=</elem>
+<elem key="bits">256</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+<elem key="fingerprint">e397a7922372bf1d098885b66c174e85</elem>
+</table>
+<table>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIA/9PENIoYUITEQDOKLYfiaUxVAgpixE8w//rH53DU7u</elem>
+<elem key="bits">256</elem>
+<elem key="type">ssh-ed25519</elem>
+<elem key="fingerprint">8985909820bf035d357f4aa9e11b6531</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="http" product="Apache httpd" version="2.4.7" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.7</cpe></service><script id="http-methods" output="&#xa;  Potentially risky methods: PUT PATCH DELETE"><table key="Potentially risky methods">
+<elem>PUT</elem>
+<elem>PATCH</elem>
+<elem>DELETE</elem>
+</table>
+</script><script id="http-server-header" output="Apache/2.4.7 (Ubuntu)"><elem>Apache/2.4.7 (Ubuntu)</elem>
+</script><script id="http-title" output="October CMS - Vanilla"><elem key="title">October CMS - Vanilla</elem>
+</script></port>
+</ports>
+<times srtt="27677" rttvar="2267" to="100000"/>
+</host>
+<runstats><finished time="1615844396" timestr="Mon Mar 15 22:39:56 2021" summary="Nmap done at Mon Mar 15 22:39:56 2021; 1 IP address (1 host up) scanned in 113.85 seconds" elapsed="113.85" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
